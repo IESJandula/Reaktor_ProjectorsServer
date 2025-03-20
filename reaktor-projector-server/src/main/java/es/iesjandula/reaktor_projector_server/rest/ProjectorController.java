@@ -594,20 +594,502 @@ public class ProjectorController
 		}
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	// ---------------------------- PROJECTOR METHODS ------------------------------
+
+	/**
+	 * Retrieves a paginated list of projectors based on optional filters and
+	 * sorting criteria.
+	 * <p>
+	 * This endpoint allows filtering by classroom, floor, or model. If a sorting
+	 * criteria is provided, the list can be ordered by model name; otherwise, the
+	 * default ordering is by floor and classroom.
+	 * </p>
+	 * 
+	 * @param criteria  (Optional) Sorting criteria. If set to "modelname",
+	 *                  projectors are ordered by model name. Any other value or
+	 *                  null defaults to ordering by floor and classroom.
+	 * @param classroom (Optional) Filter by classroom. If null, no classroom filter
+	 *                  is applied.
+	 * @param floor     (Optional) Filter by floor. If null, no floor filter is
+	 *                  applied.
+	 * @param model     (Optional) Filter by projector model. If null, no model
+	 *                  filter is applied.
+	 * @param pageable  Pagination and sorting parameters, including page number and
+	 *                  page size.
+	 * @return A paginated list of {@link ProjectorInfoDto} objects wrapped in
+	 *         {@link ResponseEntity}. - **200 OK**: Successfully retrieved
+	 *         projectors. - **204 No Content**: No projectors found matching the
+	 *         filters. - **500 Internal Server Error**: An unexpected error
+	 *         occurred.
+	 */
+	@GetMapping("/projectors")
+	public ResponseEntity<Page<ProjectorInfoDto>> getProjectorList(
+			@RequestParam(value = "criteria", required = false) String criteria,
+			@RequestParam(value = "classroom", required = false) String classroom,
+			@RequestParam(value = "floor", required = false) String floor,
+			@RequestParam(value = "model", required = false) String model,
+			@PageableDefault(page = 0, size = 15) Pageable pageable)
+	{
+		try
+		{
+
+			log.info("GET request received for '/projectors' with criteria: {}", criteria);
+
+			Page<ProjectorInfoDto> projectors;
+
+			boolean orderByModel = criteria != null && !criteria.isBlank()
+					&& Constants.PROJECTORS_ORDER_CRITERIA_MODELNAME.equalsIgnoreCase(criteria.trim());
+
+			// Determine ordering strategy based on criteria
+			if (orderByModel)
+			{
+				log.debug("Applying ordering by model name.");
+				projectors = projectorRepository.findProjectorsOrderedByModel(pageable, classroom, floor, model);
+			} else
+			{
+				log.debug("Applying default ordering by floor and classroom.");
+				projectors = projectorRepository.findProjectorsOrderedByFloorAndClassroom(pageable, classroom, floor,
+						model);
+			}
+
+			log.info("Successfully retrieved {} projectors.", projectors.getTotalElements());
+			return ResponseEntity.ok(projectors);
+
+		} catch (Exception e)
+		{
+			log.error("Error while retrieving projectors: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body(Page.empty());
+		}
+	}
+
+	/**
+	 * Removes the selected projectors from the database.
+	 * <p>
+	 * This method handles the removal of one or more projectors from a classroom by
+	 * performing the following checks: 1. Verifies that the provided classroom
+	 * exists. 2. Verifies that the provided projector model exists. 3. Ensures that
+	 * the projector assignment to the classroom exists before proceeding with
+	 * removal. 4. If any error occurs during the process (e.g., classroom or
+	 * projector model does not exist), appropriate exceptions are thrown.
+	 * </p>
+	 *
+	 * @param projectorDto The Data Transfer Object (DTO) containing the classroom
+	 *                     and projector model information to be removed.
+	 *
+	 * @return ResponseEntity The response entity containing the status of the
+	 *         operation: - If the removal is successful, returns HTTP status 200
+	 *         (OK) with a success message. - If any errors are encountered, returns
+	 *         HTTP status 500 (Internal Server Error) with an error message.
+	 *
+	 * @throws ProjectorServerException If: - The classroom does not exist. - The
+	 *                                  projector model does not exist. - The
+	 *                                  projector assignment does not exist.
+	 */
+	@Transactional
+	@DeleteMapping("/projectors")
+	public ResponseEntity<?> deleteProjector(@RequestBody List<ProjectorInfoDto> projectorDtoList)
+	{
+		try
+		{
+			log.info("DELETE request for '/projectors' received.");
+
+			// Response DTO for returning status
+			ResponseDto responseDto = new ResponseDto();
+			String message;
+
+			List<Projector> projectorEntitiesiList = new ArrayList();
+
+			for (ProjectorInfoDto projectorDto : projectorDtoList)
+			{
+				String classroomName = projectorDto.getClassroom();
+				String modelName = projectorDto.getModel();
+
+				// Check if the projector assignment exists.
+				Projector projectorEntity = projectorRepository.findById(classroomName).orElseThrow(() ->
+				{
+					String errorMessage = "Projector " + projectorDto + " does not exist.";
+					log.error(errorMessage);
+					return new ProjectorServerException(499, errorMessage);
+				});
+
+				// Log the projector assignment found.
+				log.debug("Projector assignment found for model '{}' in classroom '{}'.", modelName, classroomName);
+
+				// Add the current projector for later deletion order.
+				projectorEntitiesiList.add(projectorEntity);
+
+				// Log successful removal.
+				message = "Projector " + modelName + " from classroom " + classroomName + "added to remove list.";
+				log.info(message);
+			}
+
+			this.projectorRepository.deleteAll(projectorEntitiesiList);
+
+			// Set the response DTO.
+			message = String.format("Successfully removed %d projectors.", projectorEntitiesiList.size());
+			log.info(message);
+			responseDto.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
+			responseDto.setMessage(message);
+
+			// Return the success response.
+			return ResponseEntity.status(HttpStatus.OK).body(responseDto);
+
+		} catch (DataIntegrityViolationException e)
+		{
+			log.error("Projector removal failed due to data integrity issues: {}", e.getMessage());
+			return ResponseEntity.internalServerError().body(e.getMessage());
+		}
+
+		catch (ProjectorServerException e)
+		{
+			// Log the error for known exceptions (e.g., classroom or model not found).
+			log.error("Projector removal failed: {}", e.getMessage());
+			return ResponseEntity.internalServerError().body(e.getMapError());
+		} catch (Exception e)
+		{
+			// Log the error for unexpected exceptions
+			log.error("Unexpected error encountered while removing projector: {}", e.getMessage());
+			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Handles the deletion of all projectors from the database.
+	 * 
+	 * <p>
+	 * This endpoint removes all projector records in a single batch operation. If
+	 * no projectors exist, a warning response is returned instead of performing an
+	 * unnecessary delete operation.
+	 * </p>
+	 * 
+	 * @return ResponseEntity containing a success or warning message.
+	 */
+	@Transactional
+	@DeleteMapping("/projectors-all")
+	public ResponseEntity<?> deleteAllProjectors()
+	{
+		log.info("Received DELETE request for '/projectors-all'.");
+
+		try
+		{
+			// Retrieve all projectors from the database
+			List<Projector> projectors = projectorRepository.findAll();
+			ResponseDto responseDto = new ResponseDto();
+			String message;
+
+			// Check if there are any projectors to delete
+			if (projectors.isEmpty())
+			{
+				message = "No projectors found to delete.";
+				log.warn("Deletion skipped: {}", message);
+				responseDto.setStatus(Constants.RESPONSE_STATUS_WARNING);
+				responseDto.setMessage(message);
+				return ResponseEntity.ok(responseDto);
+			}
+
+			// Delete all projectors in batch (efficient bulk operation)
+			projectorRepository.deleteAllInBatch();
+
+			// Log successful deletion
+			message = String.format("Successfully removed %d projectors.", projectors.size());
+			log.info("Deletion successful: {}", message);
+
+			// Prepare and return success response
+			responseDto.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
+			responseDto.setMessage(message);
+			return ResponseEntity.ok(responseDto);
+
+		} catch (Exception e)
+		{
+			// Log the exception with full stack trace for debugging
+			log.error("Error occurred while deleting projectors: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
+		}
+	}
+
+	/**
+	 * Retrieves a projector assigned to a specific classroom.
+	 * <p>
+	 * Fetches the projector associated to the classroom sent as parameter. If the
+	 * projector is not found, it returns a 404 Not Found response with a relevant
+	 * error message. If an unexpected error occurs, a 500 Internal Server Error
+	 * response is returned.
+	 * </p>
+	 *
+	 * @param classroom The name of the classroom for which the projector needs to
+	 *                  be fetched. This parameter is required and should not be
+	 *                  blank.
+	 * 
+	 * @return ResponseEntity containing the projector (HTTP 200 OK) or an error
+	 *         message if the classroom does not exist (HTTP 404 Not Found), or an
+	 *         internal server error message (HTTP 500 Internal Server Error).
+	 */
+	@GetMapping(value = "/classroom-projector")
+	public ResponseEntity<?> getProjectorByClassroom(@RequestParam(required = true) String classroom)
+	{
+		try
+		{
+			// Log the incoming request to retrieve the projector
+			log.info("GET request for '/classroom-projector' received with classroom: '{}'", classroom);
+
+			// Check if the projector for the classroom exists
+			Projector projectorEntity = this.projectorRepository.findById(classroom).orElseThrow(() ->
+			{
+				// Log and throw an exception if the projector is not found
+				String message = "Projector for classroom '" + classroom + "' does not exist.";
+				log.warn(message); // Log as warning
+				return new ProjectorServerException(404, message);
+			});
+
+			// Log the successful retrieval of the projector
+			log.info("Projector for classroom '{}' successfully retrieved: {}", classroom, projectorEntity);
+
+			// Return the retrieved projector with HTTP status 200 (OK)
+			return ResponseEntity.ok().body(projectorEntity);
+
+		} catch (ProjectorServerException e)
+		{
+			// Log the expected exception (classroom not found) and return a 404 response
+			log.error("Projector not found for classroom '{}': {}", classroom, e.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMapError());
+
+		} catch (Exception e)
+		{
+			// Log any unexpected errors and return a 500 (Internal Server Error) response
+			String errorMessage = "Unexpected error encountered while retrieving projector for classroom: " + classroom;
+			log.error(errorMessage, e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage + ": " + e.getMessage());
+		}
+	}
+
+	// ------------------------------ MODEL METHODS --------------------------------
+
+	/**
+	 * Retrieves a list of all projector models from the database.
+	 * <p>
+	 * This endpoint queries the database to fetch all the available projector
+	 * models in the form of a list of {@link ProjectorModelDto}. If no models are
+	 * found, it returns a 404 Not Found response with a relevant message. In case
+	 * of a server error during the retrieval process, a 500 Internal Server Error
+	 * response is returned with a message indicating an unexpected error.
+	 * </p>
+	 * 
+	 * @return ResponseEntity<?> The response entity containing the status code and
+	 *         either the list of projector models (HTTP 200 OK) or an error message
+	 *         (HTTP 404 Not Found or HTTP 500 Internal Server Error).
+	 * 
+	 * @throws Exception If an error occurs while retrieving the projector models
+	 *                   from the database.
+	 */
+	@GetMapping("/projector-models")
+	public ResponseEntity<?> getModelsList()
+	{
+		try
+		{
+			// Log the start of the retrieval process
+			log.info("GET request for '/projector-models' received.");
+
+			// Retrieve the list of projector models from the database
+			List<ProjectorModelDto> projectorModelList = this.projectorModelRepository.findAllProjectorModelsAsDto();
+
+			// Log the successful retrieval of the models
+			log.info("Successfully retrieved {} projector models from the database.", projectorModelList.size());
+
+			// Return a 200 OK response with the list of projector models
+			return ResponseEntity.status(HttpStatus.OK).body(projectorModelList);
+
+		} catch (Exception e)
+		{
+			// Define an error message
+			String message = "An unexpected error occurred while retrieving the projector model list.";
+
+			// Log the error in case of failure with stack trace
+			log.error(message, e);
+
+			// Return a 500 Internal Server Error response with an error message
+			return ResponseEntity.internalServerError().body(message);
+		}
+	}
+
+	// ---------------------------- COMMANDS METHODS -------------------------------
+
+	/**
+	 * Retrieves the list of commands associated with a specific projector model.
+	 * <p>
+	 * This method retrieves commands associated with a given projector model. If
+	 * the model exists in the system, the commands are fetched and returned. If the
+	 * model does not exist, a 499 error is thrown. If no commands are found for the
+	 * model, a 204 No Content status is returned. In case of any other unexpected
+	 * errors, a 500 Internal Server Error status with the error message is returned.
+	 * </p>
+	 *
+	 * @param modelname The name of the projector model for which the commands need
+	 *                  to be fetched. This parameter is required.
+	 * 
+	 * @return ResponseEntity containing the list of commands (HTTP 200 OK), no
+	 *         content (HTTP 204), or an error message (HTTP 499 or 500).
+	 */
+	@GetMapping(value = "/commands")
+	public ResponseEntity<?> getProjectorModelCommands(@RequestParam(required = true) String modelname)
+	{
+		try
+		{
+			// Check if the given projector model exists in the repository
+			Optional<ProjectorModel> modelOptional = this.projectorModelRepository.findById(modelname);
+			String message;
+
+			if (modelOptional.isEmpty())
+			{
+				// Log and throw an error if the model does not exist
+				message = "The selected projector model does not exist.";
+				log.error(message); // Log the error at ERROR level
+				throw new ProjectorServerException(499, message);
+			}
+
+			log.debug("Projector model '{}' retrieved successfully.", modelname); // Log successful retrieval at DEBUG
+																					// level
+
+			// Retrieve commands associated with the model
+			List<CommandDto> commands = this.commandRepository.findCommandsByModelNameAsDto(modelname);
+
+			// If no commands are found, return 204 No Content
+			if (commands.isEmpty())
+			{
+				log.info("No commands found for model '{}'. Returning 204 No Content.", modelname); // Log info at INFO
+																									// level
+				return ResponseEntity.noContent().build(); // HTTP 204 No Content
+			}
+
+			// Log the number of commands retrieved successfully
+			log.debug("{} commands retrieved successfully for model '{}'.", commands.size(), modelname);
+
+			// Return the list of commands with HTTP 200 OK
+			return ResponseEntity.ok().body(commands);
+		} catch (ProjectorServerException e)
+		{
+			// Log and return a custom error response for known errors
+			// (ProjectorServerException)
+			log.error("An error occurred while retrieving commands for model '{}': {}", modelname, e.getMapError());
+			return ResponseEntity.badRequest().body(e.getMapError()); // Return HTTP 400 Bad Request
+		} catch (Exception e)
+		{
+			// Log and return a generic error response for unexpected errors
+			log.error("An unexpected error occurred while retrieving commands for model '{}': {}", modelname,
+					e.getLocalizedMessage());
+			return ResponseEntity.internalServerError().body(e.getLocalizedMessage()); // Return HTTP 400 Bad Request
+		}
+	}
+
+	/**
+	 * Retrieves a paginated list of commands based on the specified model and
+	 * action.
+	 * 
+	 * This endpoint checks if the provided model and action exist, then fetches the
+	 * commands for the given parameters with pagination. If no parameters are sent
+	 * then it recovers all the commands unfiltered.
+	 * 
+	 * @param pageable  Pagination details (page number, size, etc.).
+	 * @param modelName The model name to filter commands (optional).
+	 * @param action    The action name to filter commands (optional).
+	 * @return A response containing the paginated list of commands.
+	 */
+	@PostMapping(value = "/commands-page")
+	public ResponseEntity<?> getCommandsPage(@PageableDefault(page = 0, size = 15) Pageable pageable,
+			@RequestParam(name = "modelName", required = false) String modelName,
+			@RequestParam(name = "action", required = false) String action)
+	{
+		try
+		{
+
+			// Log the request.
+			log.debug("POST request for '/commands-page' received with modelName: {}, action: {}", modelName, action);
+
+			// Validate if the model exist.
+			if (modelName != null && !this.projectorModelRepository.existsById(modelName))
+			{
+				String errorMessage = "The selected model '" + modelName + "' does not exist.";
+				log.error("Model validation failed: {}", errorMessage);
+				throw new ProjectorServerException(404, errorMessage);
+			}
+
+			// Validate if the action exist.
+			if (action != null && !this.actionRepositories.existsById(action))
+			{
+				String errorMessage = "The selected action '" + action + "' does not exist.";
+				log.error("Action validation failed: {}", errorMessage);
+				throw new ProjectorServerException(404, errorMessage);
+			}
+
+			// Fetch the commands using pagination
+			Page<CommandDto> commands = this.commandRepository.findAllCommandsPage(pageable, modelName, action);
+
+			// Return the paginated response
+			log.info("Successfully retrieved commands page.");
+			return ResponseEntity.ok().body(commands);
+
+		} catch (ProjectorServerException e)
+		{
+			// Log error and return a bad request response with the error details
+			log.error("Error encountered during commands page retrieval: {}", e.getMapError());
+			return ResponseEntity.badRequest().body(e.getMapError());
+
+		} catch (Exception e)
+		{
+			// Log unexpected error and return a 500 internal server error response
+			log.error("Unexpected error during commands page retrieval: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("An unexpected error occurred.");
+		}
+	}
+
+	@DeleteMapping(value = "/commands")
+	public ResponseEntity<?> deleteCommands(@RequestBody List<CommandDto> commandsList)
+	{
+		try
+		{
+			log.debug("DELETE request for '/commands' received with parameter {}", commandsList);
+
+			List<Command> commandsToDelete = new ArrayList<>();
+			int recordsDeleted = 0;
+
+			for (CommandDto command : commandsList)
+			{
+
+				Action actionEntity = this.actionRepositories.findById(command.getAction()).get();
+				log.debug("Action retreived");
+
+				ProjectorModel modelEntity = this.projectorModelRepository.findById(command.getModelName()).get();
+				log.debug("ProjectorModel retreived");
+
+				CommandId commandId = new CommandId();
+
+				commandId.setAction(actionEntity);
+				commandId.setModelName(modelEntity);
+				commandId.setCommand(command.getCommand());
+				log.debug("CommandId retreived");
+
+				Command commandEntity = this.commandRepository.findById(commandId).get();
+				log.debug("Command retreived");
+
+				commandsToDelete.add(commandEntity);
+				recordsDeleted++;
+
+			}
+
+			this.commandRepository.deleteAll(commandsToDelete);
+
+			return (ResponseEntity.ok().body("Deleted " + recordsDeleted + " commands from DB."));
+
+		}
+
+		// HACER QUE EL FRONT RECIBA UN AVISO AL INTENTAR BORRAR ESTO Y PERMITA BORRAR
+		// EN CASCADA.
+		catch (DataIntegrityViolationException e)
+		{
+
+			return (ResponseEntity.ok().body("ERROR EN BORRADO POR INTEGRIDAD. \n" + e.getMessage()));
+		}
+	}
+
 	// -------------------------- SERVER EVENT METHODS -----------------------------
 
 	/**
@@ -772,389 +1254,6 @@ public class ProjectorController
 		}
 	}
 
-	// ---------------------------- PROJECTOR METHODS ------------------------------
-
-	/**
-	 * Retrieves a paginated list of projectors based on the specified criteria.
-	 * <p>
-	 * This method retrieves a list of projectors, either ordered by model name or
-	 * by floor and classroom, based on the provided criteria. If the criteria is
-	 * not specified, the default order is by floor and classroom. Pagination is
-	 * applied using the Pageable parameter.
-	 * </p>
-	 * 
-	 * @param criteria Optional query parameter to specify the ordering criteria. If
-	 *                 provided and set to "modelname", the projectors will be
-	 *                 ordered by model name. Otherwise, the projectors will be
-	 *                 ordered by floor and classroom.
-	 * @param pageable Pageable object for pagination (page number and page size).
-	 * @return ResponseEntity<?> The response entity containing the paginated list
-	 *         of projectors and the appropriate status code.
-	 * 
-	 * @throws Exception if there is any issue during the retrieval process.
-	 */
-	@GetMapping("/projectors")
-	public ResponseEntity<?> getProjectorList(@RequestParam(value = "criteria", required = false) String criteria,
-			@RequestParam(value = "classroom", required = false) String classroom,
-			@RequestParam(value = "floor", required = false) String floor,
-			@RequestParam(value = "model", required = false) String model,
-			@PageableDefault(page = 0, size = 15) Pageable pageable)
-	{
-		// Log the received request and the provided criteria
-		log.info("GET request for '/projectors' received with criteria '{}'", criteria);
-
-		Page<ProjectorInfoDto> projectors;
-		String message;
-
-		// Default criteria to compare for 'modelname'
-		String modelNameCriteria = "modelname";
-
-		// -----------------------------------------------------
-		// | TODO: Change current logic with ENUM-based logic. |
-		// -----------------------------------------------------
-
-		// Determine the order of projectors based on the criteria
-		if (criteria != null && !criteria.isBlank() && modelNameCriteria.equals(criteria.toLowerCase().trim()))
-		{
-			// If criteria is 'modelname', order projectors by model name
-			log.debug("Ordering projectors by model name.");
-			projectors = projectorRepository.findProjectorsOrderedByModel(pageable, classroom, floor, model);
-			message = "Projectors list ordered by model name.";
-		} else
-		{
-			// Default: order projectors by floor and classroom
-			log.debug("Ordering projectors by floor and classroom.");
-			projectors = projectorRepository.findProjectorsOrderedByFloorAndClassroom(pageable, classroom, floor,
-					model);
-			message = "Projectors list ordered by floor and classroom.";
-		}
-
-		// Log the final message based on the ordering criteria
-		log.info(message);
-
-		// Return the paginated list of projectors with a 200 OK status
-		return ResponseEntity.status(HttpStatus.OK).body(projectors);
-	}
-
-	/**
-	 * Removes a projector from a classroom.
-	 * <p>
-	 * This method handles the removal of a projector from a classroom by performing
-	 * the following checks: 1. Verifies that the provided classroom exists. 2.
-	 * Verifies that the provided projector model exists. 3. Ensures that the
-	 * projector assignment to the classroom exists before proceeding with removal.
-	 * 4. If any error occurs during the process (e.g., classroom or projector model
-	 * does not exist), appropriate exceptions are thrown.
-	 * </p>
-	 *
-	 * @param projectorDto The Data Transfer Object (DTO) containing the classroom
-	 *                     and projector model information to be removed.
-	 *
-	 * @return ResponseEntity The response entity containing the status of the
-	 *         operation: - If the removal is successful, returns HTTP status 200
-	 *         (OK) with a success message. - If any errors are encountered, returns
-	 *         HTTP status 500 (Internal Server Error) with an error message.
-	 *
-	 * @throws ProjectorServerException If: - The classroom does not exist. - The
-	 *                                  projector model does not exist. - The
-	 *                                  projector assignment does not exist.
-	 */
-	@Transactional
-	@DeleteMapping("/projectors")
-	public ResponseEntity<?> deleteProjector(@RequestBody List<ProjectorInfoDto> projectorDtoList)
-	{
-		try
-		{
-			log.info("DELETE request for '/projectors' received.");
-
-			// Response DTO for returning status
-			ResponseDto responseDto = new ResponseDto();
-			String message;
-			List<Projector> projectorEntitiList = new ArrayList();
-
-			for (ProjectorInfoDto projectorDto : projectorDtoList)
-			{
-				String classroomName = projectorDto.getClassroom();
-				String modelName = projectorDto.getModel();
-
-				// Check if the projector assignment exists.
-				Optional<Projector> projectorOpt = projectorRepository.findById(classroomName);
-				Projector projectorEntity = projectorOpt
-						.orElseThrow(() -> new ProjectorServerException(499, "Projector assignment does not exist."));
-
-				// Log the projector assignment found.
-				log.debug("Projector assignment found for model '{}' in classroom '{}'.", modelName, classroomName);
-
-				// Add the current projector for later deletion order.
-				projectorEntitiList.add(projectorEntity);
-
-				// Log successful removal.
-				message = "Projector " + modelName + " from classroom " + classroomName + "added to remove list.";
-				log.info(message);
-			}
-
-			this.projectorRepository.deleteAll(projectorEntitiList);
-
-			// Set the response DTO.
-			responseDto.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
-			responseDto.setMessage(String.format("Successfully removed %d projectors.", projectorEntitiList.size()));
-
-			// Return the success response.
-			return ResponseEntity.status(HttpStatus.OK).body(responseDto);
-
-		} catch (DataIntegrityViolationException e)
-		{
-			log.error("Projector removal failed due to data integrity issues: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body(e.getMessage());
-		}
-
-		catch (ProjectorServerException e)
-		{
-			// Log the error for known exceptions (e.g., classroom or model not found).
-			log.error("Projector removal failed: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body(e.getMapError());
-		} catch (Exception e)
-		{
-			// Log the error for unexpected exceptions
-			log.error("Unexpected error encountered while removing projector: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
-		}
-	}
-
-	@Transactional
-	@DeleteMapping("/projectors-all")
-	public ResponseEntity<?> deleteAllProjectors()
-	{
-		try
-		{
-			log.info("DELETE request for '/projectors-all' received.");
-
-			// Response DTO for returning status
-			ResponseDto responseDto = new ResponseDto();
-
-			String message;
-
-			List<Projector> projectorEntitiList = this.projectorRepository.findAll();
-
-			this.projectorRepository.deleteAll(projectorEntitiList);
-
-			// Set the response DTO.
-			responseDto.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
-			responseDto.setMessage(String.format("Successfully removed %d projectors.", projectorEntitiList.size()));
-
-			// Return the success response.
-			return ResponseEntity.status(HttpStatus.OK).body(responseDto);
-
-		} catch (Exception e)
-		{
-			// Log the error for unexpected exceptions
-			log.error("Unexpected error encountered while removing projector: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
-		}
-	}
-
-	/**
-	 * Retrieves a list of projectors assigned to a specific classroom.
-	 * <p>
-	 * This method handles the retrieval of projectors assigned to the given
-	 * classroom. It first checks if the classroom exists in the system. If the
-	 * classroom exists, it queries the database to fetch the list of projectors
-	 * associated with the classroom. If the classroom does not exist, it returns a
-	 * 404 Not Found response with a relevant message.
-	 * </p>
-	 *
-	 * @param classroom The name of the classroom for which projectors need to be
-	 *                  fetched. This parameter is required and should not be blank.
-	 * 
-	 * @return ResponseEntity A response entity containing the list of projectors
-	 *         (HTTP 200 OK) or an error message if the classroom does not exist
-	 *         (HTTP 404 Not Found).
-	 */
-	@GetMapping(value = "/classroom-projector")
-	public ResponseEntity<?> getProjectorByClassroom(@RequestParam(required = true) String classroom)
-	{
-		try
-		{
-			// Log the incoming request
-			log.info("GET request for '/classroom-projector' received with parameter '{}'", classroom);
-
-			Projector projectorEntity = this.projectorRepository.findById(classroom).orElseThrow(() ->
-			{
-				String message = "Projector for classroom " + classroom + " does not exist.";
-				log.warn(message); // Log as warning when the classroom doesn't exist
-				return new ProjectorServerException(404, message);
-			});
-
-			// Log the successful retrieval of projectors
-			log.info("Projector {} successfully retrieved for classroom: {}", projectorEntity, classroom);
-
-			// Return the projectors list with HTTP status 200 (OK)
-			return ResponseEntity.ok().body(projectorEntity);
-
-		} catch (Exception e)
-		{
-			// Log any unexpected errors and return a 500 (Internal Server Error) response
-			String message = "Error encountered while retrieving projectors for classroom: " + classroom;
-			log.error(message, e);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message + ": " + e.getMessage());
-		}
-	}
-
-	// ------------------------------ MODEL METHODS --------------------------------
-
-	/**
-	 * Retrieves a list of all projector models from the database.
-	 * <p>
-	 * This endpoint queries the database to fetch all the available projector
-	 * models in the form of a list of {@link ProjectorModelDto}. If no models are
-	 * found, it returns a 404 Not Found response with a relevant message. In case
-	 * of a server error during the retrieval process, a 500 Internal Server Error
-	 * response is returned with a message indicating an unexpected error.
-	 * </p>
-	 * 
-	 * @return ResponseEntity<?> The response entity containing the status code and
-	 *         either the list of projector models (HTTP 200 OK) or an error message
-	 *         (HTTP 404 Not Found or HTTP 500 Internal Server Error).
-	 * 
-	 * @throws Exception If an error occurs while retrieving the projector models
-	 *                   from the database.
-	 */
-	@GetMapping("/projector-models")
-	public ResponseEntity<?> getModelsList()
-	{
-		try
-		{
-			// Log the start of the retrieval process
-			log.info("GET request for '/projector-models' received.");
-
-			// Retrieve the list of projector models from the database
-			List<ProjectorModelDto> projectorModelList = this.projectorModelRepository.findAllProjectorModelsAsDto();
-
-			// Check if the list is empty
-			if (projectorModelList.isEmpty())
-			{
-				// Log if no models are found
-				log.warn("No projector models found in the database.");
-
-				// Return a 404 Not Found response with a message
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
-						"No projector models found in the database. Please ensure models are added before retrieving the list.");
-			}
-
-			// Log the successful retrieval of the models
-			log.info("Successfully retrieved {} projector models from the database.", projectorModelList.size());
-
-			// Return a 200 OK response with the list of projector models
-			return ResponseEntity.status(HttpStatus.OK).body(projectorModelList);
-
-		} catch (Exception e)
-		{
-			// Define an error message
-			String message = "An unexpected error occurred while retrieving the projector model list.";
-
-			// Log the error in case of failure with stack trace
-			log.error(message, e);
-
-			// Return a 500 Internal Server Error response with an error message
-			return ResponseEntity.internalServerError().body(message);
-		}
-	}
-
-	/**
-	 * Deletes a projector model from the database.
-	 * <p>
-	 * This method handles the deletion of a projector model by performing the
-	 * following checks: 1. Verifies that the model name is provided and is valid.
-	 * 2. Checks if there are any projectors associated with the given model. 3. If
-	 * no projectors are associated, attempts to delete the model from the database.
-	 * 4. If any error occurs during the process (e.g., model not found, or
-	 * projectors are still associated), appropriate exceptions are thrown.
-	 * </p>
-	 *
-	 * @param projectorModelDto The Data Transfer Object (DTO) containing the
-	 *                          projector model name to be deleted. The model name
-	 *                          must be valid and non-blank.
-	 * 
-	 * @return ResponseEntity A response entity containing the status of the
-	 *         operation: - If the model is successfully deleted, returns HTTP
-	 *         status 200 (OK) with a success message. - If any errors are
-	 *         encountered, returns an HTTP status 500 (Internal Server Error) with
-	 *         an error message.
-	 * 
-	 * @throws ProjectorServerException if: - The projector model name is blank or
-	 *                                  null. - The model does not exist in the
-	 *                                  database. - There are projectors still
-	 *                                  associated with the model.
-	 */
-	@DeleteMapping("/projector-models")
-	public ResponseEntity<?> deleteModel(@RequestBody ProjectorModelDto projectorModelDto)
-	{
-		try
-		{
-			// Validate the input: model name must be provided
-			String modelName = projectorModelDto.getModelname();
-			if (modelName == null || modelName.isBlank())
-			{
-				String message = "Projector model name is required for deletion.";
-				log.warn(message);
-				throw new ProjectorServerException(497, message);
-			}
-
-			// Log the attempt to delete the model
-			log.debug("Attempting to delete projector model: {}", modelName);
-
-			// Check if there are any projectors associated with the given model
-			long associatedProjectorCount = projectorRepository.countProjectorsByModel(modelName);
-			if (associatedProjectorCount > 0)
-			{
-				String message = String.format("Deletion failed: %d projector%s still associated with model %s.",
-						associatedProjectorCount, associatedProjectorCount > 1 ? "s" : "", modelName);
-				log.warn(message);
-				throw new ProjectorServerException(591, message);
-			}
-
-			long associatedCommandsCount = commandRepository.countCommandsByModelName(modelName);
-			if (associatedCommandsCount > 0)
-			{
-				String message = String.format("Deletion failed: %d command%s still associated with model %s.",
-						associatedCommandsCount, associatedCommandsCount > 1 ? "s" : "", modelName);
-				log.warn(message);
-				throw new ProjectorServerException(591, message);
-			}
-
-			// Attempt to find the projector model in the database
-			Optional<ProjectorModel> existingModel = projectorModelRepository.findById(modelName);
-			if (existingModel.isEmpty())
-			{
-				String message = String.format("Projector model %s not found in the database for deletion.", modelName);
-				log.error(message);
-				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message); // Return 404 if model not found
-			}
-
-			// Proceed to delete the projector model
-			projectorModelRepository.deleteById(modelName);
-			String successMessage = String.format("Projector model %s successfully deleted from the database.",
-					modelName);
-			log.info(successMessage);
-
-			// Return a success response
-			ResponseDto response = new ResponseDto(Constants.RESPONSE_STATUS_SUCCESS, successMessage);
-			return ResponseEntity.status(HttpStatus.OK).body(response);
-
-		} catch (ProjectorServerException e)
-		{
-			// Handle known custom exceptions
-			log.error("Projector deletion failed: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body(e.getMapError());
-		} catch (Exception e)
-		{
-			// Catch any unexpected errors and return a 500 error
-			String message = "Unexpected error encountered during projector model deletion.";
-			log.error("{} Error: {}", message, e.getMessage());
-			return ResponseEntity.internalServerError().body(message + e.getMessage());
-		}
-	}
-
 	// -----------------------------------------------------------------------------
 
 	/**
@@ -1248,136 +1347,6 @@ public class ProjectorController
 		// CommandDto cdto = new CommandDto("1","2","3");
 
 		return ResponseEntity.ok().body("turn-on");
-	}
-
-	@GetMapping(value = "/commands")
-	public ResponseEntity<?> getProjectorModelCommands(@RequestParam(required = true) String modelname)
-	{
-		// Controlar que el modelo exista.
-		// si no existe devolver 404
-
-		// Si no existen comandos devolver 204 (no content)
-
-		// si existen devolver los comandos
-
-		List<CommandDto> commands = this.commandRepository.findCommandsByModelNameAsDto(modelname);
-
-		if (commands.size() < 1)
-		{
-			return ResponseEntity.noContent().build();
-		}
-
-		return ResponseEntity.ok().body(commands);
-	}
-
-	/**
-	 * Retrieves a paginated list of commands based on the specified model and
-	 * action.
-	 * 
-	 * This endpoint checks if the provided model and action exist, then fetches the
-	 * commands for the given parameters with pagination. If no parameters are sent
-	 * then it recovers all the commands unfiltered.
-	 * 
-	 * @param pageable  Pagination details (page number, size, etc.).
-	 * @param modelName The model name to filter commands (optional).
-	 * @param action    The action name to filter commands (optional).
-	 * @return A response containing the paginated list of commands.
-	 */
-	@PostMapping(value = "/commands-page")
-	public ResponseEntity<?> getCommandsPage(@PageableDefault(page = 0, size = 15) Pageable pageable,
-			@RequestParam(name = "modelName", required = false) String modelName,
-			@RequestParam(name = "action", required = false) String action)
-	{
-		try
-		{
-
-			// Log the request.
-			log.debug("POST request for '/commands-page' received with modelName: {}, action: {}", modelName, action);
-
-			// Validate if the model exist.
-			if (modelName != null && !this.projectorModelRepository.existsById(modelName))
-			{
-				String errorMessage = "The selected model '" + modelName + "' does not exist.";
-				log.error("Model validation failed: {}", errorMessage);
-				throw new ProjectorServerException(404, errorMessage);
-			}
-
-			// Validate if the action exist.
-			if (action != null && !this.actionRepositories.existsById(action))
-			{
-				String errorMessage = "The selected action '" + action + "' does not exist.";
-				log.error("Action validation failed: {}", errorMessage);
-				throw new ProjectorServerException(404, errorMessage);
-			}
-
-			// Fetch the commands using pagination
-			Page<CommandDto> commands = this.commandRepository.findAllCommandsPage(pageable, modelName, action);
-
-			// Return the paginated response
-			log.info("Successfully retrieved commands page.");
-			return ResponseEntity.ok().body(commands);
-
-		} catch (ProjectorServerException e)
-		{
-			// Log error and return a bad request response with the error details
-			log.error("Error encountered during commands page retrieval: {}", e.getMapError());
-			return ResponseEntity.badRequest().body(e.getMapError());
-
-		} catch (Exception e)
-		{
-			// Log unexpected error and return a 500 internal server error response
-			log.error("Unexpected error during commands page retrieval: {}", e.getMessage(), e);
-			return ResponseEntity.internalServerError().body("An unexpected error occurred.");
-		}
-	}
-
-	@DeleteMapping(value = "/commands")
-	public ResponseEntity<?> deleteCommands(@RequestBody List<CommandDto> commandsList)
-	{
-		try
-		{
-			log.debug("DELETE request for '/commands' received with parameter {}", commandsList);
-
-			List<Command> commandsToDelete = new ArrayList<>();
-			int recordsDeleted = 0;
-
-			for (CommandDto command : commandsList)
-			{
-
-				Action actionEntity = this.actionRepositories.findById(command.getAction()).get();
-				log.debug("Action retreived");
-
-				ProjectorModel modelEntity = this.projectorModelRepository.findById(command.getModelName()).get();
-				log.debug("ProjectorModel retreived");
-
-				CommandId commandId = new CommandId();
-
-				commandId.setAction(actionEntity);
-				commandId.setModelName(modelEntity);
-				commandId.setCommand(command.getCommand());
-				log.debug("CommandId retreived");
-
-				Command commandEntity = this.commandRepository.findById(commandId).get();
-				log.debug("Command retreived");
-
-				commandsToDelete.add(commandEntity);
-				recordsDeleted++;
-
-			}
-
-			this.commandRepository.deleteAll(commandsToDelete);
-
-			return (ResponseEntity.ok().body("Deleted " + recordsDeleted + " commands from DB."));
-
-		}
-
-		// HACER QUE EL FRONT RECIBA UN AVISO AL INTENTAR BORRAR ESTO Y PERMITA BORRAR
-		// EN CASCADA.
-		catch (DataIntegrityViolationException e)
-		{
-
-			return (ResponseEntity.ok().body("ERROR EN BORRADO POR INTEGRIDAD. \n" + e.getMessage()));
-		}
 	}
 
 	@PostMapping("/server-events")

@@ -6626,3 +6626,1149 @@ Projectors: PROJECTORS: Records saved: 19.
 2025-03-20T14:46:32.923+01:00  INFO 2212792 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
 2025-03-20T14:46:32.924+01:00  INFO 2212792 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.251 seconds (process running for 529.539)
 2025-03-20T14:46:32.924+01:00  INFO 2212792 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T17:19:49.552+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T17:19:49.553+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T17:19:49.553+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T17:19:49.582+01:00  INFO 2531894 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-20T17:19:49.582+01:00  INFO 2531894 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-20T17:19:49.902+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T17:19:49.937+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 5 JPA repository interfaces.
+2025-03-20T17:19:50.211+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T17:19:50.227+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T17:19:50.227+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T17:19:50.250+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T17:19:50.251+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 668 ms
+2025-03-20T17:19:50.342+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T17:19:50.367+01:00  INFO 2531894 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-03-20T17:19:50.383+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T17:19:50.516+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T17:19:50.530+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-20T17:19:50.709+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24b02f78
+2025-03-20T17:19:50.710+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-20T17:19:50.758+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T17:19:51.238+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T17:19:52.242+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T17:19:52.361+01:00  INFO 2531894 --- [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-20T17:19:53.064+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T17:19:53.240+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T17:19:53.255+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T17:19:53.263+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 3.982 seconds (process running for 4.173)
+2025-03-20T17:19:54.793+01:00  INFO 2531894 --- [http-nio-8085-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-20T17:19:54.793+01:00  INFO 2531894 --- [http-nio-8085-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-20T17:19:54.794+01:00  INFO 2531894 --- [http-nio-8085-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-20T17:19:54.820+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:19:54.820+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:19:54.820+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:19:54.820+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:19:54.825+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:19:54.829+01:00 DEBUG 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:19:54.868+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : Retrieved 0 floor(s).
+2025-03-20T17:19:54.868+01:00  WARN 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : No floors found in the database.
+2025-03-20T17:19:54.868+01:00  WARN 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:19:54.868+01:00  WARN 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:19:54.869+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 0.
+2025-03-20T17:19:54.869+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:19:54.876+01:00  WARN 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:19:54.877+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:19:54.877+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:19:54.881+01:00  WARN 2531894 --- [http-nio-8085-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-03-20T17:19:54.892+01:00  WARN 2531894 --- [http-nio-8085-exec-5] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-03-20T17:20:00.792+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : POST request for '/parse-multifile' received.
+2025-03-20T17:20:00.792+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Processing 'projectors.csv' file.
+2025-03-20T17:20:00.793+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Validation file method called for file projectors.csv
+2025-03-20T17:20:00.793+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : CSV file validation successful.
+2025-03-20T17:20:00.793+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector parsing process initiated.
+2025-03-20T17:20:00.794+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 0 -------------------------------------------
+2025-03-20T17:20:00.802+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '0.01' successfully added to save list.
+2025-03-20T17:20:00.803+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 1 -------------------------------------------
+2025-03-20T17:20:00.804+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '0.02' successfully added to save list.
+2025-03-20T17:20:00.805+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 2 -------------------------------------------
+2025-03-20T17:20:00.806+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '0.03' successfully added to save list.
+2025-03-20T17:20:00.806+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 3 -------------------------------------------
+2025-03-20T17:20:00.807+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Optoma EH412' in classroom '0.01' successfully added to save list.
+2025-03-20T17:20:00.807+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 4 -------------------------------------------
+2025-03-20T17:20:00.808+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ HT3550' in classroom '0.02' successfully added to save list.
+2025-03-20T17:20:00.808+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 5 -------------------------------------------
+2025-03-20T17:20:00.809+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '0.03' successfully added to save list.
+2025-03-20T17:20:00.809+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 6 -------------------------------------------
+2025-03-20T17:20:00.809+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '0.01' successfully added to save list.
+2025-03-20T17:20:00.810+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 7 -------------------------------------------
+2025-03-20T17:20:00.811+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '0.02' successfully added to save list.
+2025-03-20T17:20:00.811+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 8 -------------------------------------------
+2025-03-20T17:20:00.811+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '0.03' successfully added to save list.
+2025-03-20T17:20:00.812+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 9 -------------------------------------------
+2025-03-20T17:20:00.812+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '1.01' successfully added to save list.
+2025-03-20T17:20:00.812+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 10 -------------------------------------------
+2025-03-20T17:20:00.813+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '1.01' successfully added to save list.
+2025-03-20T17:20:00.813+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 11 -------------------------------------------
+2025-03-20T17:20:00.815+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '1.02' successfully added to save list.
+2025-03-20T17:20:00.815+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 12 -------------------------------------------
+2025-03-20T17:20:00.816+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Optoma EH412' in classroom '1.03' successfully added to save list.
+2025-03-20T17:20:00.816+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 13 -------------------------------------------
+2025-03-20T17:20:00.816+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ HT3550' in classroom '2.01' successfully added to save list.
+2025-03-20T17:20:00.816+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 14 -------------------------------------------
+2025-03-20T17:20:00.817+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '2.02' successfully added to save list.
+2025-03-20T17:20:00.817+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 15 -------------------------------------------
+2025-03-20T17:20:00.819+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '2.03' successfully added to save list.
+2025-03-20T17:20:00.819+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 16 -------------------------------------------
+2025-03-20T17:20:00.820+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '3.01' successfully added to save list.
+2025-03-20T17:20:00.820+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 17 -------------------------------------------
+2025-03-20T17:20:00.820+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '3.01' successfully added to save list.
+2025-03-20T17:20:00.820+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 18 -------------------------------------------
+2025-03-20T17:20:00.821+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '3.01' successfully added to save list.
+2025-03-20T17:20:00.860+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.IProjectorParserImpl       : PROJECTORS: Records saved: 19.
+2025-03-20T17:20:00.860+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Processing 'commands.csv' file.
+2025-03-20T17:20:00.860+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Validation file method called for file commands.csv
+2025-03-20T17:20:00.860+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : CSV file validation successful.
+2025-03-20T17:20:00.860+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Commands parsing process initiated.
+2025-03-20T17:20:00.861+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.861+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.862+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Power On' not present in DB, saving it now.
+2025-03-20T17:20:00.864+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'ViewSonic PX701-4K'.
+2025-03-20T17:20:00.865+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'ViewSonic PX701-4K' not present in DB, saving it now.
+2025-03-20T17:20:00.867+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110104'.
+2025-03-20T17:20:00.869+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: ViewSonic PX701-4K | action: Power On | command: 110104' not present in DB, saving now.
+2025-03-20T17:20:00.877+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.877+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.877+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ HT3550'.
+2025-03-20T17:20:00.878+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'BenQ HT3550' not present in DB, saving it now.
+2025-03-20T17:20:00.879+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110105'.
+2025-03-20T17:20:00.881+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ HT3550 | action: Power On | command: 110105' not present in DB, saving now.
+2025-03-20T17:20:00.884+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.884+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.884+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Epson EB-S41'.
+2025-03-20T17:20:00.885+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'Epson EB-S41' not present in DB, saving it now.
+2025-03-20T17:20:00.886+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110106'.
+2025-03-20T17:20:00.888+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Epson EB-S41 | action: Power On | command: 110106' not present in DB, saving now.
+2025-03-20T17:20:00.892+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.892+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.892+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ MW535'.
+2025-03-20T17:20:00.893+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'BenQ MW535' not present in DB, saving it now.
+2025-03-20T17:20:00.894+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110107'.
+2025-03-20T17:20:00.896+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ MW535 | action: Power On | command: 110107' not present in DB, saving now.
+2025-03-20T17:20:00.900+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.900+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.900+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'LG PF50KA'.
+2025-03-20T17:20:00.901+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'LG PF50KA' not present in DB, saving it now.
+2025-03-20T17:20:00.902+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110108'.
+2025-03-20T17:20:00.903+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: LG PF50KA | action: Power On | command: 110108' not present in DB, saving now.
+2025-03-20T17:20:00.906+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.906+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.907+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Power Off' not present in DB, saving it now.
+2025-03-20T17:20:00.909+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'ViewSonic PX701-4K'.
+2025-03-20T17:20:00.909+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110111'.
+2025-03-20T17:20:00.910+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: ViewSonic PX701-4K | action: Power Off | command: 110111' not present in DB, saving now.
+2025-03-20T17:20:00.914+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.915+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.915+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ HT3550'.
+2025-03-20T17:20:00.915+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110112'.
+2025-03-20T17:20:00.916+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ HT3550 | action: Power Off | command: 110112' not present in DB, saving now.
+2025-03-20T17:20:00.919+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.919+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.920+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Epson EB-S41'.
+2025-03-20T17:20:00.920+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110113'.
+2025-03-20T17:20:00.921+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Epson EB-S41 | action: Power Off | command: 110113' not present in DB, saving now.
+2025-03-20T17:20:00.924+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.924+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.925+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ MW535'.
+2025-03-20T17:20:00.925+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110114'.
+2025-03-20T17:20:00.926+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ MW535 | action: Power Off | command: 110114' not present in DB, saving now.
+2025-03-20T17:20:00.929+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.929+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.929+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'LG PF50KA'.
+2025-03-20T17:20:00.929+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110115'.
+2025-03-20T17:20:00.930+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: LG PF50KA | action: Power Off | command: 110115' not present in DB, saving now.
+2025-03-20T17:20:00.933+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.933+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:20:00.933+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.934+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'Optoma EH412' not present in DB, saving it now.
+2025-03-20T17:20:00.936+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.937+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Power Off | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.941+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.941+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:20:00.941+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.941+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.942+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Power On | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.945+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.946+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Pause'.
+2025-03-20T17:20:00.947+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Pause' not present in DB, saving it now.
+2025-03-20T17:20:00.948+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.948+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.949+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Pause | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.952+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.952+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Play'.
+2025-03-20T17:20:00.953+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Play' not present in DB, saving it now.
+2025-03-20T17:20:00.955+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.955+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.956+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Play | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.960+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.960+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Up'.
+2025-03-20T17:20:00.962+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Up' not present in DB, saving it now.
+2025-03-20T17:20:00.963+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.963+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.964+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Up | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.967+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.968+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Down'.
+2025-03-20T17:20:00.969+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Down' not present in DB, saving it now.
+2025-03-20T17:20:00.970+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.970+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.971+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Down | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.977+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.977+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Right'.
+2025-03-20T17:20:00.978+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Right' not present in DB, saving it now.
+2025-03-20T17:20:00.979+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.980+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.981+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Right | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.985+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:20:00.985+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Left'.
+2025-03-20T17:20:00.986+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Action 'Left' not present in DB, saving it now.
+2025-03-20T17:20:00.987+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:20:00.987+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:20:00.988+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Left | command: 110117' not present in DB, saving now.
+2025-03-20T17:20:00.992+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.parsers.ICommandPaserImpl          : COMMANDS: Records saved: 18 - Records skipped: 0
+2025-03-20T17:20:00.992+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Commands: COMMANDS: Records saved: 18 - Records skipped: 0
+Projectors: PROJECTORS: Records saved: 19.
+2025-03-20T17:20:01.009+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:20:01.009+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:20:01.010+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:20:01.011+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:20:01.011+01:00 DEBUG 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:20:01.011+01:00  WARN 2531894 --- [http-nio-8085-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-03-20T17:20:01.014+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:20:01.018+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 2.
+2025-03-20T17:20:01.019+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:21:10.176+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'modelname'
+2025-03-20T17:21:10.176+01:00 DEBUG 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Ordering projectors by model name.
+2025-03-20T17:21:10.180+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Projectors list ordered by model name.
+2025-03-20T17:21:21.302+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/actions' received.
+2025-03-20T17:21:21.302+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:21:21.302+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:21.304+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Retrieved 4 floor(s).
+2025-03-20T17:21:21.304+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:21.305+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : Successfully retrieved 8 action(s).
+2025-03-20T17:21:21.308+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'null'
+2025-03-20T17:21:21.308+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:21:21.311+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T17:21:28.035+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:21:28.036+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'null'
+2025-03-20T17:21:28.036+01:00 DEBUG 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:21:28.036+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/actions' received.
+2025-03-20T17:21:28.035+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:28.041+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Retrieved 4 floor(s).
+2025-03-20T17:21:28.042+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : Successfully retrieved 8 action(s).
+2025-03-20T17:21:28.042+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T17:21:28.044+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:29.218+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:21:29.218+01:00 DEBUG 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:21:29.219+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:29.219+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:29.220+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:21:29.221+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:21:29.221+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:21:29.221+01:00  WARN 2531894 --- [http-nio-8085-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2025-03-20T17:21:29.222+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:29.222+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:29.222+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:21:29.223+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Retrieved 4 floor(s).
+2025-03-20T17:21:29.224+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 2.
+2025-03-20T17:21:29.226+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:29.227+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:42.633+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:42.633+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:42.633+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:21:42.633+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:21:42.635+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:21:42.635+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'null'
+2025-03-20T17:21:42.635+01:00 DEBUG 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:21:42.635+01:00 DEBUG 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:21:42.635+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:21:42.636+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:42.637+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Retrieved 4 floor(s).
+2025-03-20T17:21:42.637+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:42.638+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:21:42.639+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:21:42.639+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 2.
+2025-03-20T17:21:42.639+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T17:21:42.642+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:58:47.674+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T17:58:47.676+01:00  INFO 2531894 --- [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T17:58:47.677+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T17:58:47.679+01:00  INFO 2531894 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T17:58:47.680+01:00  INFO 2531894 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-20T17:58:47.683+01:00  INFO 2531894 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-20T17:58:47.726+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T17:58:47.727+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T17:58:47.727+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T17:58:47.819+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T17:58:47.832+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 5 JPA repository interfaces.
+2025-03-20T17:58:47.882+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T17:58:47.882+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T17:58:47.883+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T17:58:47.887+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T17:58:47.887+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 159 ms
+2025-03-20T17:58:47.905+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T17:58:47.906+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T17:58:47.912+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T17:58:47.912+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-03-20T17:58:47.924+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@740f9ae1
+2025-03-20T17:58:47.924+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-03-20T17:58:47.925+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T17:58:47.983+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T17:58:48.993+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T17:58:49.095+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T17:58:49.141+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T17:58:49.147+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T17:58:49.149+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.439 seconds (process running for 2340.059)
+2025-03-20T17:58:49.150+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T17:58:54.683+01:00  INFO 2531894 --- [http-nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-20T17:58:54.683+01:00  INFO 2531894 --- [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-20T17:58:54.684+01:00  INFO 2531894 --- [http-nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-03-20T17:58:54.685+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:58:54.685+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/floors' received.
+2025-03-20T17:58:54.685+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:58:54.687+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:58:54.688+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:58:54.689+01:00 DEBUG 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:58:54.689+01:00  WARN 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:58:54.689+01:00  WARN 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:58:54.690+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : Retrieved 0 floor(s).
+2025-03-20T17:58:54.690+01:00  WARN 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : No floors found in the database.
+2025-03-20T17:58:54.691+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 0.
+2025-03-20T17:58:54.691+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:58:54.691+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:58:54.691+01:00  WARN 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : No projector models found in the database.
+2025-03-20T17:58:54.693+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:58:54.693+01:00  WARN 2531894 --- [http-nio-8085-exec-4] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-03-20T17:58:54.693+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'default'
+2025-03-20T17:58:54.693+01:00 DEBUG 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:58:54.698+01:00  INFO 2531894 --- [http-nio-8085-exec-8] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T17:59:11.118+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : POST request for '/parse-multifile' received.
+2025-03-20T17:59:11.118+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Processing 'projectors.csv' file.
+2025-03-20T17:59:11.119+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Validation file method called for file projectors.csv
+2025-03-20T17:59:11.119+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : CSV file validation successful.
+2025-03-20T17:59:11.119+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector parsing process initiated.
+2025-03-20T17:59:11.119+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 0 -------------------------------------------
+2025-03-20T17:59:11.121+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '0.01' successfully added to save list.
+2025-03-20T17:59:11.121+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 1 -------------------------------------------
+2025-03-20T17:59:11.122+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '0.02' successfully added to save list.
+2025-03-20T17:59:11.122+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 2 -------------------------------------------
+2025-03-20T17:59:11.123+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '0.03' successfully added to save list.
+2025-03-20T17:59:11.123+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 3 -------------------------------------------
+2025-03-20T17:59:11.124+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Optoma EH412' in classroom '0.01' successfully added to save list.
+2025-03-20T17:59:11.124+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 4 -------------------------------------------
+2025-03-20T17:59:11.124+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ HT3550' in classroom '0.02' successfully added to save list.
+2025-03-20T17:59:11.124+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 5 -------------------------------------------
+2025-03-20T17:59:11.125+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '0.03' successfully added to save list.
+2025-03-20T17:59:11.125+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 6 -------------------------------------------
+2025-03-20T17:59:11.126+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '0.01' successfully added to save list.
+2025-03-20T17:59:11.126+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 7 -------------------------------------------
+2025-03-20T17:59:11.127+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '0.02' successfully added to save list.
+2025-03-20T17:59:11.127+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 8 -------------------------------------------
+2025-03-20T17:59:11.127+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '0.03' successfully added to save list.
+2025-03-20T17:59:11.127+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 9 -------------------------------------------
+2025-03-20T17:59:11.128+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '1.01' successfully added to save list.
+2025-03-20T17:59:11.128+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 10 -------------------------------------------
+2025-03-20T17:59:11.129+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '1.01' successfully added to save list.
+2025-03-20T17:59:11.129+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 11 -------------------------------------------
+2025-03-20T17:59:11.129+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '1.02' successfully added to save list.
+2025-03-20T17:59:11.129+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 12 -------------------------------------------
+2025-03-20T17:59:11.130+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Optoma EH412' in classroom '1.03' successfully added to save list.
+2025-03-20T17:59:11.130+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 13 -------------------------------------------
+2025-03-20T17:59:11.131+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ HT3550' in classroom '2.01' successfully added to save list.
+2025-03-20T17:59:11.131+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 14 -------------------------------------------
+2025-03-20T17:59:11.132+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'Epson EB-S41' in classroom '2.02' successfully added to save list.
+2025-03-20T17:59:11.132+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 15 -------------------------------------------
+2025-03-20T17:59:11.132+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '2.03' successfully added to save list.
+2025-03-20T17:59:11.132+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 16 -------------------------------------------
+2025-03-20T17:59:11.133+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'LG PF50KA' in classroom '3.01' successfully added to save list.
+2025-03-20T17:59:11.133+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 17 -------------------------------------------
+2025-03-20T17:59:11.134+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'BenQ MW535' in classroom '3.01' successfully added to save list.
+2025-03-20T17:59:11.134+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : ---------------------------- PROJECTOR ENTITY 18 -------------------------------------------
+2025-03-20T17:59:11.135+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : Projector unit with model 'ViewSonic PX701-4K' in classroom '3.01' successfully added to save list.
+2025-03-20T17:59:11.150+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.IProjectorParserImpl       : PROJECTORS: Records saved: 19.
+2025-03-20T17:59:11.150+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Processing 'commands.csv' file.
+2025-03-20T17:59:11.151+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Validation file method called for file commands.csv
+2025-03-20T17:59:11.151+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : CSV file validation successful.
+2025-03-20T17:59:11.151+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Commands parsing process initiated.
+2025-03-20T17:59:11.151+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.151+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.152+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Power On' not present in DB, saving it now.
+2025-03-20T17:59:11.153+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'ViewSonic PX701-4K'.
+2025-03-20T17:59:11.154+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'ViewSonic PX701-4K' not present in DB, saving it now.
+2025-03-20T17:59:11.156+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110104'.
+2025-03-20T17:59:11.157+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: ViewSonic PX701-4K | action: Power On | command: 110104' not present in DB, saving now.
+2025-03-20T17:59:11.161+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.161+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.161+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ HT3550'.
+2025-03-20T17:59:11.162+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'BenQ HT3550' not present in DB, saving it now.
+2025-03-20T17:59:11.163+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110105'.
+2025-03-20T17:59:11.163+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ HT3550 | action: Power On | command: 110105' not present in DB, saving now.
+2025-03-20T17:59:11.165+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.166+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.166+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Epson EB-S41'.
+2025-03-20T17:59:11.166+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'Epson EB-S41' not present in DB, saving it now.
+2025-03-20T17:59:11.167+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110106'.
+2025-03-20T17:59:11.168+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Epson EB-S41 | action: Power On | command: 110106' not present in DB, saving now.
+2025-03-20T17:59:11.170+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.170+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.170+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ MW535'.
+2025-03-20T17:59:11.171+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'BenQ MW535' not present in DB, saving it now.
+2025-03-20T17:59:11.172+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110107'.
+2025-03-20T17:59:11.173+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ MW535 | action: Power On | command: 110107' not present in DB, saving now.
+2025-03-20T17:59:11.176+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.176+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.176+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'LG PF50KA'.
+2025-03-20T17:59:11.177+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'LG PF50KA' not present in DB, saving it now.
+2025-03-20T17:59:11.177+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110108'.
+2025-03-20T17:59:11.178+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: LG PF50KA | action: Power On | command: 110108' not present in DB, saving now.
+2025-03-20T17:59:11.181+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.181+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.181+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Power Off' not present in DB, saving it now.
+2025-03-20T17:59:11.182+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'ViewSonic PX701-4K'.
+2025-03-20T17:59:11.182+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110111'.
+2025-03-20T17:59:11.183+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: ViewSonic PX701-4K | action: Power Off | command: 110111' not present in DB, saving now.
+2025-03-20T17:59:11.185+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.185+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.186+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ HT3550'.
+2025-03-20T17:59:11.186+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110112'.
+2025-03-20T17:59:11.187+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ HT3550 | action: Power Off | command: 110112' not present in DB, saving now.
+2025-03-20T17:59:11.189+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.189+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.189+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Epson EB-S41'.
+2025-03-20T17:59:11.189+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110113'.
+2025-03-20T17:59:11.190+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Epson EB-S41 | action: Power Off | command: 110113' not present in DB, saving now.
+2025-03-20T17:59:11.192+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.192+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.192+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'BenQ MW535'.
+2025-03-20T17:59:11.192+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110114'.
+2025-03-20T17:59:11.193+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: BenQ MW535 | action: Power Off | command: 110114' not present in DB, saving now.
+2025-03-20T17:59:11.195+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.195+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.195+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'LG PF50KA'.
+2025-03-20T17:59:11.195+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110115'.
+2025-03-20T17:59:11.196+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: LG PF50KA | action: Power Off | command: 110115' not present in DB, saving now.
+2025-03-20T17:59:11.198+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.198+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power Off'.
+2025-03-20T17:59:11.198+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.199+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Projector Model 'Optoma EH412' not present in DB, saving it now.
+2025-03-20T17:59:11.200+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.201+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Power Off | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.203+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.203+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Power On'.
+2025-03-20T17:59:11.203+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.204+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.204+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Power On | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.206+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.207+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Pause'.
+2025-03-20T17:59:11.207+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Pause' not present in DB, saving it now.
+2025-03-20T17:59:11.208+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.208+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.209+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Pause | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.211+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.211+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Play'.
+2025-03-20T17:59:11.212+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Play' not present in DB, saving it now.
+2025-03-20T17:59:11.213+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.213+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.214+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Play | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.217+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.217+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Up'.
+2025-03-20T17:59:11.218+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Up' not present in DB, saving it now.
+2025-03-20T17:59:11.219+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.219+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.220+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Up | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.222+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.222+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Down'.
+2025-03-20T17:59:11.223+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Down' not present in DB, saving it now.
+2025-03-20T17:59:11.224+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.224+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.225+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Down | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.228+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.228+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Right'.
+2025-03-20T17:59:11.229+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Right' not present in DB, saving it now.
+2025-03-20T17:59:11.230+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.230+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.231+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Right | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.233+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : -----------------------------------------------------------------------
+2025-03-20T17:59:11.233+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing action 'Left'.
+2025-03-20T17:59:11.234+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Action 'Left' not present in DB, saving it now.
+2025-03-20T17:59:11.235+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing projector model 'Optoma EH412'.
+2025-03-20T17:59:11.235+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Parsing command '110117'.
+2025-03-20T17:59:11.235+01:00 DEBUG 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : Command with ID 'CommandId - modelName: Optoma EH412 | action: Left | command: 110117' not present in DB, saving now.
+2025-03-20T17:59:11.238+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.parsers.ICommandPaserImpl          : COMMANDS: Records saved: 18 - Records skipped: 0
+2025-03-20T17:59:11.238+01:00  INFO 2531894 --- [http-nio-8085-exec-9] e.i.r.rest.ProjectorController           : Commands: COMMANDS: Records saved: 18 - Records skipped: 0
+Projectors: PROJECTORS: Records saved: 19.
+2025-03-20T17:59:11.251+01:00  INFO 2531894 --- [http-nio-8085-exec-10] e.i.r.rest.ProjectorController           : GET request for '/general-overview' received.
+2025-03-20T17:59:11.252+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-03-20T17:59:11.253+01:00  INFO 2531894 --- [http-nio-8085-exec-3] e.i.r.rest.ProjectorController           : GET request for '/events-overview' received.
+2025-03-20T17:59:11.255+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : GET request for '/projector-models' received.
+2025-03-20T17:59:11.255+01:00 DEBUG 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : POST request for '/commands-page' received with modelName: null, action: null
+2025-03-20T17:59:11.255+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'default'
+2025-03-20T17:59:11.255+01:00 DEBUG 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:59:11.257+01:00  INFO 2531894 --- [http-nio-8085-exec-2] e.i.r.rest.ProjectorController           : Successfully retrieved page 0 of actions, total pages: 2.
+2025-03-20T17:59:11.257+01:00  INFO 2531894 --- [http-nio-8085-exec-5] e.i.r.rest.ProjectorController           : Successfully retrieved 6 projector models from the database.
+2025-03-20T17:59:11.259+01:00  INFO 2531894 --- [http-nio-8085-exec-6] e.i.r.rest.ProjectorController           : Successfully retrieved commands page.
+2025-03-20T17:59:11.260+01:00  INFO 2531894 --- [http-nio-8085-exec-4] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T17:59:18.124+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : DELETE request for '/projectors' received.
+2025-03-20T17:59:18.129+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector assignment found for model 'BenQ HT3550' in classroom '2.01'.
+2025-03-20T17:59:18.129+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector BenQ HT3550 from classroom 2.01added to remove list.
+2025-03-20T17:59:18.130+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector assignment found for model 'ViewSonic PX701-4K' in classroom '3.01'.
+2025-03-20T17:59:18.130+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector ViewSonic PX701-4K from classroom 3.01added to remove list.
+2025-03-20T17:59:18.131+01:00 DEBUG 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector assignment found for model 'LG PF50KA' in classroom '0.02'.
+2025-03-20T17:59:18.131+01:00  INFO 2531894 --- [http-nio-8085-exec-7] e.i.r.rest.ProjectorController           : Projector LG PF50KA from classroom 0.02added to remove list.
+2025-03-20T17:59:18.160+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : GET request for '/projectors' received with criteria 'default'
+2025-03-20T17:59:18.160+01:00 DEBUG 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : Ordering projectors by floor and classroom.
+2025-03-20T17:59:18.162+01:00  INFO 2531894 --- [http-nio-8085-exec-1] e.i.r.rest.ProjectorController           : Projectors list ordered by floor and classroom.
+2025-03-20T18:01:31.683+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:01:31.684+01:00  INFO 2531894 --- [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:01:31.685+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:01:31.685+01:00  INFO 2531894 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:31.686+01:00  INFO 2531894 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-03-20T18:01:31.689+01:00  INFO 2531894 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-03-20T18:01:31.733+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:01:31.733+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:01:31.733+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:01:31.793+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:01:31.800+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:01:31.835+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:01:31.835+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:01:31.835+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:01:31.840+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:01:31.840+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 106 ms
+2025-03-20T18:01:31.855+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:01:31.856+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:01:31.859+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:01:31.860+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-03-20T18:01:31.871+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@766fdf07
+2025-03-20T18:01:31.871+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-03-20T18:01:31.872+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:01:31.920+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:01:32.992+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:33.061+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:01:33.097+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:01:33.101+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:01:33.103+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.385 seconds (process running for 2504.013)
+2025-03-20T18:01:33.104+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:01:34.499+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:01:34.500+01:00  INFO 2531894 --- [Thread-11] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:01:34.501+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:01:34.501+01:00  INFO 2531894 --- [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:34.502+01:00  INFO 2531894 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-03-20T18:01:34.504+01:00  INFO 2531894 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-03-20T18:01:34.554+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:01:34.554+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:01:34.554+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:01:34.603+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:01:34.610+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:01:34.639+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:01:34.639+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:01:34.639+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:01:34.644+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:01:34.644+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 89 ms
+2025-03-20T18:01:34.655+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:01:34.656+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:01:34.659+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:01:34.660+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-03-20T18:01:34.669+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49790bf6
+2025-03-20T18:01:34.669+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-03-20T18:01:34.671+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:01:34.714+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:01:35.746+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:35.814+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:01:35.841+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:01:35.844+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:01:35.847+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.305 seconds (process running for 2506.756)
+2025-03-20T18:01:35.847+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:01:46.252+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:01:46.252+01:00  INFO 2531894 --- [Thread-15] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:01:46.253+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:01:46.253+01:00  INFO 2531894 --- [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:46.254+01:00  INFO 2531894 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-03-20T18:01:46.257+01:00  INFO 2531894 --- [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-03-20T18:01:46.307+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:01:46.307+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:01:46.307+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:01:46.358+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:01:46.365+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:01:46.392+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:01:46.392+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:01:46.392+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:01:46.396+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:01:46.396+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 88 ms
+2025-03-20T18:01:46.407+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:01:46.408+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:01:46.411+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:01:46.411+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-03-20T18:01:46.421+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40955d4
+2025-03-20T18:01:46.421+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-03-20T18:01:46.422+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:01:46.459+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:01:47.588+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:01:47.651+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:01:47.676+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:01:47.679+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:01:47.680+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.387 seconds (process running for 2518.59)
+2025-03-20T18:01:47.681+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:02:21.106+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:02:21.106+01:00  INFO 2531894 --- [Thread-19] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:02:21.107+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:02:21.107+01:00  INFO 2531894 --- [Thread-19] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:02:21.108+01:00  INFO 2531894 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-03-20T18:02:21.110+01:00  INFO 2531894 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-03-20T18:02:21.164+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:02:21.164+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:02:21.164+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:02:21.233+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:02:21.243+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:02:21.284+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:02:21.285+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:02:21.285+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:02:21.290+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:02:21.290+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 125 ms
+2025-03-20T18:02:21.307+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:02:21.309+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:02:21.318+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:02:21.319+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-03-20T18:02:21.334+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7e6cb86a
+2025-03-20T18:02:21.334+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-03-20T18:02:21.335+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:02:21.383+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:02:22.426+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:02:22.484+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:02:22.508+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:02:22.510+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:02:22.511+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.36 seconds (process running for 2553.421)
+2025-03-20T18:02:22.512+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:02:23.910+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:02:23.911+01:00  INFO 2531894 --- [Thread-23] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:02:23.911+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:02:23.912+01:00  INFO 2531894 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:02:23.912+01:00  INFO 2531894 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-03-20T18:02:23.915+01:00  INFO 2531894 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-03-20T18:02:23.964+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:02:23.964+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:02:23.964+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:02:24.009+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:02:24.015+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:02:24.041+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:02:24.042+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:02:24.042+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:02:24.045+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:02:24.045+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 80 ms
+2025-03-20T18:02:24.056+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:02:24.056+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:02:24.059+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:02:24.060+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-03-20T18:02:24.069+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@789fa51d
+2025-03-20T18:02:24.069+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-03-20T18:02:24.070+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:02:24.107+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:02:25.161+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:02:25.228+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:02:25.254+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:02:25.256+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:02:25.258+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.304 seconds (process running for 2556.167)
+2025-03-20T18:02:25.258+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:03:37.717+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:03:37.718+01:00  INFO 2531894 --- [Thread-27] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:03:37.718+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:03:37.719+01:00  INFO 2531894 --- [Thread-27] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:03:37.719+01:00  INFO 2531894 --- [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-03-20T18:03:37.722+01:00  INFO 2531894 --- [Thread-27] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-03-20T18:03:37.776+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:03:37.776+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:03:37.776+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:03:37.819+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:03:37.825+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:03:37.851+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:03:37.851+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:03:37.851+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:03:37.855+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:03:37.855+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 78 ms
+2025-03-20T18:03:37.866+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:03:37.866+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:03:37.869+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:03:37.870+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-03-20T18:03:37.879+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@13d5be6e
+2025-03-20T18:03:37.879+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-03-20T18:03:37.880+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:03:37.913+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:03:38.967+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:03:39.021+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:03:39.044+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:03:39.047+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:03:39.049+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.286 seconds (process running for 2629.959)
+2025-03-20T18:03:39.050+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:03:40.446+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:03:40.446+01:00  INFO 2531894 --- [Thread-31] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:03:40.447+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:03:40.448+01:00  INFO 2531894 --- [Thread-31] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:03:40.448+01:00  INFO 2531894 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-03-20T18:03:40.451+01:00  INFO 2531894 --- [Thread-31] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2025-03-20T18:03:40.502+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:03:40.502+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:03:40.502+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:03:40.542+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:03:40.549+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:03:40.581+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:03:40.582+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:03:40.582+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:03:40.585+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:03:40.585+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 83 ms
+2025-03-20T18:03:40.595+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:03:40.596+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:03:40.598+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:03:40.599+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2025-03-20T18:03:40.608+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7dc70921
+2025-03-20T18:03:40.609+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2025-03-20T18:03:40.610+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-9)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:03:40.644+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:03:41.683+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:03:41.736+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:03:41.758+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:03:41.761+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:03:41.762+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.27 seconds (process running for 2632.672)
+2025-03-20T18:03:41.762+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:05:11.236+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:05:11.237+01:00  INFO 2531894 --- [Thread-35] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:05:11.237+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:05:11.238+01:00  INFO 2531894 --- [Thread-35] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:05:11.238+01:00  INFO 2531894 --- [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2025-03-20T18:05:11.240+01:00  INFO 2531894 --- [Thread-35] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2025-03-20T18:05:11.293+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:05:11.293+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:05:11.293+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:05:11.332+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:05:11.337+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:05:11.361+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:05:11.362+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:05:11.362+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:05:11.365+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:05:11.365+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 71 ms
+2025-03-20T18:05:11.375+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:05:11.376+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:05:11.378+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:05:11.379+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2025-03-20T18:05:11.388+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fa052d
+2025-03-20T18:05:11.388+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2025-03-20T18:05:11.389+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-10)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:05:11.422+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:05:12.427+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:05:12.478+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:05:12.499+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:05:12.502+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:05:12.503+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.22 seconds (process running for 2723.413)
+2025-03-20T18:05:12.503+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:05:26.913+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:05:26.913+01:00  INFO 2531894 --- [Thread-39] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:05:26.914+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:05:26.915+01:00  INFO 2531894 --- [Thread-39] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:05:26.915+01:00  INFO 2531894 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2025-03-20T18:05:26.918+01:00  INFO 2531894 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2025-03-20T18:05:26.972+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:05:26.972+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:05:26.972+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:05:27.012+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:05:27.017+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:05:27.039+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:05:27.040+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:05:27.040+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:05:27.042+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:05:27.043+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 71 ms
+2025-03-20T18:05:27.052+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:05:27.053+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:05:27.056+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:05:27.056+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2025-03-20T18:05:27.064+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66df3800
+2025-03-20T18:05:27.065+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2025-03-20T18:05:27.065+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-11)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:05:27.097+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:05:28.069+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:05:28.119+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:05:28.141+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:05:28.143+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:05:28.144+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.183 seconds (process running for 2739.054)
+2025-03-20T18:05:28.145+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:07:34.650+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:07:34.651+01:00  INFO 2531894 --- [Thread-43] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:07:34.651+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:07:34.652+01:00  INFO 2531894 --- [Thread-43] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:34.652+01:00  INFO 2531894 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2025-03-20T18:07:34.655+01:00  INFO 2531894 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2025-03-20T18:07:34.712+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:07:34.712+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:07:34.712+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:07:34.752+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:07:34.757+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:07:34.780+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:07:34.780+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:07:34.781+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:07:34.785+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:07:34.785+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 73 ms
+2025-03-20T18:07:34.796+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:07:34.797+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:07:34.799+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:07:34.800+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2025-03-20T18:07:34.826+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@544a80bc
+2025-03-20T18:07:34.826+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2025-03-20T18:07:34.827+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-12)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:07:34.861+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:07:35.919+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:35.978+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:07:36.001+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:07:36.004+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:07:36.006+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.306 seconds (process running for 2866.916)
+2025-03-20T18:07:36.007+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:07:37.403+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:07:37.404+01:00  INFO 2531894 --- [Thread-47] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:07:37.404+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:07:37.405+01:00  INFO 2531894 --- [Thread-47] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:37.405+01:00  INFO 2531894 --- [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2025-03-20T18:07:37.408+01:00  INFO 2531894 --- [Thread-47] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2025-03-20T18:07:37.462+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:07:37.462+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:07:37.462+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:07:37.500+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:07:37.504+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:07:37.527+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:07:37.528+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:07:37.528+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:07:37.531+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:07:37.531+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 68 ms
+2025-03-20T18:07:37.541+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:07:37.542+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:07:37.545+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:07:37.545+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2025-03-20T18:07:37.553+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c901c9d
+2025-03-20T18:07:37.554+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2025-03-20T18:07:37.555+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-13)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:07:37.583+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:07:38.669+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:38.720+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:07:38.742+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:07:38.744+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:07:38.746+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.293 seconds (process running for 2869.656)
+2025-03-20T18:07:38.747+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:07:40.144+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:07:40.145+01:00  INFO 2531894 --- [Thread-51] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:07:40.145+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:07:40.146+01:00  INFO 2531894 --- [Thread-51] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:40.146+01:00  INFO 2531894 --- [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2025-03-20T18:07:40.149+01:00  INFO 2531894 --- [Thread-51] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2025-03-20T18:07:40.190+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:07:40.190+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:07:40.191+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:07:40.228+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:07:40.233+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:07:40.258+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:07:40.259+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:07:40.259+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:07:40.262+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:07:40.262+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 71 ms
+2025-03-20T18:07:40.271+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:07:40.271+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:07:40.274+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:07:40.274+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2025-03-20T18:07:40.282+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1749a5dc
+2025-03-20T18:07:40.283+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2025-03-20T18:07:40.283+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-14)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:07:40.311+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:07:41.675+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:41.719+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:07:41.742+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:07:41.744+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:07:41.746+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.563 seconds (process running for 2872.655)
+2025-03-20T18:07:41.746+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:07:43.144+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:07:43.145+01:00  INFO 2531894 --- [Thread-55] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:07:43.145+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:07:43.146+01:00  INFO 2531894 --- [Thread-55] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:43.146+01:00  INFO 2531894 --- [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2025-03-20T18:07:43.148+01:00  INFO 2531894 --- [Thread-55] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2025-03-20T18:07:43.191+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:07:43.192+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:07:43.192+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:07:43.228+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:07:43.232+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:07:43.254+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:07:43.255+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:07:43.255+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:07:43.258+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:07:43.258+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 66 ms
+2025-03-20T18:07:43.267+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:07:43.267+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:07:43.270+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:07:43.270+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2025-03-20T18:07:43.279+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@59d05149
+2025-03-20T18:07:43.279+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2025-03-20T18:07:43.280+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-15)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:07:43.310+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:07:44.336+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:44.385+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:07:44.406+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:07:44.408+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:07:44.409+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.226 seconds (process running for 2875.319)
+2025-03-20T18:07:44.410+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:07:50.813+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:07:50.813+01:00  INFO 2531894 --- [Thread-59] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:07:50.814+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:07:50.815+01:00  INFO 2531894 --- [Thread-59] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:50.815+01:00  INFO 2531894 --- [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2025-03-20T18:07:50.818+01:00  INFO 2531894 --- [Thread-59] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2025-03-20T18:07:50.864+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:07:50.864+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:07:50.864+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:07:50.900+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:07:50.904+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:07:50.933+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:07:50.934+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:07:50.934+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:07:50.937+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:07:50.937+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 73 ms
+2025-03-20T18:07:50.949+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:07:50.950+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:07:50.952+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:07:50.953+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Starting...
+2025-03-20T18:07:50.961+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-16 - Added connection com.mysql.cj.jdbc.ConnectionImpl@763465ab
+2025-03-20T18:07:50.961+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Start completed.
+2025-03-20T18:07:50.962+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-16)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:07:50.991+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:07:52.063+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:07:52.114+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:07:52.147+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:07:52.149+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:07:52.150+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.297 seconds (process running for 2883.06)
+2025-03-20T18:07:52.151+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:08:05.560+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:08:05.560+01:00  INFO 2531894 --- [Thread-63] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:08:05.561+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:08:05.561+01:00  INFO 2531894 --- [Thread-63] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:05.561+01:00  INFO 2531894 --- [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown initiated...
+2025-03-20T18:08:05.564+01:00  INFO 2531894 --- [Thread-63] com.zaxxer.hikari.HikariDataSource       : HikariPool-16 - Shutdown completed.
+2025-03-20T18:08:05.608+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:08:05.608+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:08:05.608+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:08:05.644+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:08:05.649+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:08:05.670+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:08:05.670+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:08:05.670+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:08:05.673+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:08:05.673+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 64 ms
+2025-03-20T18:08:05.682+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:08:05.682+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:08:05.685+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:08:05.685+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Starting...
+2025-03-20T18:08:05.693+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18c14c95
+2025-03-20T18:08:05.694+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Start completed.
+2025-03-20T18:08:05.694+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-17)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:08:05.720+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:08:06.736+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:06.782+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:08:06.806+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:08:06.808+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:08:06.809+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.21 seconds (process running for 2897.719)
+2025-03-20T18:08:06.810+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:08:11.612+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:08:11.612+01:00  INFO 2531894 --- [Thread-67] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:08:11.613+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:08:11.614+01:00  INFO 2531894 --- [Thread-67] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:11.614+01:00  INFO 2531894 --- [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown initiated...
+2025-03-20T18:08:11.617+01:00  INFO 2531894 --- [Thread-67] com.zaxxer.hikari.HikariDataSource       : HikariPool-17 - Shutdown completed.
+2025-03-20T18:08:11.665+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:08:11.665+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:08:11.665+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:08:11.701+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:08:11.705+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:08:11.726+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:08:11.726+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:08:11.726+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:08:11.729+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:08:11.729+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 64 ms
+2025-03-20T18:08:11.738+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:08:11.738+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:08:11.740+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:08:11.741+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Starting...
+2025-03-20T18:08:11.749+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-18 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2542b6bb
+2025-03-20T18:08:11.749+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Start completed.
+2025-03-20T18:08:11.750+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-18)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:08:11.774+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:08:12.861+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:12.907+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:08:12.929+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:08:12.931+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:08:12.932+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.277 seconds (process running for 2903.842)
+2025-03-20T18:08:12.933+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:08:35.349+01:00  INFO 2531894 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-20T18:08:35.350+01:00  INFO 2531894 --- [Thread-71] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:08:35.350+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:08:35.351+01:00  INFO 2531894 --- [Thread-71] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:35.351+01:00  INFO 2531894 --- [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown initiated...
+2025-03-20T18:08:35.354+01:00  INFO 2531894 --- [Thread-71] com.zaxxer.hikari.HikariDataSource       : HikariPool-18 - Shutdown completed.
+2025-03-20T18:08:35.400+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Starting ReaktorProjectorServerApplication using Java 17.0.13 with PID 2531894 (/home/jaydee/Github/esp32/reaktor-projector-server/target/classes started by jaydee in /home/jaydee/Github/esp32/reaktor-projector-server)
+2025-03-20T18:08:35.400+01:00 DEBUG 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Running with Spring Boot v3.4.2, Spring v6.2.2
+2025-03-20T18:08:35.400+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : No active profile set, falling back to 1 default profile: "default"
+2025-03-20T18:08:35.436+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-20T18:08:35.440+01:00  INFO 2531894 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2025-03-20T18:08:35.460+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2025-03-20T18:08:35.460+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-20T18:08:35.460+01:00  INFO 2531894 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-20T18:08:35.463+01:00  INFO 2531894 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-20T18:08:35.463+01:00  INFO 2531894 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 63 ms
+2025-03-20T18:08:35.471+01:00  INFO 2531894 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-03-20T18:08:35.472+01:00  INFO 2531894 --- [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-03-20T18:08:35.474+01:00  INFO 2531894 --- [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-20T18:08:35.474+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Starting...
+2025-03-20T18:08:35.482+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-19 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1c15cd5c
+2025-03-20T18:08:35.482+01:00  INFO 2531894 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Start completed.
+2025-03-20T18:08:35.483+01:00  INFO 2531894 --- [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-19)']
+	Database driver: undefined/unknown
+	Database version: 9.0.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-03-20T18:08:35.507+01:00  INFO 2531894 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-03-20T18:08:36.425+01:00  INFO 2531894 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:36.472+01:00  WARN 2531894 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-20T18:08:36.495+01:00  INFO 2531894 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-20T18:08:36.497+01:00  INFO 2531894 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
+2025-03-20T18:08:36.498+01:00  INFO 2531894 --- [restartedMain] e.i.r.ReaktorProjectorServerApplication  : Started ReaktorProjectorServerApplication in 1.108 seconds (process running for 2927.408)
+2025-03-20T18:08:36.499+01:00  INFO 2531894 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-03-20T18:08:44.608+01:00  INFO 2531894 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-20T18:08:44.609+01:00  INFO 2531894 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-20T18:08:44.609+01:00  INFO 2531894 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-20T18:08:44.610+01:00  INFO 2531894 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown initiated...
+2025-03-20T18:08:44.612+01:00  INFO 2531894 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-19 - Shutdown completed.

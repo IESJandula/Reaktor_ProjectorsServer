@@ -13,6 +13,8 @@ public final class Constants
      */
 	public static final String CSV_DELIMITER = ",";
 	
+	public static final String PROJECTORS_ORDER_CRITERIA_MODELNAME = "modelname";
+	
 	public static final String RESPONSE_STATUS_SUCCESS = "SUCCESS";
 	public static final String RESPONSE_STATUS_ERROR = "ERROR";
 	public static final String RESPONSE_STATUS_INFO = "INFO";
