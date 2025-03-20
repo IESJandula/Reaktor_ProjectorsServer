@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -89,7 +90,6 @@ public class ProjectorController
 	@Autowired
 	IActionRepository actionRepositories;
 
-
 	// ----------------------------- UTILITY METHODS -------------------------------
 
 	/**
@@ -106,6 +106,8 @@ public class ProjectorController
 	 */
 	private void validateFile(MultipartFile file) throws ProjectorServerException
 	{
+		log.info("Validation file method called for file {}", file.getName());
+
 		String message;
 		// Check if the file is empty
 		if (file.isEmpty())
@@ -177,7 +179,7 @@ public class ProjectorController
 
 		// Retrieve the projector entity using the composite key.
 		Optional<Projector> projectorOpt = this.projectorRepository.findById(projectorClassroom);
-		
+
 		Projector projectorEntity = projectorOpt.orElseThrow(() ->
 		{
 			String exceptionMessage = "The projector model '" + projectorModelName + "' in classroom '"
@@ -247,191 +249,7 @@ public class ProjectorController
 		return serverEventEntity;
 	}
 
-	// --------------------------- END UTILITY METHODS -----------------------------
-
 	// ----------------------------- PARSING METHODS -------------------------------
- 
-	/**
-	 * Handles the upload and parsing of a CSV file containing projector model data.
-	 * <p>
-	 * This endpoint receives a CSV file (expected to be named "models.csv"), reads
-	 * its content, and processes the data using the {@code projectorModelsParser}.
-	 * The file is validated to ensure it is not empty and is in CSV format. If an
-	 * error occurs during parsing, an appropriate error message is returned to the
-	 * client.
-	 * </p>
-	 *
-	 * @param file The CSV file containing projector model data, expected as
-	 *             "models.csv".
-	 * @return A {@link ResponseEntity} containing the result of the parsing
-	 *         operation or an error message.
-	 */
-	@Transactional
-	@PostMapping("/parse-models")
-	public ResponseEntity<?> parseModels(@RequestParam("models.csv") MultipartFile file)
-	{
-		// Log the incoming request for processing models.
-		log.info("Received POST request to '/parse-models'.");
-
-		String message;
-
-		// Use "try-with-resources" to automatically close the scanner when done with
-		// the InputStream.
-		try (Scanner scanner = new Scanner(file.getInputStream()))
-		{
-			// Validate the file (empty check, CSV format check).
-			this.validateFile(file);
-
-			// Parse the models from the CSV file using the projectorModelsParser.
-			message = projectorModelsParser.parseProjectorModels(scanner);
-
-			// Create a success response with the parsed message.
-			ResponseDto response = new ResponseDto(Constants.RESPONSE_STATUS_SUCCESS, message);
-
-			// Return the success response with HTTP status CREATED.
-			log.debug("Returning success response with status: {}", HttpStatus.CREATED);
-			return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
-		} catch (IOException e)
-		{
-			// Log and return an error response in case of an IO exception.
-			message = "IO error while reading models file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body(message);
-
-		} catch (ProjectorServerException e)
-		{
-			// Log and return an error response for custom exceptions.
-			message = "Projector server error while processing models file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body(e.getMapError());
-
-		} catch (Exception e)
-		{
-			// Log and return an error response for unexpected exceptions.
-			message = "Unexpected error occurred while processing models: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError()
-					.body("ERROR: Unexpected exception occurred while parsing models file.");
-		}
-	}
-
-	/**
-	 * Handles the upload and parsing of a CSV file containing projector data.
-	 * <p>
-	 * This endpoint receives a CSV file (expected to be named "projectors.csv"),
-	 * reads its contents, and processes the data using the {@code projectorParser}.
-	 * In case of an error during the processing or parsing, an appropriate error
-	 * message is returned to the client.
-	 * </p>
-	 *
-	 * @param file The CSV file containing projector data, expected as
-	 *             "projectors.csv".
-	 * @return A {@link ResponseEntity} containing the parsing result or an error
-	 *         message.
-	 */
-	@Transactional
-	@PostMapping("/parse-projectors")
-	public ResponseEntity<?> parseProjectors(@RequestParam("projectors.csv") MultipartFile file)
-	{
-
-		// Log the incoming request to parse the projectors data file.
-		log.info("Received POST request to '/parse-projectors'.");
-
-		String message;
-		try (Scanner scanner = new Scanner(file.getInputStream()))
-		{
-
-			// Validate the file before processing.
-			this.validateFile(file);
-
-			// Parse the CSV file using the projectorParser and obtain a result message
-			message = projectorParser.parseProjectors(scanner);
-
-			// Create and return a success response with the parsing result message
-			ResponseDto response = new ResponseDto(Constants.RESPONSE_STATUS_SUCCESS, message);
-			return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
-		} catch (IOException e)
-		{
-			// Log and return an error response in case of an IO exception.
-			message = "Error reading file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body(message);
-		} catch (ProjectorServerException e)
-		{
-			// Log and return an error response for custom exceptions.
-			message = "Projector server error processing file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body(e.getMapError());
-		} catch (Exception e)
-		{
-			// Log and return an error response for unexpected exceptions (fallback)
-			message = "Unexpected error occurred while processing file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body("ERROR: Unexpected exception occurred.");
-		}
-	}
-
-	/**
-	 * Endpoint to parse commands from a CSV file.
-	 * <p>
-	 * This method receives a CSV file containing command data, validates the file,
-	 * and parses the content. It returns a response indicating success or failure.
-	 * </p>
-	 *
-	 * @param file The uploaded CSV file containing command data.
-	 * @return A {@link ResponseEntity} containing a success or error message.
-	 */
-	@Transactional
-	@PostMapping("/parse-commands")
-	public ResponseEntity<?> parseCommands(@RequestParam("commands.csv") MultipartFile file)
-	{
-		// Log the incoming request to parse commands
-		log.info("Received POST request to '/parse-commands'.");
-
-		// Message that will be returned to the client after processing
-		String message;
-
-		// Use "try-with-resources" to automatically close the scanner after use
-		try (Scanner scanner = new Scanner(file.getInputStream()))
-		{
-			// Validate the file (checks for format, empty file, etc.)
-			this.validateFile(file);
-
-			// Parse the commands from the CSV file using commandsParser
-			message = commandsParser.parseCommands(scanner);
-
-			// Create and return a success response with the parsing message
-			ResponseDto response = new ResponseDto(Constants.RESPONSE_STATUS_SUCCESS, message);
-
-			// Return the success response with HTTP status CREATED (201)
-			log.debug("Returning success response with status: {}", HttpStatus.CREATED);
-			return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
-		} catch (IOException e)
-		{
-			// Log the IO error while reading the file
-			message = "IO error while reading commands file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body("Error encountered while reading the file.");
-
-		} catch (ProjectorServerException e)
-		{
-			// Log and return custom errors related to the projector server (parsing or
-			// business logic errors)
-			message = "Projector server error while processing commands file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body(e.getMapError());
-
-		} catch (Exception e)
-		{
-			// Log unexpected errors to capture any other issues
-			message = "Unexpected error while processing commands file: " + e.getMessage();
-			log.error(message);
-			return ResponseEntity.internalServerError().body("ERROR: Unexpected exception occurred.");
-		}
-	}
 
 	/**
 	 * Handles the parsing of multiple CSV files: projectors, commands, and
@@ -467,7 +285,7 @@ public class ProjectorController
 		try
 		{
 			// Log the incoming request to parse commands
-			log.info("Received POST request to '/parse-multifile'.");
+			log.info("POST request for '/parse-multifile' received.");
 
 			// Initialize message and response DTO for structured results.
 			String message = "";
@@ -550,8 +368,246 @@ public class ProjectorController
 		}
 	}
 
-	// --------------------------- END PARSING METHODS -----------------------------
+	// ----------------------- FLOORS & CLASSROOMS METHODS -------------------------
 
+	/**
+	 * Retrieves a list of all floors recorded in the database.
+	 * 
+	 * This endpoint fetches all available floor details from the repository and
+	 * returns them as a list of FloorDto objects.
+	 * 
+	 * Note: This method is only for front-end QOL improvements.
+	 * 
+	 * @return A ResponseEntity containing the list of floors, or a no-content
+	 *         response if no floors are found.
+	 */
+	@GetMapping(value = "/floors")
+	public ResponseEntity<?> getFloorList()
+	{
+		log.info("GET request for '/floors' received.");
+
+		try
+		{
+			// Retrieve all floor data from the repository
+			List<FloorDto> floors = this.projectorRepository.findAllFloorAsDtos();
+
+			// Log the number of retrieved floors (avoiding large data dump in the logs).
+			log.info("Retrieved {} floor(s).", floors.size());
+
+			// Return the list of floors, or no content if the list is empty.
+			if (floors.isEmpty())
+			{
+				log.warn("No floors found in the database.");
+				return ResponseEntity.noContent().build(); // Returning HTTP 204 No Content.
+			}
+
+			return ResponseEntity.ok().body(floors);
+
+		} catch (Exception e)
+		{
+			// Log any error or exception that might occur.
+			log.error("Error occurred while retrieving floor list: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError()
+					.body("An error occurred while fetching floors from the database.");
+		}
+	}
+
+	/**
+	 * Retrieves a list of classrooms on the specified floor.
+	 * 
+	 * This endpoint accepts a floor name and returns a list of classrooms located
+	 * on that floor. If no classrooms are found, it returns a 204 No Content
+	 * status. If an error occurs, a 500 Internal Server Error response is returned.
+	 * 
+	 * @param floor The floor name to filter the classrooms.
+	 * @return A list of classrooms for the specified floor or an appropriate error
+	 *         message.
+	 */
+	@GetMapping(value = "/classrooms")
+	public ResponseEntity<?> getClassroomList(@RequestParam(required = true) String floor)
+	{
+		log.info("GET request for '/classrooms' received with floor parameter '{}'.", floor);
+
+		try
+		{
+			// Fetch the list of classrooms for the given floor
+			List<ClassroomDto> classrooms = this.projectorRepository.findClassroomsByFloorNameAsDto(floor);
+
+			// If no classrooms were found, return a 204 No Content status
+			if (classrooms.isEmpty())
+			{
+				log.warn("No classrooms found for floor '{}'.", floor);
+				return ResponseEntity.noContent().build(); // HTTP 204 No Content
+			}
+
+			// Log the number of classrooms retrieved without logging large data dumps
+			log.info("Successfully retrieved {} classroom(s) for floor '{}'.", classrooms.size(), floor);
+
+			// Return the list of classrooms with an HTTP 200 OK status
+			return ResponseEntity.ok().body(classrooms);
+
+		} catch (Exception e)
+		{
+			// Log any errors that occur during the process
+			log.error("Error occurred while retrieving classrooms for floor '{}': {}", floor, e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("An error occurred while fetching classroom data.");
+		}
+	}
+
+	// ---------------------------- ACTIONS METHODS --------------------------------
+
+	/**
+	 * Handles HTTP DELETE requests to remove a list of actions from the system.
+	 * <p>
+	 * This method receives a list of actions (provided as DTOs), validates their
+	 * existence, and deletes them from the database. If any action does not exist,
+	 * an exception is thrown.
+	 * </p>
+	 * 
+	 * @param actionsList The list of {@link ActionDto} objects representing the
+	 *                    actions to be deleted.
+	 * @return ResponseEntity containing a success message if actions are deleted
+	 *         successfully, or an error message in case of failure.
+	 */
+	@DeleteMapping(value = "/actions")
+	public ResponseEntity<?> deleteActions(@RequestBody List<ActionDto> actionsList)
+	{
+		try
+		{
+			// Logging the DELETE request for monitoring and debugging
+			log.info("DELETE request for '/actions' received with parameter '{}'.", actionsList);
+
+			// Validate that the received list is not empty
+			if (actionsList.isEmpty())
+			{
+				String message = "Delete actions list is empty.";
+				log.error(message);
+				throw new ProjectorServerException(499, message);
+			}
+
+			// List to store actions that will be deleted
+			List<Action> actionsToDelete = new ArrayList<>();
+
+			// Iterate through the received list and validate if each action exists
+			for (ActionDto action : actionsList)
+			{
+				Action actionEntity = this.actionRepositories.findById(action.getActionName()).orElseThrow(() ->
+				{
+					String message = "Action '" + action + "' does not exist.";
+					log.error(message);
+					return new ProjectorServerException(499, message);
+				});
+
+				actionsToDelete.add(actionEntity);
+			}
+
+			// Delete all found actions from the database
+			this.actionRepositories.deleteAll(actionsToDelete);
+
+			// Create a response object to indicate successful deletion
+			ResponseDto response = new ResponseDto();
+			String message = actionsToDelete.size() + " actions deleted successfully.";
+			log.info(message);
+			response.setMessage(message);
+			response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
+
+			return ResponseEntity.ok().body(response);
+		}
+		// Handle custom exception when an action is not found
+		catch (ProjectorServerException e)
+		{
+			log.error(e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMapError());
+		}
+		// Handle any unexpected exceptions
+		catch (Exception e)
+		{
+			String message = "Unexpected error while deleting actions. " + e;
+			log.error(message);
+			return ResponseEntity.internalServerError().body("Unexpected error while deleting actions.");
+		}
+	}
+
+	/**
+	 * Retrieves a paginated list of actions.
+	 * 
+	 * This endpoint returns a paginated list of actions using the provided
+	 * pagination parameters. If no actions are found, a 204 No Content status is
+	 * returned.
+	 * 
+	 * @param pageable The pagination information (page number, size).
+	 * @return A paginated response with the list of actions.
+	 */
+	@PostMapping(value = "/actions-page")
+	public ResponseEntity<?> getActionsPage(@PageableDefault(page = 0, size = 15) Pageable pageable)
+	{
+		log.info("POST request for '/actions-page' received with pagination: page={}, size={}.",
+				pageable.getPageNumber(), pageable.getPageSize());
+
+		try
+		{
+			// Fetch paginated actions list
+			Page<ActionDto> actionsPage = this.actionRepositories.findAllActionsAsDtoPaged(pageable);
+
+			// Log the successful retrieval of the actions page with pagination info
+			log.info("Successfully retrieved page {} of actions, total pages: {}.", pageable.getPageNumber(),
+					actionsPage.getTotalPages());
+
+			// Return paginated actions with additional pagination metadata
+			return ResponseEntity.ok().body(actionsPage);
+
+		} catch (Exception e)
+		{
+			// Log any unexpected errors
+			log.error("Error occurred while retrieving actions page: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("An error occurred while fetching actions data.");
+		}
+	}
+
+	/**
+	 * Retrieves a list of all actions.
+	 * 
+	 * This endpoint fetches and returns a list of all available actions.
+	 * 
+	 * @return A list of actions or a 204 No Content status if no actions are
+	 *         available.
+	 */
+	@GetMapping(value = "/actions")
+	public ResponseEntity<?> getActionsList()
+	{
+		log.info("GET request for '/actions' received.");
+
+		try
+		{
+			// Fetch the list of actions from the repository
+			List<ActionDto> actions = this.actionRepositories.findAllActionsAsDto();
+
+			// Return the list of actions with an HTTP 200 OK status
+			log.info("Successfully retrieved {} action(s).", actions.size());
+			return ResponseEntity.ok().body(actions);
+
+		} catch (Exception e)
+		{
+			// Log any unexpected errors that occur
+			log.error("Error occurred while retrieving actions list: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("An error occurred while fetching actions data.");
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// -------------------------- SERVER EVENT METHODS -----------------------------
 
 	/**
@@ -572,7 +628,7 @@ public class ProjectorController
 	{
 		try
 		{
-			log.debug("Request for batch command received");
+			log.debug("POST request for /server-events-batch received");
 
 			// Prepare the response object with success status and message
 			ResponseDto response = new ResponseDto();
@@ -623,167 +679,98 @@ public class ProjectorController
 
 			// Return a bad request response with error details
 			return ResponseEntity.badRequest().body(ex.getMapError());
+		} catch (Exception e)
+		{
+			// Log the exception details and return a response with the error.
+			log.error("Unexpected error creating batch of server events", e);
+			return ResponseEntity.internalServerError().body(e.getLocalizedMessage());
 		}
 	}
 
+	/**
+	 * Updates the status of a server event.
+	 * 
+	 * This endpoint receives an event ID and a new status, verifies the input,
+	 * checks if the event exists, and updates the event status accordingly.
+	 * 
+	 * @param eventId        The ID of the event to be updated.
+	 * @param eventNewStatus The new status to be set for the event.
+	 * @return A response entity with a status and message indicating the result of
+	 *         the operation.
+	 */
 	@Transactional
 	@PutMapping(value = "/server-events")
 	public ResponseEntity<?> updateServerEventStatus(@RequestParam(name = "eventId") String eventId,
-			@RequestParam(name = "eventStatus") String eventStatus,
 			@RequestParam(name = "newStatus") String eventNewStatus)
 	{
+
 		try
 		{
+			// Log the incoming request parameters for the event status update.
+			log.info("PUT request for '/server-events' received with parameters 'Event ID: {}, Event new Status: {}'",
+					eventId, eventNewStatus);
 
-			log.info("eventId" + eventId);
-			log.info("eventStatus" + eventStatus);
-			log.info("eventNewStatus" + eventNewStatus);
-
-			// Prepare the response object with success status and message
+			// Prepare the response object to send back the status and message.
 			ResponseDto response = new ResponseDto();
 			String message;
 
-			if (eventId == null || eventId.isBlank() || eventStatus == null || eventStatus.isBlank()
-					|| eventNewStatus == null || eventNewStatus.isBlank())
+			// Check if eventId or eventNewStatus is null or blank, and handle error.
+			if (eventId == null || eventId.isBlank() || eventNewStatus == null || eventNewStatus.isBlank())
 			{
-				message = "No se han seleccionado los parametros adecuados.";
+				message = "Invalid or incorrect parameters in the request.Event Id or Status is blank or null.";
 				log.error(message);
-				response.setStatus(Constants.RESPONSE_STATUS_ERROR);
-				response.setMessage(message);
-				return ResponseEntity.badRequest().body(response);
+				throw new ProjectorServerException(499, message); // Error code for invalid parameters.
 			}
 
-			Long eventIdLong = Long.valueOf(eventId);
-
-			Optional<ServerEvent> serverEventOpt = this.serverEventRepository.findById(eventIdLong);
-
-			ServerEvent serverEventEntity = serverEventOpt.orElseThrow(() ->
+			// Validate that the new event status is part of the acceptable list.
+			if (!Constants.POSSIBLE_EVENT_STATUS.contains(eventNewStatus))
 			{
-				String messagex = "The server event with ID'" + eventIdLong + "' does not exist.";
+				message = "Error updating event status: The selected status for the event does not exist.";
+				log.error(message);
+				throw new ProjectorServerException(499, message); // Error code for invalid event status.
+			}
+
+			// Convert eventId to Long and fetch the corresponding event from the database.
+			Long eventIdLong = Long.valueOf(eventId);
+			ServerEvent serverEventEntity = this.serverEventRepository.findById(eventIdLong).orElseThrow(() ->
+			{
+				String messagex = "The server event with ID '" + eventIdLong + "' does not exist.";
 				log.error(messagex);
-				return new ProjectorServerException(494, messagex);
+				return new ProjectorServerException(494, messagex); // Error code for event not found.
 			});
 
-			// For each entry in the possible events constant a comparison is made and if no
-			// coincidence
-			// is found an error is returned because the new event status is not
-			// accepptable.
-			if (!(Arrays.stream(Constants.POSSIBLE_EVENT_STATUS).anyMatch(event -> event.equals(eventNewStatus))))
-			{
-				message = "Event " + eventNewStatus + " doesnt exist.";
-				log.error(message);
-				throw new ProjectorServerException(499, message);
-			}
+			// Capture the current status of the event before updating it.
+			String oldStatus = serverEventEntity.getActionStatus();
 
+			// Update the event's status to the new status.
 			serverEventEntity.setActionStatus(eventNewStatus);
 
-			message = "Event with ID" + eventId + " sucessfully updated to: " + eventNewStatus;
+			// Prepare a success message with the old and new status.
+			message = "Event with ID " + eventId + " successfully updated from " + oldStatus + " to " + eventNewStatus;
+			log.info(message); // Log successful event status update.
 
-			log.info(message);
-
+			// Set the response status and message.
 			response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
 			response.setMessage(message);
 
+			// Persist the updated event entity to the database.
 			this.serverEventRepository.saveAndFlush(serverEventEntity);
 
+			// Return the response with success status.
 			return ResponseEntity.ok().body(response);
 
 		} catch (ProjectorServerException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// Log the exception details and return a response with the error.
+			log.error("Error updating event status", e);
 			return ResponseEntity.internalServerError().body(e.getMapError());
+		} catch (Exception e)
+		{
+			// Log the exception details and return a response with the error.
+			log.error("Unexpected error updating event status", e);
+			return ResponseEntity.internalServerError().body(e.getLocalizedMessage());
 		}
 	}
-
-	// ------------------------ END SERVER EVENT METHODS ---------------------------
-
-	// ----------------------- FLOORS & CLASSROOMS METHODS -------------------------
-
-	/**
-	 * Retrieves a list of all floors recorded in the database.
-	 * 
-	 * This endpoint fetches all available floor details from the repository and
-	 * returns them as a list of FloorDto objects.
-	 * 
-	 * Note: This method is only for front-end QOL improvements.
-	 * 
-	 * @return A ResponseEntity containing the list of floors, or a no-content
-	 *         response if no floors are found.
-	 */
-	@GetMapping(value = "/floors")
-	public ResponseEntity<?> getFloorList()
-	{
-		log.info("Received request to fetch floor list.");
-
-		try
-		{
-			// Retrieve all floor data from the repository
-			List<FloorDto> floors = this.projectorRepository.findAllFloorAsDtos();
-
-			// Log the number of retrieved floors (avoiding large data dump in the logs).
-			log.info("Retrieved {} floor(s).", floors.size());
-
-			// Return the list of floors, or no content if the list is empty.
-			if (floors.isEmpty())
-			{
-				log.warn("No floors found in the database.");
-				return ResponseEntity.noContent().build(); // Returning HTTP 204 No Content.
-			}
-
-			return ResponseEntity.ok().body(floors);
-
-		} catch (Exception ex)
-		{
-			// Log any error or exception that might occur.
-			log.error("Error occurred while retrieving floor list: {}", ex.getMessage(), ex);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("An error occurred while fetching floor data.");
-		}
-	}
-
-	/**
-	 * Retrieves a list of classrooms based on the parameter floor name.
-	 * 
-	 * This endpoint fetches all classrooms located on the specified floor and
-	 * returns them as a list of ClassroomDto objects.
-	 * 
-	 * @param floor The name of the floor to filter the classrooms by.
-	 * @return A ResponseEntity containing the list of classrooms or a no-content
-	 *         response if no classrooms are found.
-	 */
-	@GetMapping(value = "/classrooms")
-	public ResponseEntity<?> getClassroomList(@RequestParam(required = true) String floor)
-	{
-		log.info("Received request to fetch classrooms for floor '{}'.", floor);
-
-		try
-		{
-			// Fetch the list of classrooms for the given floor
-			List<ClassroomDto> classrooms = this.projectorRepository.findClassroomsByFloorNameAsDto(floor);
-
-			// Log the number of classrooms retrieved, avoid logging large data dumps
-			log.info("Retrieved {} classroom(s) for floor '{}'.", classrooms.size(), floor);
-
-			// If no classrooms were found, return a 204 No Content status
-			if (classrooms.isEmpty())
-			{
-				log.warn("No classrooms found for floor '{}'.", floor);
-				return ResponseEntity.noContent().build(); // HTTP 204 No Content
-			}
-
-			return ResponseEntity.ok().body(classrooms);
-
-		} catch (Exception ex)
-		{
-			// Log any errors that occur during the process
-			log.error("Error occurred while retrieving classrooms for floor '{}': {}", floor, ex.getMessage(), ex);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-					.body("An error occurred while fetching classroom data.");
-		}
-	}
-
-	// --------------------- END FLOORS & CLASSROOMS METHODS -----------------------
 
 	// ---------------------------- PROJECTOR METHODS ------------------------------
 
@@ -814,7 +801,7 @@ public class ProjectorController
 			@PageableDefault(page = 0, size = 15) Pageable pageable)
 	{
 		// Log the received request and the provided criteria
-		log.info("Received request to fetch projectors ordered by: {}", criteria);
+		log.info("GET request for '/projectors' received with criteria '{}'", criteria);
 
 		Page<ProjectorInfoDto> projectors;
 		String message;
@@ -878,7 +865,7 @@ public class ProjectorController
 	{
 		try
 		{
-			log.info("Received request to delete projectors batch");
+			log.info("DELETE request for '/projectors' received.");
 
 			// Response DTO for returning status
 			ResponseDto responseDto = new ResponseDto();
@@ -936,11 +923,11 @@ public class ProjectorController
 
 	@Transactional
 	@DeleteMapping("/projectors-all")
-	public ResponseEntity<?> deleteAllProjector()
+	public ResponseEntity<?> deleteAllProjectors()
 	{
 		try
 		{
-			log.info("Received request to delete ALL projectors batch");
+			log.info("DELETE request for '/projectors-all' received.");
 
 			// Response DTO for returning status
 			ResponseDto responseDto = new ResponseDto();
@@ -966,10 +953,6 @@ public class ProjectorController
 		}
 	}
 
-	// Recibe una lista de proyectores DTO, por cada uno de ellos controla si
-	// existe, si existe lo añade a la lsita y lueygo la lista una vez compelta la
-	// borra.
-
 	/**
 	 * Retrieves a list of projectors assigned to a specific classroom.
 	 * <p>
@@ -993,23 +976,21 @@ public class ProjectorController
 		try
 		{
 			// Log the incoming request
-			log.info("Received request to get projectors for classroom: {}", classroom);
+			log.info("GET request for '/classroom-projector' received with parameter '{}'", classroom);
 
-			Projector projectorEntity = this.projectorRepository.findById(classroom).orElseThrow(
-					() -> {
-						String message = "Projector for classroom " + classroom + " does not exist.";
-						log.warn(message); // Log as warning when the classroom doesn't exist
-						return new ProjectorServerException(404, message);
-					}
-					);
-					
+			Projector projectorEntity = this.projectorRepository.findById(classroom).orElseThrow(() ->
+			{
+				String message = "Projector for classroom " + classroom + " does not exist.";
+				log.warn(message); // Log as warning when the classroom doesn't exist
+				return new ProjectorServerException(404, message);
+			});
+
 			// Log the successful retrieval of projectors
 			log.info("Projector {} successfully retrieved for classroom: {}", projectorEntity, classroom);
-			
+
 			// Return the projectors list with HTTP status 200 (OK)
 			return ResponseEntity.ok().body(projectorEntity);
 
-	
 		} catch (Exception e)
 		{
 			// Log any unexpected errors and return a 500 (Internal Server Error) response
@@ -1019,87 +1000,7 @@ public class ProjectorController
 		}
 	}
 
-	// -------------------------- END PROJECTOR METHODS ----------------------------
-
 	// ------------------------------ MODEL METHODS --------------------------------
-
-	/**
-	 * Creates a new projector model in the system.
-	 * <p>
-	 * This method handles the creation of a new projector model. It first checks if
-	 * the model name is provided, and then verifies whether the model already
-	 * exists in the database. If the model does not exist, it is created and saved.
-	 * If the model already exists or if the model name is blank, appropriate
-	 * exceptions are thrown.
-	 * </p>
-	 * 
-	 * @param projectorModelDto The Data Transfer Object (DTO) containing the
-	 *                          projector model details, including the model name.
-	 * @return ResponseEntity A response entity containing the status of the
-	 *         operation. If the projector model is created successfully, a message
-	 *         confirming the upload is returned with HTTP status 201 (Created). In
-	 *         case of errors, a custom error message is returned with the
-	 *         corresponding error code and HTTP status.
-	 * @throws ProjectorServerException if the projector model already exists in the
-	 *                                  database or if the model name is blank.
-	 */
-	@PostMapping("/projector-models")
-	public ResponseEntity<?> createNewModel(@RequestBody() ProjectorModelDto projectorModelDto)
-	{
-		try
-		{
-			// Log the incoming request for processing models
-			log.info("Received request to create projector model.");
-
-			String modelName = projectorModelDto.getModelname();
-
-			if (modelName == null || modelName.isBlank())
-			{
-				// If the model name is blank or null
-				String message = "No projector model name given.";
-				log.error(message);
-				throw new ProjectorServerException(496, message);
-			}
-
-			log.info("Projector model name: '{}'", modelName);
-
-			// Check if the model already exists in the database
-			Optional<ProjectorModel> existingModel = projectorModelRepository.findById(modelName);
-			if (existingModel.isPresent())
-			{
-				// If the projector already exists, throw an exception
-				String message = "The projector model '" + modelName + "' already exists in the database.";
-				log.error(message);
-				throw new ProjectorServerException(496, message);
-			}
-
-			// If the model does not exist, create and save it
-			ProjectorModel projectorModel = new ProjectorModel();
-			projectorModel.setModelName(modelName);
-
-			projectorModelRepository.saveAndFlush(projectorModel);
-
-			// Log successful creation
-			String successMessage = "Projector model '" + modelName + "' created successfully.";
-			log.debug(successMessage);
-
-			ResponseDto response = new ResponseDto(Constants.RESPONSE_STATUS_SUCCESS, successMessage);
-
-			return ResponseEntity.status(HttpStatus.CREATED).body(response);
-
-		} catch (ProjectorServerException e)
-		{
-			// Log and handle known exceptions
-			log.error("Error encountered: {}", e.getMessage());
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMapError());
-		} catch (Exception e)
-		{
-			// Log and handle unexpected exceptions
-			String message = "Unexpected error encountered during projector model upload.";
-			log.error(message, e);
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message + " " + e.getMessage());
-		}
-	}
 
 	/**
 	 * Retrieves a list of all projector models from the database.
@@ -1124,7 +1025,7 @@ public class ProjectorController
 		try
 		{
 			// Log the start of the retrieval process
-			log.info("GET call to '/projector-models' received.");
+			log.info("GET request for '/projector-models' received.");
 
 			// Retrieve the list of projector models from the database
 			List<ProjectorModelDto> projectorModelList = this.projectorModelRepository.findAllProjectorModelsAsDto();
@@ -1254,12 +1155,7 @@ public class ProjectorController
 		}
 	}
 
-	// ---------------------------- END MODEL METHODS ------------------------------
-
-	// ------------- !!!!! TO BE REVISED FROM HERE ON !!!!! -------------
-	// From this line forwards endpoints are basically bare bones and if they work
-	// it is just a temporary fix. Must be revised to consolidate and secure.
-	// ------------- !!!!! TO BE REVISED FROM HERE ON !!!!! -------------
+	// -----------------------------------------------------------------------------
 
 	/**
 	 * Endpoint que recibe una peticion por parte de un microcontrolador y devuelve
@@ -1274,11 +1170,11 @@ public class ProjectorController
 	 * 
 	 */
 	@GetMapping(value = "/server-events")
-	public String serveCommandToController(	@RequestParam(required = true) String projectorClassroom)
+	public String serveCommandToController(@RequestParam(required = true) String projectorClassroom)
 	{
 		// Log the incoming request for processing models.
-		log.info("Received GET request to '/server-events' from classroom '{}'.", projectorClassroom);
-		
+		log.info("GET request for '/server-events' received with parameter '{}'.", projectorClassroom);
+
 		try
 		{
 
@@ -1292,7 +1188,6 @@ public class ProjectorController
 				log.error(message);
 				return new ProjectorServerException(494, message);
 			});
-
 
 			// Recupera listado eventos servidor para este proyector que estan en pendiente
 			// (solo los pendientes).
@@ -1348,7 +1243,7 @@ public class ProjectorController
 	@GetMapping(value = "/micro-greeting")
 	public ResponseEntity<?> acknowledgeMicro()
 	{
-		log.info("Call received on /micro-greeting");
+		log.info("GET request for '/micro-greeting' received.");
 
 		// CommandDto cdto = new CommandDto("1","2","3");
 
@@ -1375,26 +1270,65 @@ public class ProjectorController
 		return ResponseEntity.ok().body(commands);
 	}
 
-	@GetMapping(value = "/actions")
-	public ResponseEntity<?> getProjectorModelCommands()
-	{
-		
-		
-
-		return ResponseEntity.ok().body(this.actionRepositories.findAllActionsAsDto());
-
-	}
-
+	/**
+	 * Retrieves a paginated list of commands based on the specified model and
+	 * action.
+	 * 
+	 * This endpoint checks if the provided model and action exist, then fetches the
+	 * commands for the given parameters with pagination. If no parameters are sent
+	 * then it recovers all the commands unfiltered.
+	 * 
+	 * @param pageable  Pagination details (page number, size, etc.).
+	 * @param modelName The model name to filter commands (optional).
+	 * @param action    The action name to filter commands (optional).
+	 * @return A response containing the paginated list of commands.
+	 */
 	@PostMapping(value = "/commands-page")
 	public ResponseEntity<?> getCommandsPage(@PageableDefault(page = 0, size = 15) Pageable pageable,
 			@RequestParam(name = "modelName", required = false) String modelName,
 			@RequestParam(name = "action", required = false) String action)
 	{
-		log.debug("Call to fetch commands page received");
+		try
+		{
 
-		Page<CommandDto> commandsPage = this.commandRepository.findAllCommandsPage(pageable, modelName, action);
+			// Log the request.
+			log.debug("POST request for '/commands-page' received with modelName: {}, action: {}", modelName, action);
 
-		return ResponseEntity.ok().body(commandsPage);
+			// Validate if the model exist.
+			if (modelName != null && !this.projectorModelRepository.existsById(modelName))
+			{
+				String errorMessage = "The selected model '" + modelName + "' does not exist.";
+				log.error("Model validation failed: {}", errorMessage);
+				throw new ProjectorServerException(404, errorMessage);
+			}
+
+			// Validate if the action exist.
+			if (action != null && !this.actionRepositories.existsById(action))
+			{
+				String errorMessage = "The selected action '" + action + "' does not exist.";
+				log.error("Action validation failed: {}", errorMessage);
+				throw new ProjectorServerException(404, errorMessage);
+			}
+
+			// Fetch the commands using pagination
+			Page<CommandDto> commands = this.commandRepository.findAllCommandsPage(pageable, modelName, action);
+
+			// Return the paginated response
+			log.info("Successfully retrieved commands page.");
+			return ResponseEntity.ok().body(commands);
+
+		} catch (ProjectorServerException e)
+		{
+			// Log error and return a bad request response with the error details
+			log.error("Error encountered during commands page retrieval: {}", e.getMapError());
+			return ResponseEntity.badRequest().body(e.getMapError());
+
+		} catch (Exception e)
+		{
+			// Log unexpected error and return a 500 internal server error response
+			log.error("Unexpected error during commands page retrieval: {}", e.getMessage(), e);
+			return ResponseEntity.internalServerError().body("An unexpected error occurred.");
+		}
 	}
 
 	@DeleteMapping(value = "/commands")
@@ -1402,7 +1336,7 @@ public class ProjectorController
 	{
 		try
 		{
-			log.debug("Call to delete commands received: {}", commandsList);
+			log.debug("DELETE request for '/commands' received with parameter {}", commandsList);
 
 			List<Command> commandsToDelete = new ArrayList<>();
 			int recordsDeleted = 0;
@@ -1446,64 +1380,12 @@ public class ProjectorController
 		}
 	}
 
-	// TODO error handling , response type by content etc..
-	@PostMapping(value = "/actions-page")
-	public ResponseEntity<?> getActionsPage(@PageableDefault(page = 0, size = 15) Pageable pageable)
-	{
-		log.debug("Call to fetch actions page received");
-
-		Page<ActionDto> actionsPage = this.actionRepositories.findAllActionsAsDtoPaged(pageable);
-
-		return ResponseEntity.ok().body(actionsPage);
-	}
-
-	@DeleteMapping(value = "/actions")
-	public ResponseEntity<?> deleteActions(@RequestBody List<ActionDto> actionsList)
-	{
-		try
-		{
-			log.debug("Call to delete actions received");
-
-			List<Action> actionsToDelete = new ArrayList<>();
-			int recordsDeleted = 0;
-
-			for (ActionDto action : actionsList)
-			{
-
-				Action actionEntity = this.actionRepositories.findById(action.getActionName()).get();
-
-				actionsToDelete.add(actionEntity);
-				recordsDeleted++;
-
-			}
-
-			this.actionRepositories.deleteAll(actionsToDelete);
-			
-			ResponseDto response = new ResponseDto();
-			String message = actionsToDelete.size() + " actions deleted successfully.";
-			response.setMessage(message);
-			response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
-
-			return ResponseEntity.ok().body(response);
-
-		}
-
-		// HACER QUE EL FRONT RECIBA UN AVISO AL INTENTAR BORRAR ESTO Y PERMITA BORRAR
-		// EN CASCADA.
-		catch (DataIntegrityViolationException e)
-		{
-			return (ResponseEntity.ok().body("ERROR EN BORRADO POR INTEGRIDAD. \n" + e.getMessage()));
-		}
-		catch ( Exception e ){
-			return ResponseEntity.internalServerError().body("Unexpected error while deleting actions.");
-		}
-	}
-
 	@PostMapping("/server-events")
-	public ResponseEntity<?> getEventsPAge(@RequestBody(required = false) EventFilterObject eventFilterObject,
+	public ResponseEntity<?> getEventsPage(@RequestBody(required = false) EventFilterObject eventFilterObject,
 			@PageableDefault(page = 0, size = 10) Pageable pageable)
 	{
-		log.debug("Call to fetch server event page received");
+		log.info("POST request for '/server-events' received.");
+
 		log.debug("Classroom: {}", eventFilterObject.getClassroomName());
 		log.debug("Floor: {}", eventFilterObject.getFloorName());
 		log.debug("Model: {}", eventFilterObject.getModelName());
@@ -1522,55 +1404,113 @@ public class ProjectorController
 		return ResponseEntity.ok().body(pagina);
 	}
 
-	@GetMapping("/general-overview")
-	public ResponseEntity<?> getServerOverview()
-	{
-
-		//
-		log.debug("Request for general overview received.");
-		GeneralCountOverviewDto projectorOverview = new GeneralCountOverviewDto();
-
-		projectorOverview.setNumberOfProjectors(this.projectorRepository.count());
-		projectorOverview.setNumberOfActions(this.actionRepositories.count());
-		projectorOverview.setNumberOfClassrooms(this.projectorRepository.countClassrooms());
-		projectorOverview.setNumberOfCommands(this.commandRepository.count());
-		projectorOverview.setNumberOfFloors(this.projectorRepository.countFloors());
-		projectorOverview.setNumberOfModels(this.projectorModelRepository.count());
-
-		return ResponseEntity.ok().body(projectorOverview);
-
-	}
-
-	@GetMapping("/events-overview")
-	public ResponseEntity<?> getEventsOverview()
-	{
-
-		//
-		log.debug("Request for events overview received.");
-		ServerEventOverviewDto serverEventOverviewDto = new ServerEventOverviewDto();
-
-		serverEventOverviewDto.setCanceledEvents(
-				this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_CANCELED));
-		serverEventOverviewDto.setCompletedEvents(
-				this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_EXECUTED));
-		serverEventOverviewDto.setDeliveredEvents(
-				this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_SERVED));
-		serverEventOverviewDto
-				.setErrorEvents(this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_ERROR));
-		serverEventOverviewDto
-				.setPendingEvents(this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_PENDING));
-
-		return ResponseEntity.ok().body(serverEventOverviewDto);
-
-	}
-
-
 	@GetMapping("/event-states")
 	public ResponseEntity<?> getEventStatusList()
 	{
-
-		String[] possibleEventsList = Constants.POSSIBLE_EVENT_STATUS;
-
-		return ResponseEntity.ok().body(possibleEventsList);
+		return ResponseEntity.ok().body(Constants.POSSIBLE_EVENT_STATUS);
 	}
+
+	// -----------------------------------------------------------------------------
+
+	// ---------------------------- OVERVIEW METHODS -------------------------------
+
+	/**
+	 * Handles HTTP GET requests to retrieve an overview of server events.
+	 * <p>
+	 * This method fetches the count of server events categorized by their status
+	 * (Canceled, Completed, Delivered, Error, and Pending) and returns this data
+	 * encapsulated in a {@link ServerEventOverviewDto} object.
+	 * </p>
+	 * 
+	 * @return ResponseEntity containing the event overview DTO if successful, or an
+	 *         error message in case of failure.
+	 */
+	@GetMapping("/events-overview")
+	public ResponseEntity<?> getEventsOverview()
+	{
+		try
+		{
+			// Logging the request for monitoring and debugging
+			log.info("GET request for '/events-overview' received.");
+
+			// Creating a DTO object to hold event counts
+			ServerEventOverviewDto serverEventOverviewDto = new ServerEventOverviewDto();
+
+			// Populating the DTO with event counts based on their status
+			serverEventOverviewDto.setCanceledEvents(
+					this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_CANCELED));
+
+			serverEventOverviewDto.setCompletedEvents(
+					this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_EXECUTED));
+
+			serverEventOverviewDto.setDeliveredEvents(
+					this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_SERVED));
+
+			serverEventOverviewDto
+					.setErrorEvents(this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_ERROR));
+
+			serverEventOverviewDto.setPendingEvents(
+					this.serverEventRepository.countServerEventsByStatus(Constants.EVENT_STATUS_PENDING));
+
+			// Returning the populated DTO with an HTTP 200 OK response
+			return ResponseEntity.ok().body(serverEventOverviewDto);
+
+		} catch (Exception e)
+		{
+			// Logging the error for debugging
+			log.error("Error retrieving events overview", e);
+
+			// Returning an HTTP 500 Internal Server Error response
+			return ResponseEntity.internalServerError()
+					.body("Unexpected error encountered while retrieving events overview.");
+		}
+	}
+
+	/**
+	 * Handles HTTP GET requests to retrieve a general overview of server-related
+	 * entities.
+	 * <p>
+	 * This method gathers and returns a summary of various counts, including the
+	 * number of projectors, actions, classrooms, commands, floors, and models. The
+	 * data is encapsulated in a {@link GeneralCountOverviewDto} object.
+	 * </p>
+	 * 
+	 * @return ResponseEntity containing the general overview DTO if successful.
+	 */
+	@GetMapping("/general-overview")
+	public ResponseEntity<?> getServerOverview()
+	{
+		try
+		{
+
+			// Logging the request for monitoring and debugging
+			log.info("GET request for '/general-overview' received.");
+
+			// Creating a DTO object to hold count information
+			GeneralCountOverviewDto projectorOverview = new GeneralCountOverviewDto();
+
+			// Populating the DTO with counts of various entities
+			projectorOverview.setNumberOfProjectors(this.projectorRepository.count());
+			projectorOverview.setNumberOfActions(this.actionRepositories.count());
+			projectorOverview.setNumberOfClassrooms(this.projectorRepository.countClassrooms());
+			projectorOverview.setNumberOfCommands(this.commandRepository.count());
+			projectorOverview.setNumberOfFloors(this.projectorRepository.countFloors());
+			projectorOverview.setNumberOfModels(this.projectorModelRepository.count());
+
+			// Returning the populated DTO with an HTTP 200 OK response
+			return ResponseEntity.ok().body(projectorOverview);
+
+		} catch (Exception e)
+		{
+			// Logging the error for debugging
+			log.error("Error retrieving general overview", e);
+
+			// Returning an HTTP 500 Internal Server Error response in case of failure
+			return ResponseEntity.internalServerError()
+					.body("Unexpected error encountered while retrieving general overview.");
+		}
+	}
+
+	// -----------------------------------------------------------------------------
+
 }
