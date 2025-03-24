@@ -46,7 +46,14 @@ public class Projector
 	/**
 	 * List of server events associated with the projector.
 	 */
-	@OneToMany(mappedBy = "projector", cascade = CascadeType.REMOVE, orphanRemoval = false)
+	@OneToMany(mappedBy = "projector", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<ServerEvent> serverEvents;
 
+	@Override
+	public String toString() {
+	    return String.format("Projector{classroom='%s', floor='%s', model='%s'}", classroom, floor, model);
+	}
+
+
+	
 }

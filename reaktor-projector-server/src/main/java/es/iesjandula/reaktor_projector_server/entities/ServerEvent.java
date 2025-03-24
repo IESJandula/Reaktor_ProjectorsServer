@@ -2,6 +2,7 @@ package es.iesjandula.reaktor_projector_server.entities;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -52,10 +53,6 @@ public class ServerEvent
 	 * </p>
 	 */
 	@ManyToOne
-	@JoinColumns(
-	{ @JoinColumn(name = "commandModelName", referencedColumnName = "modelName", nullable = true),
-			@JoinColumn(name = "commandActionName", referencedColumnName = "actionName", nullable = true),
-			@JoinColumn(name = "commandInstruction", referencedColumnName = "command", nullable = true) })
 	private Command command;
 
 	/**
@@ -65,8 +62,8 @@ public class ServerEvent
 	 * references multiple columns from the "Projector" table.
 	 * </p>
 	 */
-    @ManyToOne
-    private Projector projector;  
+	@ManyToOne
+	private Projector projector;
 
 	/**
 	 * The username of the person who triggered this event.
@@ -94,14 +91,17 @@ public class ServerEvent
 	private String actionStatus;
 
 	// Special to string method to prevent recursive calls and null pointers.
-//	@Override
-//	public String toString()
-//	{
-//		return new StringBuilder().append("ServerEvent - eventId: ").append(this.eventId).append(" | command:")
-//				.append(this.command == null ? "N/A" : this.command.toString()).append(" | projector: ")
-//				.append(this.projector == null ? "N/A" : this.projector.toString()).append(" | user: ")
-//				.append(this.user.isBlank() ? "N/A" : this.user).append(" | dateTime: ")
-//				.append(this.dateTime == null ? "N/A" : this.dateTime.toString()).append(" | actionStatus: ")
-//				.append(this.actionStatus.isBlank() ? "N/A" : this.actionStatus).toString();
-//	}
+	@Override
+	public String toString() {
+	    return String.format(
+	        "ServerEvent{eventId=%d, command=%s, projector=%s, user=%s, dateTime=%s, actionStatus=%s}",
+	        eventId,
+	        command == null ? "N/A" : command.getCommand(),
+	        projector == null ? "N/A" : projector.getClassroom(),
+	        (user == null || user.isBlank()) ? "N/A" : user,
+	        dateTime == null ? "N/A" : dateTime.toString(),
+	        (actionStatus == null || actionStatus.isBlank()) ? "N/A" : actionStatus
+	    );
+	}
+
 }

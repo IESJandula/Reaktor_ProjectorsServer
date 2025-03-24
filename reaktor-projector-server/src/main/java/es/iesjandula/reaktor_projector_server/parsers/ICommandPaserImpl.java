@@ -6,14 +6,10 @@ import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import es.iesjandula.reaktor_projector_server.entities.Action;
 import es.iesjandula.reaktor_projector_server.entities.Command;
-import es.iesjandula.reaktor_projector_server.entities.ProjectorModel;
 import es.iesjandula.reaktor_projector_server.entities.ids.CommandId;
 import es.iesjandula.reaktor_projector_server.parsers.interfaces.ICommandParser;
-import es.iesjandula.reaktor_projector_server.repositories.IActionRepository;
 import es.iesjandula.reaktor_projector_server.repositories.ICommandRepository;
-import es.iesjandula.reaktor_projector_server.repositories.IProjectorModelRepository;
 import es.iesjandula.reaktor_projector_server.utils.Constants;
 import es.iesjandula.reaktor_projector_server.utils.ProjectorServerException;
 import lombok.extern.slf4j.Slf4j;
@@ -36,14 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ICommandPaserImpl implements ICommandParser
 {
-    @Autowired
-    private IActionRepository actionRepo;
-    
+
     @Autowired
     private ICommandRepository commandRepo;
     
-    @Autowired
-    private IProjectorModelRepository projectorModelRepo;
 
 
     /**
@@ -109,20 +101,12 @@ public class ICommandPaserImpl implements ICommandParser
 				log.error(message);
 				throw new ProjectorServerException(499, message);
 			}
-            
-        	// Retrieve or create necessary action
-            log.debug("Parsing action '{}'.", actionName);
-            Action currentAction = getOrCreateAction(actionName);
-                        
-            // Retrieve or create necessary projector model
-            log.debug("Parsing projector model '{}'.", modelName);
-            ProjectorModel currentModel = getOrCreateModel(modelName);
+                                    
 
             // Generate a unique command ID
             CommandId currentCommandId = new CommandId();
-            currentCommandId.setAction(currentAction);
-            currentCommandId.setModelName(currentModel);
-            currentCommandId.setCommand(command);
+            currentCommandId.setAction(actionName);
+            currentCommandId.setModelName(modelName);
             
             // Check if the command already exists...
             log.debug("Parsing command '{}'.", command);
@@ -131,8 +115,8 @@ public class ICommandPaserImpl implements ICommandParser
             if (currentCommandOptional.isEmpty()) {
                 log.debug("Command with ID '{}' not present in DB, saving now.", currentCommandId);
                 Command currentCommand = new Command();
-                currentCommand.setAction(currentAction);
-                currentCommand.setModelName(currentModel);
+                currentCommand.setAction(actionName);
+                currentCommand.setModelName(modelName);
                 currentCommand.setCommand(command);
                 commandRepo.saveAndFlush(currentCommand);
                 recordsSaved++;
@@ -145,43 +129,5 @@ public class ICommandPaserImpl implements ICommandParser
         message = "COMMANDS: Records saved: " + recordsSaved + " - Records skipped: " + recordsSkipped;
         log.info(message);
 		return message;
-    }
-        
-    /**
-     * Retrieves an existing {@link Action} from the database or creates a new one if not found.
-     *
-     * @param actionName The name of the action.
-     * @return The existing or newly created {@link Action} instance.
-     */
-    private Action getOrCreateAction(String actionName) {
-        // Fetch the object from DB.
-        Optional<Action> actionOptional = actionRepo.findById(actionName);
-        
-        // If the action is not found, create and save a new one.
-        return actionOptional.orElseGet(() -> { 
-            log.debug("Action '{}' not present in DB, saving it now.", actionName);
-            Action newAction = new Action();
-            newAction.setActionName(actionName);
-            return actionRepo.save(newAction); // Save only once here
-        });
-    }
-    
-    /**
-     * Retrieves an existing {@link ProjectorModel} from the database or creates a new one if not found.
-     *
-     * @param modelName The name of the projector model.
-     * @return The existing or newly created {@link ProjectorModel} instance.
-     */
-    private ProjectorModel getOrCreateModel(String modelName) {
-        // Fetch the object from DB.
-        Optional<ProjectorModel> modelOptional = projectorModelRepo.findById(modelName);
-        
-        // If the projector model is not found, create and save a new one.
-        return modelOptional.orElseGet(() -> {
-            log.debug("Projector Model '{}' not present in DB, saving it now.", modelName);
-            ProjectorModel newModel = new ProjectorModel();
-            newModel.setModelName(modelName);
-            return projectorModelRepo.save(newModel);  // Save only once here
-        });
     }
 }

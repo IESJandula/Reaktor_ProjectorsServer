@@ -1,6 +1,5 @@
 package es.iesjandula.reaktor_projector_server.dtos;
 
-import es.iesjandula.reaktor_projector_server.entities.Action;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,15 +23,5 @@ public class ActionDto
 	 * The name of the action.
 	 */
 	private String actionName;
-
-	/**
-	 * Constructs an ActionDto from the given Action entity.
-	 * 
-	 * @param actionEntity the Action entity to be converted into an ActionDto
-	 */
-	public ActionDto(Action actionEntity)
-	{
-		this.setActionName(actionEntity.getActionName());
-	}
 
 }

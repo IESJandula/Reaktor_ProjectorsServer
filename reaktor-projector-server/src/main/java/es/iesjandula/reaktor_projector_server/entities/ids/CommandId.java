@@ -1,7 +1,5 @@
 package es.iesjandula.reaktor_projector_server.entities.ids;
 
-import es.iesjandula.reaktor_projector_server.entities.Action;
-import es.iesjandula.reaktor_projector_server.entities.ProjectorModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,26 +32,12 @@ public class CommandId
 	/**
 	 * The projector model associated with the command.
 	 */
-	private ProjectorModel modelName;
+	private String modelName;
 
 	/**
 	 * The action that the command is intended to perform.
 	 */
-	private Action action;
+	private String action;
 
-	/**
-	 * The binary or hexadecimal instruction sent to the projector to execute the
-	 * action.
-	 */
-	private String command;
-
-	@Override
-	public String toString()
-	{
-		return new StringBuilder().append("CommandId - modelName: ")
-				.append(this.modelName == null ? "N/A" : this.modelName.getModelName()).append(" | action: ")
-				.append(this.action == null ? "N/A" : this.action.getActionName()).append(" | command: ")
-				.append(this.command == null ? "N/A" : this.command).toString();
-	}
 
 }

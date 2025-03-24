@@ -3,11 +3,10 @@ package es.iesjandula.reaktor_projector_server.rest;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -16,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,18 +42,13 @@ import es.iesjandula.reaktor_projector_server.dtos.ServerEventBatchDto;
 import es.iesjandula.reaktor_projector_server.dtos.ServerEventOverviewDto;
 import es.iesjandula.reaktor_projector_server.dtos.SimplifiedServerEventDto;
 import es.iesjandula.reaktor_projector_server.dtos.TableServerEventDto;
-import es.iesjandula.reaktor_projector_server.entities.Action;
 import es.iesjandula.reaktor_projector_server.entities.Command;
 import es.iesjandula.reaktor_projector_server.entities.Projector;
-import es.iesjandula.reaktor_projector_server.entities.ProjectorModel;
 import es.iesjandula.reaktor_projector_server.entities.ServerEvent;
 import es.iesjandula.reaktor_projector_server.entities.ids.CommandId;
 import es.iesjandula.reaktor_projector_server.parsers.interfaces.ICommandParser;
-import es.iesjandula.reaktor_projector_server.parsers.interfaces.IProjectorModelParser;
 import es.iesjandula.reaktor_projector_server.parsers.interfaces.IProjectorParser;
-import es.iesjandula.reaktor_projector_server.repositories.IActionRepository;
 import es.iesjandula.reaktor_projector_server.repositories.ICommandRepository;
-import es.iesjandula.reaktor_projector_server.repositories.IProjectorModelRepository;
 import es.iesjandula.reaktor_projector_server.repositories.IProjectorRepository;
 import es.iesjandula.reaktor_projector_server.repositories.IServerEventRepository;
 import es.iesjandula.reaktor_projector_server.utils.Constants;
@@ -73,24 +68,71 @@ public class ProjectorController
 	IProjectorParser projectorParser;
 
 	@Autowired
-	IProjectorModelParser projectorModelsParser;
-
-	@Autowired
 	IServerEventRepository serverEventRepository;
 
 	@Autowired
 	IProjectorRepository projectorRepository;
 
 	@Autowired
-	IProjectorModelRepository projectorModelRepository;
-
-	@Autowired
 	ICommandRepository commandRepository;
 
-	@Autowired
-	IActionRepository actionRepositories;
-
 	// ----------------------------- UTILITY METHODS -------------------------------
+
+	@Transactional
+	public ResponseEntity<?> deleteAction(List<ActionDto> actionsList) throws ProjectorServerException
+	{
+		// Validate that the received list is not null or empty
+		if (actionsList == null || actionsList.isEmpty())
+		{
+			String message = "Delete actions list is empty or null.";
+			log.error(message);
+			throw new ProjectorServerException(400, message);
+		}
+
+		// Extract action names from DTOs
+		List<String> actionNamesList = actionsList.stream().map(ActionDto::getActionName).collect(Collectors.toList());
+
+		// Check for non-existing actions
+		List<String> existingActions = commandRepository.findExistingActions(actionNamesList);
+		List<String> nonExistingActions = actionNamesList.stream().filter(action -> !existingActions.contains(action))
+				.collect(Collectors.toList());
+
+		if (!nonExistingActions.isEmpty())
+		{
+			throw new ProjectorServerException(400, "Actions do not exist: " + nonExistingActions);
+		}
+
+		List<ServerEvent> serverEventsToDelete = new ArrayList<>();
+		List<ServerEvent> serverEventsIteration = new ArrayList<>();
+		int deletedServerEvents = 0;
+
+		for (String actionName : actionNamesList)
+		{
+
+			serverEventsIteration = this.serverEventRepository.findAllByAction(actionName);
+			log.debug("Adding server events to list for deletion. Found {} server events for action {}.",
+					serverEventsIteration.size(), actionName);
+			serverEventsToDelete.addAll(serverEventsIteration);
+			deletedServerEvents += serverEventsIteration.size();
+		}
+
+		this.serverEventRepository.deleteAllInBatch(serverEventsToDelete);
+
+		// Delete all commands associated with the actions
+		int deletedCount = this.commandRepository.deleteCommandsByActions(actionNamesList);
+
+		// Response for successful deletion
+		ResponseDto response = new ResponseDto();
+
+		String message = String.format(
+				"%d actions deleted along with %d associated commands and related %d server events.",
+				actionsList.size(), deletedCount, deletedServerEvents);
+		log.info(message);
+		response.setMessage(message);
+		response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
+
+		return ResponseEntity.ok().body(response);
+	}
 
 	/**
 	 * Validates the uploaded CSV file.
@@ -144,46 +186,37 @@ public class ProjectorController
 	 * @param commandActionName  The action to be performed on the projector.
 	 * @return A ServerEvent entity populated with the correct details.
 	 * @throws ProjectorServerException If any of the entities cannot be found or if
-	 *                                  input parameters are invalid.
+	 *                                  input parameters are invalid.cla
 	 */
-	private ServerEvent createServerEventEntity(String projectorModelName, String projectorClassroom,
-			String commandActionName) throws ProjectorServerException
+	private ServerEvent createServerEventEntity(ProjectorDto projectorDto, String commandActionName)
+			throws ProjectorServerException
 	{
+
+		String model = projectorDto.getModel();
+		String classroom = projectorDto.getClassroom();
+
 		// Check if any of the parameters is null or empty/blank string.
-		if (projectorModelName == null || projectorModelName.isBlank() || projectorClassroom == null
-				|| projectorClassroom.isBlank() || commandActionName == null || commandActionName.isBlank())
+		if (model == null || model.isBlank() || classroom == null || classroom.isBlank() || commandActionName == null
+				|| commandActionName.isBlank())
 		{
 			// if blank or null throw exception.
-			String exceptionMessage = "Null parameter received while during server event creation.";
+			String exceptionMessage = "Null parameter received during server event creation.";
 			log.error(exceptionMessage);
 			throw new ProjectorServerException(505, exceptionMessage);
 		}
 
 		// Log the action for traceability.
-		log.info("Creating '{}' event for projector '{}' in classroom '{}'.", commandActionName, projectorModelName,
-				projectorClassroom);
+		log.info("Creating '{}' event for projector '{}' in classroom '{}'.", commandActionName, model, classroom);
 
 		/* -------------- FORMING PROJECTOR ENTITY -------------- */
-		// Retrieve the projector model entity from the database.
-		Optional<ProjectorModel> projectorModelOpt = this.projectorModelRepository.findById(projectorModelName);
 
-		// If the model exists, store in entity, otherwise throw an exception.
-		ProjectorModel projectorModelEntity = projectorModelOpt.orElseThrow(() ->
-		{
-			String exceptionMessage = "The projector model '" + projectorModelName + "' does not exist.";
-			log.error(exceptionMessage);
-			return new ProjectorServerException(494, exceptionMessage);
-		});
-
-		log.debug("PROJECTOR MODEL RETRIEVED: {}", projectorModelEntity);
-
-		// Retrieve the projector entity using the composite key.
-		Optional<Projector> projectorOpt = this.projectorRepository.findById(projectorClassroom);
+		// Retrieve the projector entity using the primary key.
+		Optional<Projector> projectorOpt = this.projectorRepository.findById(classroom);
 
 		Projector projectorEntity = projectorOpt.orElseThrow(() ->
 		{
-			String exceptionMessage = "The projector model '" + projectorModelName + "' in classroom '"
-					+ projectorClassroom + "' does not exist.";
+			String exceptionMessage = String.format("The projector model '{}' in classroom '{}' does not exist.", model,
+					classroom);
 			log.error(exceptionMessage);
 			return new ProjectorServerException(494, exceptionMessage);
 		});
@@ -194,26 +227,19 @@ public class ProjectorController
 
 		/* -------------------- RETRIEVE COMMAND ENTITY -------------------- */
 
-		// Retrieve the action entity from the repository.
-		Optional<Action> actionOpt = this.actionRepositories.findById(commandActionName);
-
-		Action actionEntity = actionOpt.orElseThrow(() ->
-		{
-			String exceptionMessage = "The given action '" + commandActionName + "' does not exist.";
-			log.error(exceptionMessage);
-			return new ProjectorServerException(494, exceptionMessage);
-		});
-
-		log.debug("COMMAND ACTION RETRIEVED: {}", actionEntity);
-
 		// Retrieve the command entity for the given projector model and action.
-		Optional<Command> commandOpt = this.commandRepository.findByModelNameAndAction(projectorModelEntity,
-				actionEntity);
+		CommandId commandId = new CommandId();
+		commandId.setAction(commandActionName);
+		commandId.setModelName(model);
+
+		Optional<Command> commandOpt = this.commandRepository.findById(commandId);
 
 		Command commandEntity = commandOpt.orElseThrow(() ->
 		{
-			String exceptionMessage = "No command found in DB for model '" + projectorModelName
-					+ "' to perform action '" + commandActionName + "'.";
+			String exceptionMessage = String.format(
+					"No command found in the database for model '%s' to perform action '%s'.", model,
+					commandActionName);
+
 			log.error(exceptionMessage);
 			return new ProjectorServerException(494, exceptionMessage);
 		});
@@ -243,7 +269,7 @@ public class ProjectorController
 
 		// Log the event creation process.
 		log.info("Server event successfully created for projector '{}', action '{}', in classroom '{}' for user '{}'.",
-				projectorModelName, commandActionName, projectorClassroom, user);
+				model, commandActionName, classroom, user);
 
 		// Return the populated server event entity.
 		return serverEventEntity;
@@ -470,60 +496,29 @@ public class ProjectorController
 	 *         successfully, or an error message in case of failure.
 	 */
 	@DeleteMapping(value = "/actions")
+	// Ensures all repository interactions are wrapped in a transaction
 	public ResponseEntity<?> deleteActions(@RequestBody List<ActionDto> actionsList)
 	{
 		try
 		{
-			// Logging the DELETE request for monitoring and debugging
 			log.info("DELETE request for '/actions' received with parameter '{}'.", actionsList);
 
-			// Validate that the received list is not empty
-			if (actionsList.isEmpty())
-			{
-				String message = "Delete actions list is empty.";
-				log.error(message);
-				throw new ProjectorServerException(499, message);
-			}
+			return deleteAction(actionsList);
 
-			// List to store actions that will be deleted
-			List<Action> actionsToDelete = new ArrayList<>();
+		} catch (DataIntegrityViolationException e)
+		{
+			log.error("Data integrity violation: {}", e.getMessage());
+			return ResponseEntity.internalServerError().body(
+					"Deletion operation failed: the selected items are currently in use in server events and cannot be deleted.");
 
-			// Iterate through the received list and validate if each action exists
-			for (ActionDto action : actionsList)
-			{
-				Action actionEntity = this.actionRepositories.findById(action.getActionName()).orElseThrow(() ->
-				{
-					String message = "Action '" + action + "' does not exist.";
-					log.error(message);
-					return new ProjectorServerException(499, message);
-				});
-
-				actionsToDelete.add(actionEntity);
-			}
-
-			// Delete all found actions from the database
-			this.actionRepositories.deleteAll(actionsToDelete);
-
-			// Create a response object to indicate successful deletion
-			ResponseDto response = new ResponseDto();
-			String message = actionsToDelete.size() + " actions deleted successfully.";
-			log.info(message);
-			response.setMessage(message);
-			response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
-
-			return ResponseEntity.ok().body(response);
-		}
-		// Handle custom exception when an action is not found
-		catch (ProjectorServerException e)
+		} catch (ProjectorServerException e)
 		{
 			log.error(e.getMessage());
 			return ResponseEntity.badRequest().body(e.getMapError());
-		}
-		// Handle any unexpected exceptions
-		catch (Exception e)
+
+		} catch (Exception e)
 		{
-			String message = "Unexpected error while deleting actions. " + e;
-			log.error(message);
+			log.error("Unexpected error while deleting actions.", e);
 			return ResponseEntity.internalServerError().body("Unexpected error while deleting actions.");
 		}
 	}
@@ -547,7 +542,7 @@ public class ProjectorController
 		try
 		{
 			// Fetch paginated actions list
-			Page<ActionDto> actionsPage = this.actionRepositories.findAllActionsAsDtoPaged(pageable);
+			Page<String> actionsPage = this.commandRepository.findActionsPage(pageable);
 
 			// Log the successful retrieval of the actions page with pagination info
 			log.info("Successfully retrieved page {} of actions, total pages: {}.", pageable.getPageNumber(),
@@ -580,7 +575,7 @@ public class ProjectorController
 		try
 		{
 			// Fetch the list of actions from the repository
-			List<ActionDto> actions = this.actionRepositories.findAllActionsAsDto();
+			List<ActionDto> actions = this.commandRepository.findActionsAsDto();
 
 			// Return the list of actions with an HTTP 200 OK status
 			log.info("Successfully retrieved {} action(s).", actions.size());
@@ -687,7 +682,7 @@ public class ProjectorController
 	 */
 	@Transactional
 	@DeleteMapping("/projectors")
-	public ResponseEntity<?> deleteProjector(@RequestBody List<ProjectorInfoDto> projectorDtoList)
+	public ResponseEntity<?> deleteProjectors(@RequestBody List<ProjectorInfoDto> projectorDtoList)
 	{
 		try
 		{
@@ -697,7 +692,7 @@ public class ProjectorController
 			ResponseDto responseDto = new ResponseDto();
 			String message;
 
-			List<Projector> projectorEntitiesiList = new ArrayList();
+			List<Projector> projectorEntitiesiList = new ArrayList<>();
 
 			for (ProjectorInfoDto projectorDto : projectorDtoList)
 			{
@@ -721,6 +716,7 @@ public class ProjectorController
 				// Log successful removal.
 				message = "Projector " + modelName + " from classroom " + classroomName + "added to remove list.";
 				log.info(message);
+
 			}
 
 			this.projectorRepository.deleteAll(projectorEntitiesiList);
@@ -749,60 +745,6 @@ public class ProjectorController
 		{
 			// Log the error for unexpected exceptions
 			log.error("Unexpected error encountered while removing projector: {}", e.getMessage());
-			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
-		}
-	}
-
-	/**
-	 * Handles the deletion of all projectors from the database.
-	 * 
-	 * <p>
-	 * This endpoint removes all projector records in a single batch operation. If
-	 * no projectors exist, a warning response is returned instead of performing an
-	 * unnecessary delete operation.
-	 * </p>
-	 * 
-	 * @return ResponseEntity containing a success or warning message.
-	 */
-	@Transactional
-	@DeleteMapping("/projectors-all")
-	public ResponseEntity<?> deleteAllProjectors()
-	{
-		log.info("Received DELETE request for '/projectors-all'.");
-
-		try
-		{
-			// Retrieve all projectors from the database
-			List<Projector> projectors = projectorRepository.findAll();
-			ResponseDto responseDto = new ResponseDto();
-			String message;
-
-			// Check if there are any projectors to delete
-			if (projectors.isEmpty())
-			{
-				message = "No projectors found to delete.";
-				log.warn("Deletion skipped: {}", message);
-				responseDto.setStatus(Constants.RESPONSE_STATUS_WARNING);
-				responseDto.setMessage(message);
-				return ResponseEntity.ok(responseDto);
-			}
-
-			// Delete all projectors in batch (efficient bulk operation)
-			projectorRepository.deleteAllInBatch();
-
-			// Log successful deletion
-			message = String.format("Successfully removed %d projectors.", projectors.size());
-			log.info("Deletion successful: {}", message);
-
-			// Prepare and return success response
-			responseDto.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
-			responseDto.setMessage(message);
-			return ResponseEntity.ok(responseDto);
-
-		} catch (Exception e)
-		{
-			// Log the exception with full stack trace for debugging
-			log.error("Error occurred while deleting projectors: {}", e.getMessage(), e);
 			return ResponseEntity.internalServerError().body("Unexpected error occurred: " + e.getMessage());
 		}
 	}
@@ -890,7 +832,7 @@ public class ProjectorController
 			log.info("GET request for '/projector-models' received.");
 
 			// Retrieve the list of projector models from the database
-			List<ProjectorModelDto> projectorModelList = this.projectorModelRepository.findAllProjectorModelsAsDto();
+			List<ProjectorModelDto> projectorModelList = this.commandRepository.findAllProjectorModelsDto();
 
 			// Log the successful retrieval of the models
 			log.info("Successfully retrieved {} projector models from the database.", projectorModelList.size());
@@ -920,7 +862,8 @@ public class ProjectorController
 	 * the model exists in the system, the commands are fetched and returned. If the
 	 * model does not exist, a 499 error is thrown. If no commands are found for the
 	 * model, a 204 No Content status is returned. In case of any other unexpected
-	 * errors, a 500 Internal Server Error status with the error message is returned.
+	 * errors, a 500 Internal Server Error status with the error message is
+	 * returned.
 	 * </p>
 	 *
 	 * @param modelname The name of the projector model for which the commands need
@@ -935,7 +878,8 @@ public class ProjectorController
 		try
 		{
 			// Check if the given projector model exists in the repository
-			Optional<ProjectorModel> modelOptional = this.projectorModelRepository.findById(modelname);
+			Optional<ProjectorModelDto> modelOptional = this.commandRepository.findProjectorModelByModelName(modelname);
+
 			String message;
 
 			if (modelOptional.isEmpty())
@@ -1005,17 +949,17 @@ public class ProjectorController
 			log.debug("POST request for '/commands-page' received with modelName: {}, action: {}", modelName, action);
 
 			// Validate if the model exist.
-			if (modelName != null && !this.projectorModelRepository.existsById(modelName))
+			if (modelName != null && !this.commandRepository.existsByModelName(modelName))
 			{
-				String errorMessage = "The selected model '" + modelName + "' does not exist.";
+				String errorMessage = String.format("There are no commands associated to model '%s'.", modelName);
 				log.error("Model validation failed: {}", errorMessage);
 				throw new ProjectorServerException(404, errorMessage);
 			}
 
 			// Validate if the action exist.
-			if (action != null && !this.actionRepositories.existsById(action))
+			if (action != null && !this.commandRepository.actionExists(action))
 			{
-				String errorMessage = "The selected action '" + action + "' does not exist.";
+				String errorMessage = String.format("There are no commands associated to action '%s'.", action);
 				log.error("Action validation failed: {}", errorMessage);
 				throw new ProjectorServerException(404, errorMessage);
 			}
@@ -1042,51 +986,88 @@ public class ProjectorController
 	}
 
 	@DeleteMapping(value = "/commands")
+	@Transactional
 	public ResponseEntity<?> deleteCommands(@RequestBody List<CommandDto> commandsList)
 	{
 		try
 		{
+			if (commandsList == null || commandsList.isEmpty())
+			{
+				log.debug("No commands to delete.");
+				return ResponseEntity.badRequest().body("No commands provided for deletion.");
+			}
+
 			log.debug("DELETE request for '/commands' received with parameter {}", commandsList);
 
-			List<Command> commandsToDelete = new ArrayList<>();
 			int recordsDeleted = 0;
+			int serverEventsRecordsDeleted = 0;
+
+			List<Command> commandListToDelete = new ArrayList<>();
+			List<ServerEvent> serverEventListToDelete = new ArrayList<>();
+			List<ServerEvent> serverEventIterationList = new ArrayList<>();
 
 			for (CommandDto command : commandsList)
 			{
-
-				Action actionEntity = this.actionRepositories.findById(command.getAction()).get();
-				log.debug("Action retreived");
-
-				ProjectorModel modelEntity = this.projectorModelRepository.findById(command.getModelName()).get();
-				log.debug("ProjectorModel retreived");
-
 				CommandId commandId = new CommandId();
+				commandId.setAction(command.getAction());
+				commandId.setModelName(command.getModelName());
+				log.debug("Command Id generated for action '{}' and model '{}'", command.getAction(),
+						command.getModelName());
 
-				commandId.setAction(actionEntity);
-				commandId.setModelName(modelEntity);
-				commandId.setCommand(command.getCommand());
-				log.debug("CommandId retreived");
+				Command commandEntity = this.commandRepository.findById(commandId).orElseThrow(() ->
+				{
+					String message = String.format("No commands found for command ID with action '%s' and model '%s'",
+							command.getAction(), command.getModelName());
+					log.error(message);
+					return new ProjectorServerException(499, message);
+				});
 
-				Command commandEntity = this.commandRepository.findById(commandId).get();
-				log.debug("Command retreived");
+				log.debug("Command retrieved for action '{}' and model '{}'.", command.getAction(),
+						command.getModelName());
 
-				commandsToDelete.add(commandEntity);
+				// Fetch the associated server events to delete first
+				serverEventIterationList = this.serverEventRepository.findByCommand(commandEntity.getModelName(),
+						commandEntity.getAction());
+
+				log.info("Recovered {} server event(s) for command '{}'.", serverEventIterationList.size(),
+						commandEntity.toString());
+
+				serverEventListToDelete.addAll(serverEventIterationList);
+				serverEventsRecordsDeleted += serverEventIterationList.size();
+
+				// Add command to delete list
+				commandListToDelete.add(commandEntity);
+
 				recordsDeleted++;
 
 			}
 
-			this.commandRepository.deleteAll(commandsToDelete);
+			// Delete server events before commands
+			this.serverEventRepository.deleteAllInBatch(serverEventListToDelete);
 
-			return (ResponseEntity.ok().body("Deleted " + recordsDeleted + " commands from DB."));
+			// Delete the commands after server events
+			this.commandRepository.deleteAllInBatch(commandListToDelete);
 
-		}
+			String message = String.format("Deleted %d commands and %d associated server events.", recordsDeleted,
+					serverEventsRecordsDeleted);
 
-		// HACER QUE EL FRONT RECIBA UN AVISO AL INTENTAR BORRAR ESTO Y PERMITA BORRAR
-		// EN CASCADA.
-		catch (DataIntegrityViolationException e)
+			log.info(message);
+
+			ResponseDto response = new ResponseDto();
+			response.setStatus(Constants.RESPONSE_STATUS_SUCCESS);
+			response.setMessage(message);
+
+			return ResponseEntity.ok().body(response);
+
+		} catch (ProjectorServerException e)
 		{
+			log.error(e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMapError());
 
-			return (ResponseEntity.ok().body("ERROR EN BORRADO POR INTEGRIDAD. \n" + e.getMessage()));
+		} catch (Exception e)
+		{
+			log.error("Unexpected error while deleting actions.", e);
+			return ResponseEntity.internalServerError().body("Unexpected error while deleting actions.");
 		}
 	}
 
@@ -1125,7 +1106,7 @@ public class ProjectorController
 			{
 				response.setMessage("NULL PROJECTOR LIST.");
 				response.setStatus("ERROR");
-				return ResponseEntity.status(HttpStatus.CREATED).body(response);
+				return ResponseEntity.badRequest().body(response);
 			}
 
 			// Initialize list to hold the server events to be saved
@@ -1135,8 +1116,7 @@ public class ProjectorController
 			for (ProjectorDto projectorDto : projectorList)
 			{
 				// Create server event for each projector and add it to the list
-				serverEventList.add(this.createServerEventEntity(projectorDto.getModel(), projectorDto.getClassroom(),
-						commandActionName));
+				serverEventList.add(this.createServerEventEntity(projectorDto, commandActionName));
 			}
 
 			// Log the number of events being saved for traceability
@@ -1460,11 +1440,11 @@ public class ProjectorController
 
 			// Populating the DTO with counts of various entities
 			projectorOverview.setNumberOfProjectors(this.projectorRepository.count());
-			projectorOverview.setNumberOfActions(this.actionRepositories.count());
+			projectorOverview.setNumberOfActions(this.commandRepository.countDistinctActions());
 			projectorOverview.setNumberOfClassrooms(this.projectorRepository.countClassrooms());
 			projectorOverview.setNumberOfCommands(this.commandRepository.count());
 			projectorOverview.setNumberOfFloors(this.projectorRepository.countFloors());
-			projectorOverview.setNumberOfModels(this.projectorModelRepository.count());
+			projectorOverview.setNumberOfModels(this.commandRepository.countDistinctModels());
 
 			// Returning the populated DTO with an HTTP 200 OK response
 			return ResponseEntity.ok().body(projectorOverview);

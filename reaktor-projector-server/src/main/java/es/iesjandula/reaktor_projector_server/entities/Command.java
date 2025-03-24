@@ -1,5 +1,7 @@
 package es.iesjandula.reaktor_projector_server.entities;
 
+import java.util.List;
+
 import es.iesjandula.reaktor_projector_server.entities.ids.CommandId;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,29 +15,25 @@ import lombok.NoArgsConstructor;
 @IdClass(CommandId.class)
 public class Command
 {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "modelName")
-    private ProjectorModel modelName;
+	@Id
+	private String modelName;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "actionName")
-    private Action action;
+	@Id
+	private String action;
 
-    @Id
-    private String command;
+	private String command;
+	
+	/**
+	 * List of server events associated with the projector.
+	 */
+    @OneToMany(mappedBy = "command", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ServerEvent> serverEvents;
 
-    @Override
-    public String toString()
-    {
-        return new StringBuilder()
-                .append("CommandID - action: ")
-                .append(this.action == null ? "N/A" : this.action.getActionName())
-                .append(" | modelName: ")
-                .append(this.modelName == null ? "N/A" : this.modelName.getModelName())
-                .append(" | command: ")
-                .append(this.command == null ? "N/A" : this.command)
-                .toString();
-    }
+	@Override
+	public String toString()
+	{
+		return "Command{" + "modelName='" + modelName + '\'' + ", action='" + action + '\'' + ", command='" + command
+				+ '\'' + '}';
+	}
+
 }
