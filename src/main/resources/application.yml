@@ -3,7 +3,7 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:mysql://localhost:3306/proyectores
+    url: jdbc:mysql://localhost:3306/reaktor_projectorsserver?createDatabaseIfNotExist=true
     username: root
     password: 1234
     hikari:
@@ -11,7 +11,7 @@ spring:
       maximum-pool-size: 5
 
 server:
-  port: 8085
+  port: 8086
 
 logging:
   level:
