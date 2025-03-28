@@ -1,0 +1,13 @@
+ERROR 490 - Thrown when the endpoints that expect a CSV is given an empty file.
+ERROR 491 - Thrown when the Projector Models Parser implementation receives an empty Scanner (scanner with no nextLine).
+ERROR 492 - Thrown when the Projectors Parser implementation receives an empty Scanner (scanner with no nextLine).
+ERROR 493 - Thrown when the Commands Parser implementation receives an empty Scanner (scanner with no nextLine).
+ERROR 494 - Thrown when one or more of the ServerEventDto received items do not exist in the database. 
+ERROR 495 - Thrown when the model of the projector and the command do not coincide in the createServerEvent request.
+ERROR 496 - Thrown when a user tries to upload a projector model that is already stored in the data base or did not provide a model name.
+ERROR 497 - Thrown when a user tries to delete a projector model that is NOT stored in the data base or did not provide a model name.
+ERROR 498 - Thrown when parsing endpoints receive an unsupported format or null file.
+ERROR 499 - Thrown when a problem occurrs during projector asignation or deletion process from the projector-location table.
+
+505, "Null parameter received while during server event creation."
+ERROR 591 - "Cannot delete model: There are projectors associated with this model."
