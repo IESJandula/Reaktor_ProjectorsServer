@@ -25,11 +25,9 @@ jobs:
     - name: Build with Maven
       env:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }} # Secreto para la contraseña de la base de datos
-        SSL_KEY_STORE_PASSWORD: ${{ secrets.SSL_KEY_STORE_PASSWORD }} # Secreto para la contraseña del keystore SSL
         PUBLIC_KEY_FILE: ${{ secrets.PUBLIC_KEY_FILE }} # Secreto para la clave pública para JWT
       run: |
         echo "DB_PASSWORD=${DB_PASSWORD}" > src/main/resources/application-VPS-filter.properties
-        echo "SSL_KEY_STORE_PASSWORD=${SSL_KEY_STORE_PASSWORD}" >> src/main/resources/application-VPS-filter.properties
         echo "PUBLIC_KEY_FILE=${PUBLIC_KEY_FILE}" >> src/main/resources/application-VPS-filter.properties
         mvn clean install -Dspring.config.location=src/main/resources/application-VPS.yaml
 
