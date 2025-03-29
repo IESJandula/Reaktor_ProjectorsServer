@@ -14,10 +14,6 @@ spring:
       force: true
 server:
   port: 8086
-  ssl:
-    key-store: classpath:apijandula.p12
-    key-store-password: ${SSL_KEY_STORE_PASSWORD}
-    keyStoreType: PKCS12
 logging:
     level:
         root: INFO
