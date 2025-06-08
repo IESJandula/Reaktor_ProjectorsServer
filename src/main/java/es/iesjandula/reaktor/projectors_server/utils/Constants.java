@@ -31,6 +31,7 @@ public final class Constants
 	public static final String ERROR_ACTION_NAME = "ERR";
 	public static final String LAMP_ON = "LAMP_ON";
 	public static final String LAMP_OFF = "LAMP_OFF";
+	public static final String STATUS_INQUIRY_COMMAND = "STATUS_INQUIRY";
 	
 	public static final String PROJECTOR_ON= "Encendido";
 	public static final String PROJECTOR_OFF = "Apagado";

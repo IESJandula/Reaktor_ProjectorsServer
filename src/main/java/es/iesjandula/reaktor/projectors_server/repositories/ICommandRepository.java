@@ -64,6 +64,8 @@ public interface ICommandRepository extends JpaRepository<Command, CommandId>
 	List<ActionDto> findActionsAsDto();
 	
 	Optional<Command> findByModelNameAndCommand(String modelName, String command);
+	
+	Optional<Command> findByModelNameAndAction(String modelName, String action);
 
 	// ---------------------------- MODEL QUERIES ----------------------------
 
@@ -80,6 +82,7 @@ public interface ICommandRepository extends JpaRepository<Command, CommandId>
 			    WHERE c.modelName = :modelName
 			""")
 	Optional<ProjectorModelDto> findProjectorModelByModelName(@Param("modelName") String modelName);
+	
 
 	boolean existsByModelName(String modelName);
 	

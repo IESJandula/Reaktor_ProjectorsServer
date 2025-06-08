@@ -284,6 +284,7 @@ public class ProjectorCommonsController {
 			actions.remove(new ActionDto(Constants.ERROR_ACTION_NAME));
 			actions.remove(new ActionDto(Constants.LAMP_OFF));
 			actions.remove(new ActionDto(Constants.LAMP_ON));
+			actions.remove(new ActionDto(Constants.STATUS_INQUIRY_COMMAND));
 
 			// Return the list of actions with an HTTP 200 OK status
 			log.info("Successfully retrieved {} action(s).", actions.size());

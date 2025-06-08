@@ -1,5 +1,8 @@
-action_name,command,modelname
+action_name,command,modelnameSTATUS_INQUIRY,Lamp ?,Acer X1228H
 ENCENDER,2A 20 30 20 49 52 20 30 30 31 0D,Acer X1228H
 APAGAR,2A 20 30 20 49 52 20 30 30 32 0D,Acer X1228H
 ACK,* 000,Acer X1228H
 ERR,* 001,Acer X1228H
+LAMP_ON,Lamp 1,Acer X1228H
+LAMP_OFF,Lamp 0,Acer X1228H
+STATUS_INQUIRY,Lamp ?,Acer X1228H

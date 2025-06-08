@@ -48,7 +48,7 @@
 // ---------------------------------------------
 // Debugging Configuration
 // ---------------------------------------------
-#define DEBUG 0
+#define DEBUG 1
 
 #if DEBUG == 1
 #define debug(x) Serial.print(x)
@@ -79,6 +79,7 @@ String projectorClassroomFilePath = "/projectorConfig.txt";
 String projectorClassroomMetadataFilePath = "/projectorConfigMetadata.txt";
 bool localClassroomFileExists = false;
 bool sdClassroomFileExists = false;
+String lampStatusInquireCommand = "";
 
 // ---------------------------------------------
 // Handled events variables.
@@ -93,6 +94,7 @@ String commandInstruction;
 // ---------------------------------------------
 String responseData;  // Stores the response data.
 int responseCode;     // Stores the response code.
+String lampStatus = ""; 
 
 // ---------------------------------------------
 // LittleFS and SDFS variables.
@@ -194,6 +196,27 @@ void setup() {
   // -------------------------------
   MySerial.begin(RS232BaudRate, SERIAL_8N1, rxRS232Port, txRS232Port);  // baudrate, config, RX pin, TX pin
 
+
+  // -------------------------------
+  // Ask the server for the lamp status command.
+  // Wait one second after the function completes, try again if failed.
+  // -------------------------------
+  int retries = 0;
+  const int maxRetries = 5;
+
+  while (lampStatusInquireCommand.length() == 0 && retries < maxRetries) {
+      lampStatusInquireCommand = getStatusInquiryCommand();
+      delay(500);
+      retries++;
+  }
+
+  if (lampStatusInquireCommand.length() == 0) {
+    printInterfaceSentenceBox("ERROR: Failed to retrieve lamp status command after multiple attempts.");
+  }
+  else{
+    printInterfaceSentenceBox("Lamp status inquiry command successfully retreived.");
+  }
+
   // -------------------------------
   // End of Setup
   // -------------------------------
@@ -219,7 +242,16 @@ void loop() {
       // Prints the stored values of all the variables.
       if (received == 'v') {
         printInterfaceTitle("Showing variables data.");
-        // TODO
+        printInterfaceSentences("WifiSSID", WifiSSID);
+        printInterfaceSentences("WifiPassword", WifiPassword);
+        printInterfaceSentences("urlProjectors", urlProjectors);
+        printInterfaceSentences("urlFirebase", urlFirebase);
+        printInterfaceSentences("xClientId", xClientId);
+        printInterfaceSentences("projectorClassroom", projectorClassroom);
+        printInterfaceSentences("lampStatusInquireCommand", lampStatusInquireCommand);
+        printInterfaceSentences("eventId", eventId);
+        printInterfaceSentences("commandInstruction", commandInstruction);
+        printInterfaceBottomLine();
       }
 
       // Inquires for tasks.
@@ -316,17 +348,6 @@ void loop() {
         // RECEPCION DE LOS VALORES AL PUERTO SERIE.
         // -------------------------------------------------
 
-        //TODO: Controlar.
-        /*
-        printInterfaceSentence("Reading from serial port:");
-        while (MySerial.available()) {
-          int byteReceived = MySerial.read();
-          Serial.print(byteReceived, HEX);  // imprimir en hexadecimal
-        }
-        debugln();
-        printInterfaceSentence("Reading finished.");
-        */
-
         printInterfaceBottomLine();
       }
 
@@ -345,6 +366,7 @@ void loop() {
     // -------------------------------------------------
     responseCode = 0;
     responseData = "";
+
     callServer(responseCode, responseData);
 
     // If the response is OKAY.
@@ -434,6 +456,99 @@ bool initializeLittleFS() {
 
   return true;  // Return true if successfully mounted or formatted
 }
+
+
+// ---------------------------------------------
+// Asks the server for the Status Inquiry command for this specific projector.
+// This string is used to inquire lamp status of the projector.
+// ---------------------------------------------
+String getStatusInquiryCommand(){
+
+  // ---------------------------------------------
+  // PRELIMINARY VALIDATIONS
+  // ---------------------------------------------
+  /*
+  if (urlProjectors.length() == 0) {
+    printInterfaceSentence("ERROR: 'urlProjectors' is not set. Aborting request.");
+    return "";
+  }
+
+  if (urlFirebase.length() == 0) {
+    printInterfaceSentence("ERROR: 'urlFirebase' is not set. Aborting request.");
+    return "";
+  }
+
+  if (xClientId.length() == 0) {
+    printInterfaceSentence("ERROR: 'xClientId' is not set. Aborting request.");
+    return "";
+  }
+
+  if (WiFi.status() != WL_CONNECTED) {
+    printInterfaceSentence("ERROR: No WiFi connection. Aborting request.");
+    return "";
+  }*/
+
+  // ---------------------------------------------
+  // REQUEST SETUP
+  // ---------------------------------------------
+  HTTPClient http;  // HTTP client for the request.
+
+  // Reinicia las variables referenciadas.
+  String httpResponseData = "";
+  int httpResponseCode = 0;
+
+  /*String authToken = getJwt();*/
+
+  if (authToken.length() == 0)
+  {
+    printInterfaceSentence("ERROR: Cannot get JWT from the server");
+    return "";
+  }
+
+  String completeURL = urlProjectors + "/config-params?projectorClassroom=" + projectorClassroom;  // Configures the complete request URL.
+
+  printInterfaceSentence("Request details: ");
+  printInterfaceSentences("-- Server Address: ", urlProjectors);
+  printInterfaceSentences("-- Specific endpoint: ", "/config-params");
+  printInterfaceSentences("-- Projector ID: ", projectorClassroom);
+  printInterfaceSeparator();
+
+  http.begin(completeURL);                // uso temporal hasta que se pruebe el certificado.
+  //String bearer = "Bearer " + authToken;  // Authorization header.
+  //http.addHeader("Authorization", bearer);
+
+  httpResponseCode = http.GET();  // Send the request.
+
+  if (httpResponseCode >= 200 && httpResponseCode < 300) {
+
+    printInterfaceSentence("INQUIRY COMMAND: Response received.");
+
+    printInterfaceSentences("- HTTP Response Code:", String(httpResponseCode));
+
+    httpResponseData = http.getString();
+
+    if (httpResponseData.length() > 0) {
+
+      printInterfaceSentences("- Server Response:", String(httpResponseData));
+
+    } else {
+      printInterfaceSentence("WARNING: Received an empty response from the server.");
+    }
+
+  } else {
+    printInterfaceSentences("ERROR: HTTP request failed. Code: ", String(httpResponseCode));
+  }
+
+  http.end();  // Free memory resources.
+
+  printInterfaceSeparator();
+  printInterfaceSentence("INQUIRY COMMAND: Server inquiry process completed.");
+  printInterfaceBottomLine();
+
+  return httpResponseData;
+
+}
+
 
 // ---------------------------------------------
 // Initializes the SD card via SPI and checks for accessibility by opening its root directory.
@@ -866,11 +981,11 @@ void callServer(int& httpResponseCode, String& httpResponseData) {
     return;
   }
 
-  String completeURL = urlProjectors + "?projectorClassroom=" + projectorClassroom;  // Configures the complete request URL.
+  String completeURL = urlProjectors + "/server-events/?projectorClassroom=" + projectorClassroom;  // Configures the complete request URL.
 
   printInterfaceSentence("Request details: ");
   printInterfaceSentences("-- Server Address: ", urlProjectors);
-  printInterfaceSentences("-- Specific endpoint: ", "?projectorClassroom=");
+  printInterfaceSentences("-- Specific endpoint: ", "/server-events");
   printInterfaceSentences("-- Projector ID: ", projectorClassroom);
   printInterfaceSeparator();
 
