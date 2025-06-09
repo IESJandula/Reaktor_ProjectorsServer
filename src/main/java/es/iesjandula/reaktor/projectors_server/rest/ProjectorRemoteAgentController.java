@@ -171,8 +171,7 @@ public class ProjectorRemoteAgentController {
 	 * @throws ProjectorServerException If the projector is not found, if the command is invalid,
 	 *                                  or if the projector status could not be updated.
 	 */
-	// @PreAuthorize("hasAnyRole('" + BaseConstants.ROLE_ADMINISTRADOR + "', '" +
-	// BaseConstants.ROLE_CLIENTE_PROYECTOR + "')")
+	@PreAuthorize("hasAnyRole('" + BaseConstants.ROLE_ADMINISTRADOR + "', '" +  BaseConstants.ROLE_CLIENTE_PROYECTOR + "')")
 	@GetMapping(value = "/server-events")
 	public ResponseEntity<?> serveCommandToController(@RequestParam(required = true) String projectorClassroom,
 			@RequestParam(required = true) String projectorStatus) 
