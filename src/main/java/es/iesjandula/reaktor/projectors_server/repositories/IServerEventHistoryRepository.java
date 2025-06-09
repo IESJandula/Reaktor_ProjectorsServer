@@ -28,11 +28,12 @@ public interface IServerEventHistoryRepository extends JpaRepository<ServerEvent
 	 *                     events
 	 * @return a list of server events
 	 */
+	// TODO: Cambiar literal por referencia a constante.
 	@Query(
 			"""
 					SELECT seh FROM ServerEventHistory seh 
 					WHERE seh.classroom = :classroom 
-					AND seh.actionStatus = "PENDING" 
+					AND seh.actionStatus = "PENDIENTE" 
 					ORDER BY seh.dateTime DESC
 					""")
 	public List<ServerEventHistory> findRecentPendingServerEventsByClassroom( String classroom );
