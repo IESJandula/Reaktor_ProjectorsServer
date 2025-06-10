@@ -38,6 +38,15 @@ public class ICommandPaserImpl implements ICommandParser
     
 
 
+    public static String replaceEscapeSequences(String input) {
+    if (input.endsWith("\\r")) {
+        return input.substring(0, input.length() - 2) + "\r";
+    } else if (input.endsWith("\\n")) {
+        return input.substring(0, input.length() - 2) + "\n";
+    }
+    return input;
+    }
+
     /**
      * Parses commands from the given {@link Scanner} input and updates the database.
      *
@@ -101,8 +110,9 @@ public class ICommandPaserImpl implements ICommandParser
 				log.error(message);
 				throw new ProjectorServerException(499, message);
 			}
-                                    
 
+            command = replaceEscapeSequences(command);
+                                    
             // Generate a unique command ID
             CommandId currentCommandId = new CommandId();
             currentCommandId.setAction(actionName);
