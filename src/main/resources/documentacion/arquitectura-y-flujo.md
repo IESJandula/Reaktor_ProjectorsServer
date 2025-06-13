@@ -4,9 +4,9 @@
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
-      <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
+      <!-- <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td> -->
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
       <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
@@ -60,9 +60,9 @@ En el siguiente diagrama se representa el orden de operaciones en el flujo de tr
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
-      <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
+      <!-- <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td> -->
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
       <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>

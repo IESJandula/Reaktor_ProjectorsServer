@@ -4,10 +4,10 @@
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
-      <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
+      <!-- <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td> -->
       <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>
@@ -44,8 +44,9 @@ Este esquema simplificado permite gestionar proyectores de manera eficiente, ase
 
 <!-- ![imagen](https://github.com/user-attachments/assets/523b70d0-0418-48b6-a1b4-c2621059d7ef) -->
 
-![imagen](https://github.com/user-attachments/assets/d1f32038-b1ad-44b7-b6d2-f8507ed0724b)
-
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/d1f32038-b1ad-44b7-b6d2-f8507ed0724b" alt="esquema">
+</p>
 
 
 ---
@@ -159,10 +160,10 @@ Esta tabla actúa como una cola de eventos para gestionar la ejecución de accio
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
-      <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
+      <!-- <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td> -->
       <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>

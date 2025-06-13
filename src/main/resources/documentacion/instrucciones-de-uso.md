@@ -4,7 +4,7 @@
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
@@ -12,7 +12,7 @@
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>
       <td align="center"><a href="./codificacion.md">📟<br><strong>Codificación</strong></a></td>
-      <td align="center"><a href="./instrucciones-de-uso.md">📄<br><strong>Instrucciones</strong></a></td>
+      <!-- <td align="center"><a href="./instrucciones-de-uso.md">📄<br><strong>Instrucciones</strong></a></td> -->
     </tr>
   </table>
 
@@ -249,7 +249,7 @@ Escribir seccion de carga de datos.
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
@@ -257,7 +257,7 @@ Escribir seccion de carga de datos.
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>
       <td align="center"><a href="./codificacion.md">📟<br><strong>Codificación</strong></a></td>
-      <td align="center"><a href="./instrucciones-de-uso.md">📄<br><strong>Instrucciones</strong></a></td>
+      <!-- <td align="center"><a href="./instrucciones-de-uso.md">📄<br><strong>Instrucciones</strong></a></td> -->
     </tr>
   </table>
 

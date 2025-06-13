@@ -4,11 +4,11 @@
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
-      <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
+      <!-- <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td> -->
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>
       <td align="center"><a href="./codificacion.md">📟<br><strong>Codificación</strong></a></td>
@@ -82,6 +82,78 @@ Los agentes remotos (microcontroladores asociados a los proyectores) cuentan ún
 >Pincha en la imagen para ampliarla.</p>
     
 --- 
+
+## 🎥 Estados de los proyectores.
+En la aplicación, cada **proyector** puede encontrarse en uno de **cuatro estados posibles**. Dos de ellos reflejan el estado real del dispositivo, mientras que los otros dos son **pseudoestados**, utilizados para ofrecer una retroalimentación más precisa y en tiempo real al usuario durante la operación.   
+Los estados son los siguientes:
+
+- 🔴 **Apagado**: El proyector se encuentra apagado. Este estado se actualiza automáticamente a partir de la información proporcionada por los agentes remotos, que monitorean el estado real del dispositivo.
+
+- 🟠 **Apagando**: El proyector está en proceso de apagado. Aunque la orden aún no se ha ejecutado por completo, para el usuario se indica que el dispositivo está en transición hacia el estado de apagado.
+
+- 🟢 **Encendido**: El proyector se encuentra encendido. Esta información también es reportada por los agentes remotos que supervisan el estado operativo del dispositivo.
+
+- 🟡 **Encendiendo**: El proyector está en proceso de encendido. Aunque aún no se ha completado el encendido, este estado indica al usuario que la acción está en curso.
+
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/8d1b9d55-5e1c-4fa7-8e72-612578a663dd"/>
+</p>
+        
+Las transiciones entre estos estados pueden ser provocadas por **acciones del usuario** o por **actualizaciones de estado enviadas por un agente remoto**.
+
+---
+
+## 🔄 Transiciones de Estado
+
+### 🔵 Desde **Encendido**
+- 🔻 Pasa a **Apagando** 🟠 si un **usuario solicita apagar** el proyector.
+- 🔻 Pasa a **Apagado** 🔴 si un **agente remoto actualiza** el estado.
+- 🚫 **No puede** pasar a **Encendiendo** 🟡 directamente.
+    
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/5d3c8cfc-7b84-4fc9-8fdd-4ac009d482e0"/>
+</p>
+
+---
+
+### 🔴 Desde **Apagado** 🔴
+- 🔺 Pasa a **Encendiendo** 🔵   si un **usuario solicita encender** el proyector.
+- 🔺 Pasa a **Encendido** 🟢 si un **agente remoto actualiza** el estado.
+- 🚫 **No puede** pasar a **Apagando** 🟠 directamente.
+   
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/bc7e444e-999d-4fd6-9125-0840e0c6ccc7"/>
+</p>
+
+---
+
+### 🟠 Desde **Apagando** 🟠
+- 🔺 Pasa a **Encendiendo** 🔵  si un **usuario solicita encender** el proyector.
+- 🔁 Pasa a **Encendido** 🟢 si un **agente remoto actualiza** el estado.
+- 🔻 Pasa a **Apagado** 🔴 si un **agente remoto actualiza** el estado.
+    
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/4e0f3ddf-ecdc-4c80-b09f-8b0030fc687d"/>
+</p>
+
+---
+
+### 🟡 Desde **Encendiendo**
+- 🔻 Pasa a **Apagando** 🟠 si un **usuario solicita apagar** el proyector.
+- 🔻 Pasa a **Apagado** 🔴 si un **agente remoto actualiza** el estado.
+- 🔁 Pasa a **Encendido** 🟢 si un **agente remoto actualiza** el estado.
+
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/c5fbc2a1-651d-42d5-aa04-c89276e8edcb"/>
+</p>
+
+## Esquema de estados.
+<p align=center>
+  <img src="https://github.com/user-attachments/assets/b266897d-d488-4ae6-ad48-49c897f87edd"/>
+</p>
+    
+---
+
    
 <div align="center">
   <table border="1" cellpadding="10" cellspacing="0">
@@ -89,11 +161,11 @@ Los agentes remotos (microcontroladores asociados a los proyectores) cuentan ún
       <td colspan="9" align="center"><strong>📚 Navegación del Proyecto</strong></td>
     </tr>
     <tr>
-      <td align="center"><a href="./README.md">🏠<br><strong>Inicio</strong></a></td>
+      <td align="center"><a href="../../../../README.md">🏠<br><strong>Inicio</strong></a></td>
       <td align="center"><a href="./acerca-del-proyecto.md">ℹ️<br><strong>Acerca de</strong></a></td>
       <td align="center"><a href="./arquitectura-y-flujo.md">🛠️<br><strong>Arquitectura</strong></a></td>
       <td align="center"><a href="./esquema-y-tablas.md">🛢️<br><strong>Esquema BBDD</strong></a></td>
-      <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td>
+      <!-- <td align="center"><a href="./interfaz-grafica-y-roles.md">🎨<br><strong>Interfaz</strong></a></td> -->
       <td align="center"><a href="./api-rest.md">📡<br><strong>API REST</strong></a></td>
       <td align="center"><a href="./hardware-especial.md">🧰<br><strong>Hardware</strong></a></td>
       <td align="center"><a href="./codificacion.md">📟<br><strong>Codificación</strong></a></td>

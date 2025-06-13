@@ -50,11 +50,9 @@ Puedes encontrarme en <a href="https://www.linkedin.com/in/jason-david-gianmoena
 *Documentación e ilustraciones*   
 ![Markdown](https://img.shields.io/badge/markdown-000000.svg?style=for-the-badge&logo=markdown&logoColor=white) ![Photopea](https://img.shields.io/badge/Photopea-18A497?style=for-the-badge&logo=photopea&logoColor=white) ![Snappify](https://img.shields.io/badge/Snappify-9146FF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjZmZmIiB2aWV3Qm94PSIwIDAgMzIgMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTExLjEyIDIyLjA4YTEuNzEgMS43MSAwIDAgMS0xLjcyLTIuOTlsNy45LTQuNzVhMS43MiAxLjcyIDAgMCAxIDIuNTUgMS41NHY5LjVsLTcuOS00Ljc1eiIvPjxwYXRoIGQ9Ik0yMy42MyAxMC4zYTEuNzIgMS43MiAwIDAgMSAxLjcyIDIuOTlsLTcuOSAxLjc1YTEuNzEgMS43MSAwIDAgMS0yLjU1LTEuNTR2LTkuNWw3LjkgMS43NXoiLz48L3N2Zz4=&logoColor=white) ![Draw.io](https://img.shields.io/badge/Draw.io-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white)
 
-
-
 </div>
 
-<br/>
+<br/>src/main/resources/documentacion/acerca-del-proyecto.md
 <br/>
 
 ## 💡 Acerca de...
@@ -182,35 +180,35 @@ De esta forma, cualquier docente autorizado podrá controlar uno o varios proyec
 
 **ℹ️ Más información sobre el proyecto**  
 En esta sección se explica en detalle el propósito del proyecto, así como sus objetivos y componentes fundamentales.  
-🔹 [Ir a sección..](./acerca-del-proyecto.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/acerca-del-proyecto.md)
 
 **🛠️ Arquitectura general y flujo de operaciones**  
 Esta sección describe la arquitectura de la aplicación, así como el flujo lógico de operaciones que ocurre durante el funcionamiento normal de los agentes, el servidor y los clientes.  
-🔹 [Ir a sección..](./arquitectura-y-flujo.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/arquitectura-y-flujo.md)
 
 **🛢️ Esquema de base de datos y tablas**  
 Detalla el diseño del esquema de la base de datos, incluyendo la descripción de las tablas y sus relaciones.  
-🔹 [Ir a sección..](./esquema-y-tablas.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/esquema-y-tablas.md)
 
 **🎨 Interfaz gráfica de usuario (GUI)**  
 Describe y explica la interfaz gráfica de la aplicación, mostrando las vistas y detallando sus funcionalidades y características.  
-🔹 [Ir a sección..](./interfaz-grafica-y-roles.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/interfaz-grafica-y-roles.md)
 
 **📡 Documentación de la API – Gestión remota de proyectores**  
 Documenta los puntos de acceso de la API REST expuesta por el servidor Spring Boot para la gestión remota de proyectores.  
-🔹 [Ir a sección..](./api-rest.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/api-rest.md)
 
 **🧰 Hardware especial – Microcontroladores y módulos adicionales**  
 Describe el hardware especial utilizado en el proyecto, incluyendo sus fichas técnicas, la configuración de pines y los esquemas de conexión de los módulos integrados.  
-🔹 [Ir a sección..](./hardware-especial.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/hardware-especial.md)
 
 **📟 Codificación y diagramas de flujo**  
 En esta sección encontrarás explicaciones sobre las funciones contenidas en el fichero guión que configura el agente remoto asi como diagramas de flujo que ilustran su lógica.    
-🔹 [Ir a sección..](./codificacion.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/codificacion.md)
 
 **📄 Instrucciones y notas de uso**  
 En esta sección encontrarás instrucciones y notas importantes sobre cómo usar la aplicación y las reglas a seguir, tanto para su configuración inicial como para su uso en producción.  
-🔹 [Ir a sección..](./instrucciones-de-uso.md)
+🔹 [Ir a sección..](./src/main/resources/documentacion/instrucciones-de-uso.md)
 
 
 
