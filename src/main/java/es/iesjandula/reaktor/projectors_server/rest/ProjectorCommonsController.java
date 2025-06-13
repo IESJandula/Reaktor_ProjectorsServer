@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.aspectj.apache.bcel.classfile.ConstantString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -107,17 +108,13 @@ public class ProjectorCommonsController {
 		/* -------------- FORMING PROJECTOR ENTITY -------------- */
 
 		// Retrieve the projector entity using the primary key.
-		Optional<Projector> projectorOpt = this.projectorRepository.findById(classroom);
-
-		Projector projectorEntity = projectorOpt.orElseThrow(() -> {
-			String exceptionMessage = String.format("The projector model '{}' in classroom '{}' does not exist.", model,
-					classroom);
-			log.error(exceptionMessage);
-			return new ProjectorServerException(494, exceptionMessage);
+		Projector projectorEntity = this.projectorRepository.findById(classroom).orElseThrow(() -> {
+			return new ProjectorServerException(494,
+					String.format("The projector model '{}' in classroom '{}' does not exist.", model, classroom));
 		});
 
 		log.debug("PROJECTOR UNIT RETRIEVED: {}", projectorEntity);
-
+						
 		/* -------------------- END FORMING PROJECTOR ENTITY -------------------- */
 
 		/* -------------------- RETRIEVE COMMAND ENTITY -------------------- */
@@ -149,14 +146,34 @@ public class ProjectorCommonsController {
 
 		String user = userEmail;
 
-		// Set the default status of the event to pending from constants class.
-		String defaultStatus = Constants.EVENT_STATUS_PENDING;
-
+		// Default value of event status.
+		String eventStatus = Constants.EVENT_STATUS_PENDING;
+		
+		// Si el proyector está encendido y la orden es de encendido, ponerlo como ejecutado.
+		if ( projectorEntity.getStatus().equalsIgnoreCase(Constants.PROJECTOR_ON) || projectorEntity.getStatus().equalsIgnoreCase(Constants.PROJECTOR_TURNING_ON) )
+		{
+			if ( commandActionName.equalsIgnoreCase(Constants.TURN_ON_ACTION_NAME ) ) {
+				eventStatus = Constants.EVENT_STATUS_EXECUTED;
+			}
+			if ( commandActionName.equalsIgnoreCase(Constants.TURN_OFF_ACTION_NAME) ) {
+				projectorEntity.setStatus( Constants.PROJECTOR_TURNING_OFF );
+			}
+		}
+		else if (  projectorEntity.getStatus().equalsIgnoreCase(Constants.PROJECTOR_OFF) || projectorEntity.getStatus().equalsIgnoreCase(Constants.PROJECTOR_TURNING_OFF) )  
+		{
+			if ( commandActionName.equalsIgnoreCase(Constants.TURN_ON_ACTION_NAME) ) {
+				projectorEntity.setStatus( Constants.PROJECTOR_TURNING_ON );
+			}
+			if ( commandActionName.equalsIgnoreCase(Constants.TURN_OFF_ACTION_NAME) ) {
+				eventStatus = Constants.EVENT_STATUS_EXECUTED;
+			}
+		}
+				
 		// Create and populate the server event entity.
 		ServerEvent serverEventEntity = new ServerEvent();
 		serverEventEntity.setCommand(commandEntity);
 		serverEventEntity.setProjector(projectorEntity);
-		serverEventEntity.setActionStatus(defaultStatus);
+		serverEventEntity.setActionStatus(eventStatus);
 		serverEventEntity.setDateTime(dateTime);
 		serverEventEntity.setUser(user);
 
@@ -169,7 +186,7 @@ public class ProjectorCommonsController {
 	}
 
 	private ServerEventHistory createServerEventHistoryFromServerEntity(ServerEvent serverEvent) {
-
+		
 		ServerEventHistory serverEventHistory = new ServerEventHistory();
 
 		serverEventHistory.setModelName(serverEvent.getCommand().getModelName());
@@ -180,6 +197,8 @@ public class ProjectorCommonsController {
 		serverEventHistory.setUser(serverEvent.getUser());
 		serverEventHistory.setDateTime(serverEvent.getDateTime());
 		serverEventHistory.setActionStatus(serverEvent.getActionStatus());
+		
+		log.info("Status of the new historic record: {} ", serverEventHistory.getAction() );
 
 		return serverEventHistory;
 	}
@@ -278,7 +297,7 @@ public class ProjectorCommonsController {
 		try {
 			// Fetch the list of actions from the repository
 			List<ActionDto> actions = this.commandRepository.findActionsAsDto();
-						
+
 			// Remove ACK and ERROR and LAMP Status response codes.
 			actions.remove(new ActionDto(Constants.ACKNWOLEDGE_ACTION_NAME));
 			actions.remove(new ActionDto(Constants.ERROR_ACTION_NAME));

@@ -9,10 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import es.iesjandula.reaktor.projectors_server.dtos.SimplifiedServerEventDto;
 import es.iesjandula.reaktor.projectors_server.dtos.TableServerEventDto;
-import es.iesjandula.reaktor.projectors_server.entities.Projector;
-import es.iesjandula.reaktor.projectors_server.entities.ServerEvent;
 import es.iesjandula.reaktor.projectors_server.entities.ServerEventHistory;
 
 @Repository
