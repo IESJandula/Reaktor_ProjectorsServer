@@ -2580,3 +2580,383 @@ Projectors: PROJECTORS: Records saved: 2 - Records skipped: 0
 2025-06-13T03:52:07.204+02:00  INFO 1098892 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-06-13T03:52:07.205+02:00  INFO 1098892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-06-13T03:52:07.209+02:00  INFO 1098892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-13T04:21:12.492+02:00  INFO 1199691 --- [main] i.r.p.ReaktorProjectorsServerApplication : Starting ReaktorProjectorsServerApplication using Java 21.0.6 with PID 1199691 (/home/jaydee/Github/dependencias_reaktor/Reaktor_ProjectorsServer/target/classes started by jaydee in /home/jaydee/Github/dependencias_reaktor/Reaktor_ProjectorsServer)
+2025-06-13T04:21:12.494+02:00 DEBUG 1199691 --- [main] i.r.p.ReaktorProjectorsServerApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
+2025-06-13T04:21:12.495+02:00  INFO 1199691 --- [main] i.r.p.ReaktorProjectorsServerApplication : No active profile set, falling back to 1 default profile: "default"
+2025-06-13T04:21:12.849+02:00  INFO 1199691 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-13T04:21:12.888+02:00  INFO 1199691 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 4 JPA repository interfaces.
+2025-06-13T04:21:13.198+02:00  INFO 1199691 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-06-13T04:21:13.206+02:00  INFO 1199691 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-13T04:21:13.206+02:00  INFO 1199691 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-13T04:21:13.237+02:00  INFO 1199691 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-13T04:21:13.237+02:00  INFO 1199691 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 718 ms
+2025-06-13T04:21:13.307+02:00 DEBUG 1199691 --- [main] e.i.r.b.security.JwtRequestFilter        : Filter 'jwtRequestFilter' configured for use
+2025-06-13T04:21:13.376+02:00  INFO 1199691 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-13T04:21:13.399+02:00  INFO 1199691 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-13T04:21:13.416+02:00  INFO 1199691 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-13T04:21:13.529+02:00  INFO 1199691 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-13T04:21:13.541+02:00  INFO 1199691 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-13T04:21:13.742+02:00  INFO 1199691 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@24615687
+2025-06-13T04:21:13.743+02:00  INFO 1199691 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-13T04:21:14.261+02:00  INFO 1199691 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-13T04:21:15.107+02:00  INFO 1199691 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-13T04:21:15.258+02:00  INFO 1199691 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-13T04:21:15.727+02:00  INFO 1199691 --- [main] e.i.r.base.jar_update.JarUpdateService   : La ruta original del JAR es /home/jaydee/Github/dependencias_reaktor/Reaktor_Base/target/classes/
+2025-06-13T04:21:15.727+02:00  INFO 1199691 --- [main] e.i.r.base.jar_update.JarUpdateService   : El JAR está ubicado en /home/jaydee/Github/dependencias_reaktor/Reaktor_Base/target/classes/
+2025-06-13T04:21:15.728+02:00  INFO 1199691 --- [main] e.i.r.base.jar_update.JarUpdateService   : Última modificación del JAR en el tiempo 1749485364741
+2025-06-13T04:21:15.736+02:00  WARN 1199691 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-13T04:21:15.896+02:00  INFO 1199691 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48dad22b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@144ad1f5, org.springframework.security.web.context.SecurityContextHolderFilter@46710018, org.springframework.security.web.header.HeaderWriterFilter@6aee292d, org.springframework.web.filter.CorsFilter@78eee5fc, org.springframework.security.web.authentication.logout.LogoutFilter@309eb3a1, es.iesjandula.reaktor.base_server.security.JwtRequestFilter@3281dfc2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72aa6a00, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ff66a81, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1880dbb2, org.springframework.security.web.session.SessionManagementFilter@25a93e0f, org.springframework.security.web.access.ExceptionTranslationFilter@79b7aebc, org.springframework.security.web.access.intercept.AuthorizationFilter@1eb85e83]
+2025-06-13T04:21:15.992+02:00  INFO 1199691 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8086 (http) with context path ''
+2025-06-13T04:21:15.998+02:00  INFO 1199691 --- [main] i.r.p.ReaktorProjectorsServerApplication : Started ReaktorProjectorsServerApplication in 3.819 seconds (process running for 4.011)
+2025-06-13T04:21:17.454+02:00  INFO 1199911 --- [main] i.r.p.ReaktorProjectorsServerApplication : Starting ReaktorProjectorsServerApplication using Java 21.0.6 with PID 1199911 (/home/jaydee/Github/dependencias_reaktor/Reaktor_ProjectorsServer/target/classes started by jaydee in /home/jaydee/Github/dependencias_reaktor/Reaktor_ProjectorsServer)
+2025-06-13T04:21:17.455+02:00 DEBUG 1199911 --- [main] i.r.p.ReaktorProjectorsServerApplication : Running with Spring Boot v3.2.3, Spring v6.1.4
+2025-06-13T04:21:17.456+02:00  INFO 1199911 --- [main] i.r.p.ReaktorProjectorsServerApplication : No active profile set, falling back to 1 default profile: "default"
+2025-06-13T04:21:17.837+02:00  INFO 1199911 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-13T04:21:17.877+02:00  INFO 1199911 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 4 JPA repository interfaces.
+2025-06-13T04:21:18.188+02:00  INFO 1199911 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8086 (http)
+2025-06-13T04:21:18.197+02:00  INFO 1199911 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-06-13T04:21:18.197+02:00  INFO 1199911 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2025-06-13T04:21:18.230+02:00  INFO 1199911 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-06-13T04:21:18.230+02:00  INFO 1199911 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 749 ms
+2025-06-13T04:21:18.305+02:00 DEBUG 1199911 --- [main] e.i.r.b.security.JwtRequestFilter        : Filter 'jwtRequestFilter' configured for use
+2025-06-13T04:21:18.382+02:00  INFO 1199911 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-13T04:21:18.410+02:00  INFO 1199911 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2025-06-13T04:21:18.427+02:00  INFO 1199911 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-06-13T04:21:18.553+02:00  INFO 1199911 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-13T04:21:18.567+02:00  INFO 1199911 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-06-13T04:21:18.781+02:00  INFO 1199911 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d825dbe
+2025-06-13T04:21:18.782+02:00  INFO 1199911 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-06-13T04:21:19.274+02:00  INFO 1199911 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-13T04:21:20.060+02:00  INFO 1199911 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-13T04:21:20.195+02:00  INFO 1199911 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-13T04:21:20.701+02:00  INFO 1199911 --- [main] e.i.r.base.jar_update.JarUpdateService   : La ruta original del JAR es /home/jaydee/Github/dependencias_reaktor/Reaktor_Base/target/classes/
+2025-06-13T04:21:20.701+02:00  INFO 1199911 --- [main] e.i.r.base.jar_update.JarUpdateService   : El JAR está ubicado en /home/jaydee/Github/dependencias_reaktor/Reaktor_Base/target/classes/
+2025-06-13T04:21:20.701+02:00  INFO 1199911 --- [main] e.i.r.base.jar_update.JarUpdateService   : Última modificación del JAR en el tiempo 1749485364741
+2025-06-13T04:21:20.709+02:00  WARN 1199911 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-13T04:21:20.865+02:00  INFO 1199911 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@22448db4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1eb85e83, org.springframework.security.web.context.SecurityContextHolderFilter@7c9be48a, org.springframework.security.web.header.HeaderWriterFilter@687d4471, org.springframework.web.filter.CorsFilter@303b9e6e, org.springframework.security.web.authentication.logout.LogoutFilter@4a3d0660, es.iesjandula.reaktor.base_server.security.JwtRequestFilter@51efb731, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c829699, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@656d078b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e75cf7c, org.springframework.security.web.session.SessionManagementFilter@a1a7e28, org.springframework.security.web.access.ExceptionTranslationFilter@5290b819, org.springframework.security.web.access.intercept.AuthorizationFilter@467f47f8]
+2025-06-13T04:21:20.956+02:00  WARN 1199911 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-06-13T04:21:20.958+02:00  INFO 1199911 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-13T04:21:20.959+02:00  INFO 1199911 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-13T04:21:20.963+02:00  INFO 1199911 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-06-13T04:21:20.970+02:00  INFO 1199911 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-06-13T04:21:20.977+02:00 ERROR 1199911 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:291) ~[spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:471) ~[spring-context-6.1.4.jar:6.1.4]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:260) ~[spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:205) ~[spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:978) ~[spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.1.4.jar:6.1.4]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343) ~[spring-boot-3.2.3.jar:3.2.3]
+	at es.iesjandula.reaktor.projectors_server.ReaktorProjectorsServerApplication.main(ReaktorProjectorsServerApplication.java:14) ~[classes/:na]
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat server
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:249) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.web.servlet.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:44) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:288) ~[spring-context-6.1.4.jar:6.1.4]
+	... 13 common frames omitted
+Caused by: java.lang.IllegalArgumentException: standardService.connector.startFailed
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:235) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.addPreviouslyRemovedConnectors(TomcatWebServer.java:306) ~[spring-boot-3.2.3.jar:3.2.3]
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start(TomcatWebServer.java:234) ~[spring-boot-3.2.3.jar:3.2.3]
+	... 15 common frames omitted
+Caused by: org.apache.catalina.LifecycleException: Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1046) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:171) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:232) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	... 17 common frames omitted
+Caused by: java.net.BindException: La dirección ya se está usando
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.bind(Net.java:565) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:344) ~[na:na]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:301) ~[na:na]
+	at org.apache.tomcat.util.net.NioEndpoint.initServerSocket(NioEndpoint.java:247) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:202) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.AbstractEndpoint.bindWithCleanup(AbstractEndpoint.java:1282) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:1368) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:635) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1043) ~[tomcat-embed-core-10.1.19.jar:10.1.19]
+	... 19 common frames omitted
+
+2025-06-13T04:22:14.867+02:00  INFO 1199691 --- [http-nio-8086-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-13T04:22:14.867+02:00  INFO 1199691 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-06-13T04:22:14.868+02:00  INFO 1199691 --- [http-nio-8086-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-06-13T04:22:14.926+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:14.927+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:14.926+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/actions' received.
+2025-06-13T04:22:14.938+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:22:14.938+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:14.954+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:22:14.954+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:22:14.954+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:22:14.954+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:22:14.955+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:22:14.955+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:22:14.955+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:22:14.955+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:22:14.955+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:22:14.972+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 action(s).
+2025-06-13T04:22:14.972+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 0 floor(s).
+2025-06-13T04:22:14.972+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:14.972+02:00  WARN 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : No floors found in the database.
+2025-06-13T04:22:14.972+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 0 projectors.
+2025-06-13T04:22:14.972+02:00 DEBUG 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:0
+2025-06-13T04:22:14.979+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:14.979+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:14.981+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 0 floor(s).
+2025-06-13T04:22:14.982+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:14.982+02:00  WARN 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorCommonsController  : No floors found in the database.
+2025-06-13T04:22:27.812+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:27.812+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:27.812+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:27.814+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:27.815+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:22:27.815+02:00 DEBUG 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:27.816+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:27.816+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 0 floor(s).
+2025-06-13T04:22:27.816+02:00  WARN 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : No floors found in the database.
+2025-06-13T04:22:27.816+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:27.818+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:27.818+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 0 projectors.
+2025-06-13T04:22:27.825+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorAdminController    : GET request for '/general-overview' received.
+2025-06-13T04:22:27.825+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : GET request for '/events-overview' received.
+2025-06-13T04:22:27.825+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-06-13T04:22:27.826+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : POST request for '/commands-page' received with modelName: null, action: null
+2025-06-13T04:22:27.828+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved page 0 of actions, total pages: 0.
+2025-06-13T04:22:27.829+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved commands page.
+2025-06-13T04:22:27.833+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:27.833+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:27.834+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:27.834+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 0 floor(s).
+2025-06-13T04:22:27.835+02:00  WARN 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : No floors found in the database.
+2025-06-13T04:22:27.839+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : ServerEventOverviewDto(errorEvents=0, canceledEvents=0, pendingEvents=0, deliveredEvents=0, completedEvents=0)
+2025-06-13T04:22:27.839+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:27.840+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 0 projector models from the database.
+2025-06-13T04:22:34.238+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : POST request for '/parse-multifile' received.
+2025-06-13T04:22:34.239+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Processing 'projectors.csv' file.
+2025-06-13T04:22:34.240+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Validation file method called for file projectorsFile
+2025-06-13T04:22:34.240+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : CSV file validation successful.
+2025-06-13T04:22:34.240+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : Projector parsing process initiated.
+2025-06-13T04:22:34.241+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : ---------------------------- PROJECTOR ENTITY 0 -------------------------------------------
+2025-06-13T04:22:34.249+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : Projector in classroom '0.01' not present in the database. Saving record now.
+2025-06-13T04:22:34.249+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : Projector unit with model 'Acer X1228H' in classroom '0.01' successfully added to save list.
+2025-06-13T04:22:34.250+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : ---------------------------- PROJECTOR ENTITY 1 -------------------------------------------
+2025-06-13T04:22:34.251+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : Projector in classroom '1.02' not present in the database. Saving record now.
+2025-06-13T04:22:34.251+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : Projector unit with model 'Acer X1228H' in classroom '1.02' successfully added to save list.
+2025-06-13T04:22:34.274+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.IProjectorParserImpl     : PROJECTORS: Records saved: 2 - Records skipped: 0
+2025-06-13T04:22:34.274+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Processing 'commands.csv' file.
+2025-06-13T04:22:34.274+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Validation file method called for file commandsFile
+2025-06-13T04:22:34.274+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : CSV file validation successful.
+2025-06-13T04:22:34.274+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Commands parsing process initiated.
+2025-06-13T04:22:34.275+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.275+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command '* 0 IR 001'.
+2025-06-13T04:22:34.278+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=ENCENDER)' not present in DB, saving now.
+2025-06-13T04:22:34.288+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.288+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command '* 0 IR 002'.
+2025-06-13T04:22:34.289+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=APAGAR)' not present in DB, saving now.
+2025-06-13T04:22:34.292+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.292+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command '*000'.
+2025-06-13T04:22:34.293+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=ACK)' not present in DB, saving now.
+2025-06-13T04:22:34.296+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.296+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command '*001'.
+2025-06-13T04:22:34.297+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=ERR)' not present in DB, saving now.
+2025-06-13T04:22:34.300+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.300+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command 'Lamp 1'.
+2025-06-13T04:22:34.301+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=LAMP_ON)' not present in DB, saving now.
+2025-06-13T04:22:34.305+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.306+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command 'Lamp 0'.
+2025-06-13T04:22:34.310+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=LAMP_OFF)' not present in DB, saving now.
+2025-06-13T04:22:34.314+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : -----------------------------------------------------------------------
+2025-06-13T04:22:34.314+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Parsing command '* 0 Lamp ?'.
+2025-06-13T04:22:34.315+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : Command with ID 'CommandId(modelName=Acer X1228H, action=STATUS_INQUIRY)' not present in DB, saving now.
+2025-06-13T04:22:34.319+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.parsers.ICommandPaserImpl        : COMMANDS: Records saved: 7 - Records skipped: 0
+2025-06-13T04:22:34.319+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorAdminController    : Commands: COMMANDS: Records saved: 7 - Records skipped: 0
+Projectors: PROJECTORS: Records saved: 2 - Records skipped: 0
+2025-06-13T04:22:34.338+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : GET request for '/general-overview' received.
+2025-06-13T04:22:34.338+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorAdminController    : GET request for '/events-overview' received.
+2025-06-13T04:22:34.338+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:34.338+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : POST request for '/actions-page' received with pagination: page=0, size=5.
+2025-06-13T04:22:34.338+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : POST request for '/commands-page' received with modelName: null, action: null
+2025-06-13T04:22:34.339+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:22:34.339+02:00 DEBUG 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:34.341+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:22:34.345+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved page 0 of actions, total pages: 2.
+2025-06-13T04:22:34.345+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:22:34.346+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved commands page.
+2025-06-13T04:22:34.347+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorAdminController    : ServerEventOverviewDto(errorEvents=0, canceledEvents=0, pendingEvents=0, deliveredEvents=0, completedEvents=0)
+2025-06-13T04:22:34.361+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:34.361+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:34.361+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:34.362+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:22:34.363+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:22:34.363+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:22:46.150+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:46.150+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:46.150+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/actions' received.
+2025-06-13T04:22:46.150+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:22:46.150+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:22:46.151+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:46.151+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:22:46.151+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:22:46.155+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:22:46.155+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:22:46.156+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:22:46.156+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 2 action(s).
+2025-06-13T04:22:46.156+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:22:46.158+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:22:46.158+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:0
+2025-06-13T04:22:52.739+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/classrooms' received with floor parameter 'Planta 1'.
+2025-06-13T04:22:52.739+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:52.739+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:52.743+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 classroom(s) for floor 'Planta 1'.
+2025-06-13T04:22:52.743+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 1 projectors.
+2025-06-13T04:22:52.748+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/classrooms' received with floor parameter 'Planta 1'.
+2025-06-13T04:22:52.750+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 classroom(s) for floor 'Planta 1'.
+2025-06-13T04:22:53.978+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/classrooms' received with floor parameter 'Planta Baja'.
+2025-06-13T04:22:53.979+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:53.979+02:00 DEBUG 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:53.982+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 1 projectors.
+2025-06-13T04:22:53.982+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 classroom(s) for floor 'Planta Baja'.
+2025-06-13T04:22:53.987+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/classrooms' received with floor parameter 'Planta Baja'.
+2025-06-13T04:22:53.990+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 classroom(s) for floor 'Planta Baja'.
+2025-06-13T04:22:54.710+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:54.710+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:54.713+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 1 projectors.
+2025-06-13T04:22:55.564+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:55.565+02:00 DEBUG 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:55.568+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 1 projectors.
+2025-06-13T04:22:56.444+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:56.444+02:00 DEBUG 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:56.447+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 0 projectors.
+2025-06-13T04:22:57.004+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/classrooms' received with floor parameter 'default'.
+2025-06-13T04:22:57.005+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:22:57.005+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:22:57.007+02:00  WARN 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : No classrooms found for floor 'default'.
+2025-06-13T04:22:57.007+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:23:07.421+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : POST request for /server-events-batch received
+2025-06-13T04:23:07.422+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Creating 'ENCENDER' event for projector 'Acer X1228H' in classroom '1.02'.
+2025-06-13T04:23:07.428+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : PROJECTOR UNIT RETRIEVED: Projector{classroom='1.02', floor='Planta 1', model='Acer X1228H'}
+2025-06-13T04:23:07.430+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : COMMAND RETRIEVED: Command{modelName='Acer X1228H', action='ENCENDER', command='* 0 IR 001'}
+2025-06-13T04:23:07.431+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Server event successfully created for projector 'Acer X1228H', action 'ENCENDER', in classroom '1.02' for user 'davjasg@gmail.com'.
+2025-06-13T04:23:07.431+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Status of the new historic record: ENCENDER 
+2025-06-13T04:23:07.431+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Creating and saving 1 server events to the database, including history table.
+2025-06-13T04:23:07.472+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : 1 server events successfully created and saved to the database.
+2025-06-13T04:23:07.489+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:23:07.489+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: floor
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:23:07.489+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:23:07.490+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:23:07.490+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:23:07.492+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:23:07.494+02:00 DEBUG 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:1
+2025-06-13T04:23:10.417+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:23:10.417+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:23:10.420+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:1
+2025-06-13T04:23:53.653+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:23:53.653+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/actions' received.
+2025-06-13T04:23:53.653+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:23:53.653+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:23:53.653+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:23:53.653+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:23:53.656+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:1
+2025-06-13T04:23:53.656+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:23:53.656+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:23:53.656+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:23:53.656+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 2 action(s).
+2025-06-13T04:23:53.663+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:23:53.663+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:23:53.665+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:23:53.665+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:23:57.868+02:00 DEBUG 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : POST request for /server-events-batch received
+2025-06-13T04:23:57.868+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Creating 'APAGAR' event for projector 'Acer X1228H' in classroom '1.02'.
+2025-06-13T04:23:57.870+02:00 DEBUG 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : PROJECTOR UNIT RETRIEVED: Projector{classroom='1.02', floor='Planta 1', model='Acer X1228H'}
+2025-06-13T04:23:57.871+02:00 DEBUG 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : COMMAND RETRIEVED: Command{modelName='Acer X1228H', action='APAGAR', command='* 0 IR 002'}
+2025-06-13T04:23:57.871+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Server event successfully created for projector 'Acer X1228H', action 'APAGAR', in classroom '1.02' for user 'davjasg@gmail.com'.
+2025-06-13T04:23:57.871+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Status of the new historic record: APAGAR 
+2025-06-13T04:23:57.871+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Creating and saving 1 server events to the database, including history table.
+2025-06-13T04:23:57.898+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : 1 server events successfully created and saved to the database.
+2025-06-13T04:23:57.916+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:23:57.916+02:00  INFO 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:23:57.916+02:00 DEBUG 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:23:57.916+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:23:57.916+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:23:57.916+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:23:57.916+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:23:57.917+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:23:57.917+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:23:57.917+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:23:57.917+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:23:57.920+02:00 DEBUG 1199691 --- [http-nio-8086-exec-7] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:2
+2025-06-13T04:23:57.920+02:00  INFO 1199691 --- [http-nio-8086-exec-4] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:23:59.616+02:00  INFO 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:23:59.616+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:23:59.620+02:00 DEBUG 1199691 --- [http-nio-8086-exec-8] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:2
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/actions' received.
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/floors' received.
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : POST request for '/server-events' received.
+2025-06-13T04:24:09.973+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : GET request received for '/projectors' with criteria: default
+2025-06-13T04:24:09.973+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Classroom: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : Applying default ordering by floor and classroom.
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Floor: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Model: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : getActionStatus: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : getActionName: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : getEventId: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : getUser: null
+2025-06-13T04:24:09.974+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : getDateTime: null
+2025-06-13T04:24:09.976+02:00  INFO 1199691 --- [http-nio-8086-exec-6] e.i.r.p.rest.ProjectorAdminController    : Successfully retrieved 2 projectors.
+2025-06-13T04:24:09.976+02:00  INFO 1199691 --- [http-nio-8086-exec-10] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 2 action(s).
+2025-06-13T04:24:09.976+02:00  INFO 1199691 --- [http-nio-8086-exec-2] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:24:09.976+02:00  INFO 1199691 --- [http-nio-8086-exec-3] e.i.r.p.rest.ProjectorCommonsController  : Retrieved 2 floor(s).
+2025-06-13T04:24:09.976+02:00  INFO 1199691 --- [http-nio-8086-exec-1] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:24:09.978+02:00 DEBUG 1199691 --- [http-nio-8086-exec-9] e.i.r.p.rest.ProjectorCommonsController  : Recuperados:2
+2025-06-13T04:24:09.979+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : GET request for '/projector-models' received.
+2025-06-13T04:24:09.980+02:00  INFO 1199691 --- [http-nio-8086-exec-5] e.i.r.p.rest.ProjectorCommonsController  : Successfully retrieved 1 projector models from the database.
+2025-06-13T04:25:33.826+02:00  INFO 1199691 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-13T04:25:33.827+02:00  INFO 1199691 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-06-13T04:25:33.831+02:00  INFO 1199691 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

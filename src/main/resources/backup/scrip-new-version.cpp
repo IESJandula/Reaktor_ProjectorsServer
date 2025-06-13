@@ -83,19 +83,18 @@ bool localClassroomFileExists = false;
 bool sdClassroomFileExists = false;
 String lampStatusInquireCommand = "";
 String lampStatus = "";
+
 // ---------------------------------------------
 // Handled events variables.
 // ---------------------------------------------
-String lastEventId;
-String lastCommandInstruction;
 String eventId;
 String commandInstruction;
 
 // ---------------------------------------------
 // HTTP Response variables.
 // ---------------------------------------------
-String responseData;  // Stores the response data.
-int responseCode;     // Stores the response code.
+String responseData;  // Stores the HTTP response data.
+int responseCode;     // Stores the HTTP response code.
 
 // ---------------------------------------------
 // LittleFS and SDFS variables.
@@ -145,14 +144,10 @@ void setup() {
   // -------------------------------
   littleFSInitialized = initializeLittleFS();
 
-  delay(200);
-
   // -------------------------------
   // Initialize SD Card
   // -------------------------------
   sdCardInitialized = initializeSDCard();
-
-  delay(200);
 
   // If the SD Card is initialized then procceed to file comparisons.
   if (sdCardInitialized) {
@@ -172,37 +167,25 @@ void setup() {
     digitalWrite(sdFSLed, LOW);
   }
 
-  delay(200);
-
   // -------------------------------
   // Load configuration from files.
   // -------------------------------
 
-  delay(200);
-
   // Loads the configuration stored in the file of the local FS.
   loadConfigFromFile(wifiConfigFilePath);
 
-  delay(200);
-
   // Loads the projector identification string in the file of the local FS
   loadProjectorInfoFromFile(projectorClassroomFilePath);
-
-  delay(200);
 
   // -------------------------------
   // Connect to WiFi
   // -------------------------------
   connectToWifi();
 
-  delay(200);
-
   // -------------------------------
   // Configure device RTC block (needs network)
   // -------------------------------
   syncTimeToNtpServer();
-
-  delay(200);
 
   // -------------------------------
   // Initializing RS232 port.
@@ -216,9 +199,7 @@ void setup() {
   getLampStatusInquiryCommand();
 
   // Initial lamp status inquiry for first task request params.
-  getProjectorStatus();  // ---------------------------------------------------------------------------------------  TODO comprobar si aqui la recoge con el proyector.
-
-
+  getProjectorStatus();
 
   // -------------------------------
   // End of Setup
@@ -228,21 +209,29 @@ void setup() {
 // ---------------------------------------------
 // Loop Function (Runs Continuously)
 // ---------------------------------------------
-void loop() {
-  // Listen for serial input to trigger a reboot
 
-  // If the board is in debug mode, it will wait for instructions and display debug messages..
+void loop() {
+
+  // If the board is in RUNMODE 1 mode, it will wait for instructions and display debug messages..
   if (RUNMODE == 1) {
+
     if (Serial.available()) {
+
       char received = Serial.read();
 
-      // Order to reboot the board.
+      // -------------------------------------------------
+      // Reinicia la placa
+      // -------------------------------------------------
       if (received == 'r') {
         printInterfaceSentenceBox("Rebooting now...");
         esp_restart();
       }
 
-      // Prints the stored values of all the variables.
+      // -------------------------------------------------
+      // Imprime todos los valores de las variables globales.
+      // Útil para verificar que las asignaciones iniciales sean correctas
+      // o que la función de consulta al servidor esté recuperando datos correctamente.
+      // -------------------------------------------------
       if (received == 'v') {
         printInterfaceTitle("SHOWING STORED VARIABLES VALUES.");
         printInterfaceSentences("WifiSSID - ", WifiSSID);
@@ -258,7 +247,13 @@ void loop() {
         printInterfaceBottomLine();
       }
 
-      // Inquires for tasks.
+
+      // -------------------------------------------------
+      // Fuerza la llamada al servidor para recuperar tareas asignadas a esta unidad.
+      // Permite depurar las distintas operaciones realizadas y configura, entre otras,
+      // la variable global `eventId` usada para la depuracion de actualizacion de registros
+      // de evento.
+      // -------------------------------------------------
       if (received == 't') {
 
         // -------------------------------------------------
@@ -270,8 +265,7 @@ void loop() {
         responseCode = 0;
         responseData = "";
 
-        getProjectorStatus();  // Recovers the lamp status.  // ----------------------------------------------------------   obtener el estado TODO
-        //lampStatus = "Lamp 1";  // -------------------------------------------------------------------------------------------  BORRAR
+        getProjectorStatus();  // Recovers the lamp status.
 
         printInterfaceSentences("Lamp current status: ", lampStatus);
 
@@ -293,10 +287,6 @@ void loop() {
           commandInstruction = "UNSET";  // Reinicia valores.
           commandInstruction = getValueFromString(responseData, "commandInstruction");
 
-          // -------------------------------------------------
-          // CONVERSION DE CADENA A ARRAY HEXA
-          // -------------------------------------------------
-
           if (commandInstruction.length() > 0) {
 
             // -------------------------------------------------
@@ -310,45 +300,66 @@ void loop() {
             // -------------------------------------------------
             // Actualización del registro en BBDD con el resultado de la respuestaOrden.
             // -------------------------------------------------
-            updateEvent(eventId, deviceResponseCode);
-            //updateEvent(eventId, "*000");
 
+            updateEvent(eventId, deviceResponseCode);
 
           } else {
+
             printInterfaceSentence("WARNING: Code 200 but no valid instruction received.");
+
           }
         }
 
         if (responseCode != 200) {
+
           printInterfaceSentence("WARNING: HTTP Response code: " + String(responseCode));
+
         }
+        // Debug interface.
         printInterfaceBottomLine();
+
       }
 
+      // -------------------------------------------------
+      // Fuerza la actualización del último evento con un código específico.
+      // Este código puede variar según el dispositivo y no está destinado a ser fijo.
+      // La finalidad de esta función es facilitar la depuración de la interacción
+      // entre el microcontrolador y el servidor, utilizando comandos específicos
+      // para el endpoint de actualización de registros de eventos.
+      // NOTA: El eventId depende de la logica de depuracion atada a 'if (received == 't')'
+      // -------------------------------------------------
       if (received == 'u') {
+
+        // Codigo "OKAY" de proyector ACER
         updateEvent(eventId, "*000");
+
       }
+
+      // -------------------------------------------------
+      // Opción para consultar el estado de la lámpara del proyector.
+      // Utiliza el comando obtenido del servidor durante la fase de inicialización,
+      // permite verificar la respuesta y el comportamiento del proyector ante dicha consulta.
+      // Su propósito es facilitar el proceso de depuración y validación del sistema.
+      // -------------------------------------------------
       if (received == 'l') {
         getProjectorStatus();
         debugln(lampStatus);
       }
     }
+
   }
   // -------------------------------------------------
   // Block that runs when the board is NOT in DEBUG mode.
   // -------------------------------------------------
   else {
-    // -------------------------------------------------
-    // FORCE SEND REQUEST TO SERVER
-    // -------------------------------------------------
+
     printInterfaceTitle("Inquiring for tasks...");
 
     // Reset the variables.
     responseCode = 0;
     responseData = "";
 
-    getProjectorStatus();  // Recovers the lamp status.  // ----------------------------------------------------------   obtener el estado TODO
-    //lampStatus = "Lamp 1";  // -------------------------------------------------------------------------------------------  BORRAR
+    getProjectorStatus();  // Recovers the lamp status.
 
     printInterfaceSentences("Lamp current status: ", lampStatus);
 
@@ -370,10 +381,6 @@ void loop() {
       commandInstruction = "UNSET";  // Reinicia valores.
       commandInstruction = getValueFromString(responseData, "commandInstruction");
 
-      // -------------------------------------------------
-      // CONVERSION DE CADENA A ARRAY HEXA
-      // -------------------------------------------------
-
       if (commandInstruction.length() > 0) {
 
         // -------------------------------------------------
@@ -385,11 +392,10 @@ void loop() {
         deviceResponseCode = writeToSerialPort(commandInstruction);  // Importante recibir en formato texto. No hexadecimal.
 
         // -------------------------------------------------
-        // Actualización del registro en BBDD con el resultado de la respuestaOrden.
+        // Actualización del registro en BBDD con el resultado de la respuesta Orden.
         // -------------------------------------------------
-        updateEvent(eventId, deviceResponseCode);
-        //updateEvent(eventId, "*000");
 
+        updateEvent(eventId, deviceResponseCode);
 
       } else {
         printInterfaceSentence("WARNING: Code 200 but no valid instruction received.");
@@ -443,8 +449,6 @@ bool initializeLittleFS() {
 
   printInterfaceSentence("SUCCESS: LittleFS mounted successfully.");
   digitalWrite(littleFSLed, HIGH);  // Turn on LittleFS LED
-
-
 
   printInterfaceBottomLine();
 
@@ -515,8 +519,6 @@ String getConfigParamsFromServer() {
   printInterfaceSentences("-- Specific endpoint: ", "/config-params");
   printInterfaceSentences("-- Projector ID: ", projectorClassroom);
   printInterfaceSeparator();
-
-  //http.begin(completeURL);
 
   // Llamada a funcion que intenta varias veces la conexión controlando resultado.
   if (!beginWithRetry(http, completeURL)) {
@@ -994,10 +996,6 @@ unsigned long readTimestampFromFile(String filePath) {
 String writeToSerialPort(String instruction) {
   instruction = replaceEndingNewline(instruction);
 
-  /*while (MySerial.available()) {
-    Serial.println("Discarding bytes: " + MySerial.readStringUntil('\r'));
-  }*/
-
   // Condición de guardia para la comunicacion.
   while (!MySerial.availableForWrite()) {
     Serial.println("W: not ready yet");
@@ -1007,10 +1005,9 @@ String writeToSerialPort(String instruction) {
   // Envía la instrucción recibida en formato cadena..
   MySerial.write(instruction.c_str());
 
-  //Leer respuesta a la instruccion ACK / ERR-REF
+  // Retorna la respuesta en su formato de cadena.
   return readFromSerialPort();
 }
-
 
 // ---------------------------------------------
 // Waits until data is available on the MySerial port, then
@@ -1030,6 +1027,7 @@ String readFromSerialPort() {
 // status, waits for a response, and stores the result.
 // ---------------------------------------------
 void getProjectorStatus() {
+
   // Sends the "lamp status?" instruction.
   writeToSerialPort(lampStatusInquireCommand);
 
@@ -1037,11 +1035,14 @@ void getProjectorStatus() {
   lampStatus = readFromSerialPort();
 
   // En caso de no recibir respuesta dentro del tiempo límite.
-  if (lampStatus == "") {
-    Serial.println("ERROR: No response from the projector.");
+  if (lampStatus == "")
+  {
+    printInterfaceSentence("ERROR: No response from the projector.");
     return;
-  } else {
-    Serial.println("Estado de la lampara: " + lampStatus);
+  }
+  else
+  {
+    printInterfaceSentences("Estado de la lampara: ", lampStatus);
   }
 }
 
@@ -1110,8 +1111,6 @@ void callServer(int& httpResponseCode, String& httpResponseData) {
   printInterfaceSentences("-- Projector ID: ", projectorClassroom);
   printInterfaceSentences("-- Projector Status: ", lampStatus);
   printInterfaceSeparator();
-
-  //http.begin(completeURL);  ------------------------------------------------------------------------------ Sostituido a favor de un mecanismo con 5 reintentos de conexion.
 
   // Llamada a funcion que intenta varias veces la conexión.
   if (!beginWithRetry(http, completeURL)) {
@@ -1346,7 +1345,14 @@ String getResponseValue(String text, String key) {
   return text.substring(startIndex, endIndex);
 }
 
-// ------- TEST
+// -------------------------------------------------
+// Extrae el valor asociado a una clave específica dentro de un string con formato JSON simple.
+// Parámetros:
+// - data: cadena con datos en formato JSON (ej. {"clave":"valor"})
+// - key: clave cuyo valor se desea recuperar
+//
+// Nota: Esta función es adecuada para estructuras JSON simples y SIN ANIDAMIENTO.
+// -------------------------------------------------
 String getValueFromString(const String& data, const String& key) {
   int keyPos = data.indexOf("\"" + key + "\":");
   if (keyPos == -1) return "CLAVE NO ENCONTRADA";
@@ -1448,8 +1454,19 @@ void printInterfaceSentenceBox(String sentence) {
   printInterfaceBottomLine();
 }
 
-// TODO Esta funcion solo está aqui para resolver temporalmente el problema de como se reciben las strings desde el backend.
-// La idea seria no tener que usar esta funcion, que puede crear problemas. Observar el comportamiento del endpoint a la hora de servir los comandos al microcontrolador.
+// -------------------------------------------------
+// TODO: Esta función es una solución temporal para corregir cómo se reciben
+// las cadenas desde el backend, específicamente cuando los caracteres de fin
+// de línea se representan como secuencias escapadas ("\\n" o "\\r").
+//
+// Reemplaza las secuencias "\\n" o "\\r" al final de la cadena por sus
+// caracteres reales ('\n' o '\r').
+//
+// Idealmente, esta función no debería ser necesaria si el backend formatea
+// correctamente los comandos. Se recomienda observar y revisar el comportamiento
+// del endpoint que entrega comandos al microcontrolador para evitar depender
+// de esta corrección manual.
+// -------------------------------------------------
 String replaceEndingNewline(String input) {
 
 
