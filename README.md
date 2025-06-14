@@ -52,7 +52,7 @@ Puedes encontrarme en <a href="https://www.linkedin.com/in/jason-david-gianmoena
 
 </div>
 
-<br/>src/main/resources/documentacion/acerca-del-proyecto.md
+<br/>
 <br/>
 
 ## 💡 Acerca de...
