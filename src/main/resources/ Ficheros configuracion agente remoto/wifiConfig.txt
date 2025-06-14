@@ -1,3 +1,4 @@
 SSID=nombreRed
 PASSWORD=contraseñaRed
-SERVER=http://192.168.1.100:8086/projectors
+URL_PROJECTORS=http://192.168.1.100:8086/projectors
+URL_FIREBASE=http://192.168.1.100:8083/firebase/token/app
