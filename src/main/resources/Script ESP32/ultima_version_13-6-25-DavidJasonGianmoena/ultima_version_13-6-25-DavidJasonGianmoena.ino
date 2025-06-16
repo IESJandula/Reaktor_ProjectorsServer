@@ -785,6 +785,9 @@ void connectToWifi() {
   printInterfaceSentence("INFO: Connecting to WiFi...");
   debug("│ ");
 
+  WifiSSID = "Andared_IoT";
+  WifiPassword = "";
+
   // Conectar sin password mediante filtrado mac.
   if (WifiPassword.length() == 0) {
     WiFi.begin(WifiSSID.c_str());
@@ -994,6 +997,7 @@ unsigned long readTimestampFromFile(String filePath) {
 // Funcion que escribe una cadena al puerto serie.
 // ---------------------------------------------
 String writeToSerialPort(String instruction) {
+
   instruction = replaceEndingNewline(instruction);
 
   // Condición de guardia para la comunicacion.
@@ -1014,10 +1018,12 @@ String writeToSerialPort(String instruction) {
 // reads and returns the incoming string until a carriage return.
 // ---------------------------------------------
 String readFromSerialPort() {
+
   while (!MySerial.available()) {
     Serial.println("R: not ready yet");
     delay(WAIT_TIME);
   }
+
   return MySerial.readStringUntil('\r');
 }
 
@@ -1471,8 +1477,16 @@ String replaceEndingNewline(String input) {
 
 
   if (input.endsWith("\\n")) {
-    input = input.substring(0, input.length() - 3) + '\n';  // Elimina "\\n" y añade '\r'
+    debugln( "Cambia \\n por \n" );
+    input = input.substring(0, input.length() - 2) + '\n';  // Elimina "\\n" y añade '\r'
   } else if (input.endsWith("\\r")) {
+    debugln( "Caso R-A : Cambia '\\r' por '\r'" );
+    input = input.substring(0, input.length() - 2) + '\r';  // Elimina "\\n" y añade '\r'
+  } else if (input.endsWith("\\\n")) {
+    debugln( "Cambia \\\n por \n" );
+    input = input.substring(0, input.length() - 3) + '\r';  // Elimina "\\n" y añade '\r'
+  } else if (input.endsWith("\\\r")) {
+    debugln( "Caso R-B : Cambia '\\\r' por '\r'" );
     input = input.substring(0, input.length() - 3) + '\r';  // Elimina "\\n" y añade '\r'
   }
 
