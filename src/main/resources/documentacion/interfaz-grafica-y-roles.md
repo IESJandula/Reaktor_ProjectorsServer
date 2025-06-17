@@ -57,11 +57,11 @@ Los agentes remotos (microcontroladores asociados a los proyectores) cuentan ún
       </td>
       <td style="text-align: center; vertical-align: top;">Administrador<br/>Usuario</td>
       <td style="text-align: center;">
-        <a href="https://github.com/user-attachments/assets/8f888cc9-3110-4461-a947-c005eeef7761" target="_blank">
-          <img src="https://github.com/user-attachments/assets/8f888cc9-3110-4461-a947-c005eeef7761" alt="Control Remoto">
+        <a href="https://github.com/user-attachments/assets/0bfa32ae-2771-4b4c-ac0d-2c54afe61c08" target="_blank">
+          <img src="https://github.com/user-attachments/assets/0bfa32ae-2771-4b4c-ac0d-2c54afe61c08" alt="Control Remoto">
         </a>
       </td>
-    </tr>
+    </tr>    
     <!-- Administración -->
     <tr>
       <td style="padding: 10px; vertical-align: top;">
@@ -70,14 +70,14 @@ Los agentes remotos (microcontroladores asociados a los proyectores) cuentan ún
       </td>
       <td style="text-align: center; vertical-align: top;">Administrador</td>
       <td style="text-align: center;">
-        <a href="https://github.com/user-attachments/assets/ee8d4575-7c86-4abe-bd53-643ff9048670" target="_blank">
-          <img src="https://github.com/user-attachments/assets/ee8d4575-7c86-4abe-bd53-643ff9048670" alt="Administración">
+        <a href="https://github.com/user-attachments/assets/6424556c-013c-4cb4-9eda-1474585af597" target="_blank">
+          <img src="https://github.com/user-attachments/assets/6424556c-013c-4cb4-9eda-1474585af597" alt="Administración">
         </a>
       </td>
     </tr>
   </tbody>
 </table>
-   
+
 >[!TIP]
 >Pincha en la imagen para ampliarla.</p>
     
@@ -96,7 +96,7 @@ Los estados son los siguientes:
 - 🟡 **Encendiendo**: El proyector está en proceso de encendido. Aunque aún no se ha completado el encendido, este estado indica al usuario que la acción está en curso.
 
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/8d1b9d55-5e1c-4fa7-8e72-612578a663dd"/>
+  <img src="https://github.com/user-attachments/assets/0baadd8f-c539-4130-b7a5-b6da42b770c9"/>
 </p>
         
 Las transiciones entre estos estados pueden ser provocadas por **acciones del usuario** o por **actualizaciones de estado enviadas por un agente remoto**.
@@ -111,8 +111,9 @@ Las transiciones entre estos estados pueden ser provocadas por **acciones del us
 - 🚫 **No puede** pasar a **Encendiendo** 🟡 directamente.
     
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/5d3c8cfc-7b84-4fc9-8fdd-4ac009d482e0"/>
+  <img src="https://github.com/user-attachments/assets/7683ddaf-2141-43bd-acfe-170dbe808993"/>
 </p>
+
 
 ---
 
@@ -122,8 +123,9 @@ Las transiciones entre estos estados pueden ser provocadas por **acciones del us
 - 🚫 **No puede** pasar a **Apagando** 🟠 directamente.
    
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/bc7e444e-999d-4fd6-9125-0840e0c6ccc7"/>
+  <img src="https://github.com/user-attachments/assets/74abd5f8-5cd0-4f1d-b7af-282f37ac0de7"/>
 </p>
+
 
 ---
 
@@ -133,28 +135,29 @@ Las transiciones entre estos estados pueden ser provocadas por **acciones del us
 - 🔻 Pasa a **Apagado** 🔴 si un **agente remoto actualiza** el estado.
     
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/4e0f3ddf-ecdc-4c80-b09f-8b0030fc687d"/>
+  <img src="https://github.com/user-attachments/assets/91c58d2c-3d02-40a8-ae8e-5455ea5faf7e"/>
 </p>
 
 ---
-
+   
 ### 🟡 Desde **Encendiendo**
 - 🔻 Pasa a **Apagando** 🟠 si un **usuario solicita apagar** el proyector.
 - 🔻 Pasa a **Apagado** 🔴 si un **agente remoto actualiza** el estado.
 - 🔁 Pasa a **Encendido** 🟢 si un **agente remoto actualiza** el estado.
 
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/c5fbc2a1-651d-42d5-aa04-c89276e8edcb"/>
+  <img src="https://github.com/user-attachments/assets/23fefdf8-95c4-4db2-853f-9ddee160018b"/>
 </p>
 
 ## Esquema de estados.
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/b266897d-d488-4ae6-ad48-49c897f87edd"/>
+  <img src="https://github.com/user-attachments/assets/419958dc-c25e-4b2f-a583-83906fbaedfe"/>
 </p>
     
 ---
 
    
+
 <div align="center">
   <table border="1" cellpadding="10" cellspacing="0">
     <tr>

@@ -29,15 +29,16 @@ En esta sección se describe el sistema de información utilizado en el proyecto
 Aunque este diseño inicial no es el que finalmente se ha implementado, sirve para entender el funcionamiento general del sistema, el cual luego se simplificó en el modelo que se describe a continuación.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/afabca63-7e8b-44a2-9f1a-52c682dd4ab7" alt="esquema">
+  <img src="https://github.com/user-attachments/assets/0e37aeba-51e3-4c59-903f-68bcbd58eef6" alt="esquema">
 </p>
+
 
 **Diseño final simplificado**.    
 Este esquema simplificado permite gestionar proyectores de manera eficiente, asegurando un control centralizado y un historial detallado de las acciones realizadas. 
     
 <p align="center">
   <!-- img src="https://github.com/user-attachments/assets/8a23f8fd-33fc-410b-a67b-321d6bb740e7" alt="esquema" -->
-   <img src="https://github.com/user-attachments/assets/fb395e7f-1bce-4257-94a9-b37ee9aa9ea6" alt="esquema">
+   <img src="https://github.com/user-attachments/assets/b9eebb74-2036-4f3f-bfa7-cc04de6f223f" alt="esquema">
 </p>
 
 <!-- ![image](https://github.com/user-attachments/assets/f0f5a0a9-de9e-4274-9b68-e391594e61f7)  -->
@@ -45,15 +46,16 @@ Este esquema simplificado permite gestionar proyectores de manera eficiente, ase
 <!-- ![imagen](https://github.com/user-attachments/assets/523b70d0-0418-48b6-a1b4-c2621059d7ef) -->
 
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/d1f32038-b1ad-44b7-b6d2-f8507ed0724b" alt="esquema">
+   <img src="https://github.com/user-attachments/assets/793aa620-2bff-41f8-a476-3cc2e3bb97f2" alt="esquema">
 </p>
 
 
 ---
 <a name="tablas"></a> 
 ## :card_index: **Tabla `Projector`**  
-<img width=240px src="https://github.com/user-attachments/assets/0e458134-ac0c-4830-b1ef-1e426030550e" alt="proyectores" align="right">
-    
+<img width=240px src="https://github.com/user-attachments/assets/0894fe4c-384a-4b6f-a4f2-d4b5c7f75935" alt="proyectores" align="right">
+
+
 Representa una unidad física de proyector dentro del centro educativo.  
 
 ### **Campos:**  
@@ -71,7 +73,8 @@ Cada aula tiene un solo proyector, identificado de manera única por el aula don
 ---
 
 ## :card_index: **Tabla `Command`**  
-<img width=240px src="https://github.com/user-attachments/assets/40cea64f-8e3f-467f-97e3-e24458399989" alt="comandos" align="right">
+<img width=240px src="https://github.com/user-attachments/assets/fbc6e04d-dd92-46ba-b1a0-830a2c83531c" alt="comandos" align="right">
+
 
 Almacena las instrucciones necesarias para interactuar con los proyectores.  
 
@@ -89,7 +92,9 @@ Permite mapear cada modelo de proyector con sus respectivas acciones y las instr
 ---
 
 ## :card_index: **Tabla `ServerEvent`**  
-<img width=240px src="https://github.com/user-attachments/assets/a787179b-b319-43ba-8ec6-31c13243227b" alt="eventos" align="right">
+<img width=240px src="https://github.com/user-attachments/assets/e929b8eb-5102-45a3-9e39-fbef32651582" alt="eventos" align="right">
+
+
 
 
 Registra las solicitudes de los usuarios para ejecutar comandos sobre los proyectores. 
@@ -120,7 +125,8 @@ Los eventos que el servidor gestiona pueden darse en 5 posibles estados distinto
 ---
 
 ## :card_index: **Tabla `ServerEventHistory`**  
-<img width=240px src="https://github.com/user-attachments/assets/4ee8c396-4d07-48e3-aff4-f6d067a64e2d" alt="historial" align="right">
+<img width=240px src="https://github.com/user-attachments/assets/f03140a5-af3b-4550-acf1-39f3859cec70" alt="historial" align="right">
+
 
 
 Almacena las ordenes que son servidas a los agentes remotos. Es la tabla que contiene los registros que realmente cuentan.

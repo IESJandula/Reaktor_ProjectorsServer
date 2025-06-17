@@ -32,9 +32,8 @@ Para solucionar estos problemas, surge la necesidad de implementar un sistema de
 
 <br/>
    
-<!-- ![image](https://github.com/user-attachments/assets/f63f3abd-5990-4926-be60-a3fbe36e410d) -->
+![454596296-f3ff5cdf-d5f6-40ef-8f32-79f4095c8fc1](https://github.com/user-attachments/assets/1b2b12c5-25fe-47c1-94ed-262035c8f825)
 
-![order](https://github.com/user-attachments/assets/f3ff5cdf-d5f6-40ef-8f32-79f4095c8fc1)
 
 
 <br/>
@@ -62,14 +61,14 @@ El proyecto proporcionará una plataforma central con acceso limitado desde la c
 
 ## Funcionamiento general.
 
-<img src="https://github.com/user-attachments/assets/f1638125-b231-42a0-b0b4-7ee2a07666b2" alt="usuario" width="80px" align="right">
+<img src="https://github.com/user-attachments/assets/84572c1c-3dee-4434-871e-6e8360f8310b" alt="usuario" width="80px" align="right">
 
 **1. Interacción del Usuario.**    
 A través de la interfaz web, los usuarios podrán enviar órdenes para encender o apagar los proyectores registrados en la base de datos. Podrán decidir si seleccionar una o más unidades fisicas a las que hacer llegar la orden.   
     
 <hr style="border:1px solid gray">
          
-<img src="https://github.com/user-attachments/assets/b064e986-b389-418f-bb04-7e73a1241b4c" alt="usuario" width="80px" align="right">
+<img src="https://github.com/user-attachments/assets/db47f6bf-03bf-4516-adad-64f6158c717d" alt="usuario" width="80px" align="right">
 
 **2. Procesamiento en el Servidor.**   
 El servidor Spring Boot recibirá las solicitudes y verificará los permisos del usuario.     
@@ -78,9 +77,7 @@ Si la solicitud es válida, almacenará la orden en la base de datos para su pos
     
 <hr style="border: 1px solid #ccc;"/>
 
-    
-
-<img src="https://github.com/user-attachments/assets/8057fa84-2b9f-40ef-9284-a7779deb14ab" alt="usuario" width="80px" align="right">
+<img src="https://github.com/user-attachments/assets/3b4ab769-8221-4381-9a90-b37e3f16dc60" alt="usuario" width="80px" align="right">
 
 **3. Ejecución por el Microcontrolador.**    
 El ESP32 (Agente Remoto) consultará periódicamente la base de datos del servidor.   

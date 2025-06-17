@@ -54,7 +54,7 @@ Es crucial configurar el esquema de particiones correctamente para asignar la ca
     <tr>
         <td>Microcontroller</td>
         <td>Módulo ESP-WROOM-32</td>
-        <td rowspan="9"><img src="https://github.com/user-attachments/assets/7a27f529-b2a2-4130-9c9a-a6fa5d1f1406" alt="ESP32 Front View"></td>
+        <td rowspan="9"><img src="https://github.com/user-attachments/assets/17732a67-d9db-47c0-9ead-fc7bd8eff491" alt="ESP32 Front View"></td>
     </tr>
     <tr>
         <td>USB to Serial Port Chip</td>
@@ -91,7 +91,7 @@ Es crucial configurar el esquema de particiones correctamente para asignar la ca
     <tr>
         <td>Bluetooth Protocol</td>
         <td>Compatible con Bluetooth v4.2 BR/EDR y BLE</td>
-        <td rowspan="8"><img src="https://github.com/user-attachments/assets/ded84c16-4fc8-44f1-9782-d8fbb186db21" alt="ESP32 Back View"></td>
+        <td rowspan="8"><img src="https://github.com/user-attachments/assets/4d3349cd-b3d4-45a8-bab4-227740ad6cc4" alt="ESP32 Back View"></td>
     </tr>
     <tr>
         <td>Dimensions</td>
@@ -123,7 +123,8 @@ Es crucial configurar el esquema de particiones correctamente para asignar la ca
     </tr>
 </table>
 
-![imagen](https://github.com/user-attachments/assets/7390d1e3-e9a5-4d1f-b9ea-9e96863f41ca)
+![esp32-3](https://github.com/user-attachments/assets/537fba61-dddf-40d8-9208-e241640659c6)
+
     
 ---
        
@@ -137,7 +138,7 @@ Estos protocolos operan a diferentes niveles de voltaje y requieren conversión 
 El convertidor RS232 a TTL ajusta los niveles de voltaje de las señales RS232 a niveles compatibles con TTL y viceversa, permitiendo la comunicación fiable entre dispositivos con diferentes estándares.
 
 <p>
-     <img align="right" src="https://github.com/user-attachments/assets/2f611e96-63cf-4b75-9c10-582fe3969af4">
+     <img align="right" src="https://github.com/user-attachments/assets/4635d40f-f65b-44bd-b3d4-b8afb6883a32">
 </p>
 
 ### Diferencias entre RS232 y TTL:
@@ -161,11 +162,11 @@ El convertidor RS232 a TTL ajusta los niveles de voltaje de las señales RS232 a
 > [!Note]  
 > Mi unidad específica cuenta con un chip **MAX3232 ESE+2416**, encargado de convertir los niveles de voltaje entre RS232 y TTL, garantizando una comunicación fiable con el proyector.  
 > La distribución de pines en mi unidad se puede observar en la siguiente imagen:
-   
-![rs232](https://github.com/user-attachments/assets/2f9f8a77-e7d4-4c15-86b1-3b8c20906e02)
-   
-![rs232](https://github.com/user-attachments/assets/3cce1348-7e50-454f-9153-d7c20fea84fa)
+               
+![chip](https://github.com/user-attachments/assets/18052efa-c014-4dff-93ec-4bbfb43f436a)
     
+![esquema](https://github.com/user-attachments/assets/465b6907-d478-4ba9-a93c-c1303eee4239)
+       
 ---
     
 <a name="microsd"></a> 
@@ -194,8 +195,8 @@ Este módulo es un **LC Technology MicroSD Module**, ampliamente utilizado y con
   <tr>
     <td>3V3</td>
     <td>3.3V</td>
-    <td rowspan="6"><img src="https://github.com/user-attachments/assets/2d517703-273e-46cf-9843-b3f56b074c7a" alt="Image 1" width="300"></td>
-    <td rowspan="6"><img src="https://github.com/user-attachments/assets/b9d3420f-26ef-4e08-9700-2a3ea5d3ee13" alt="Image 2" width="300"></td>
+    <td rowspan="6"><img src="https://github.com/user-attachments/assets/41568d07-13eb-443f-a92c-1ac9ad1c4ac6" alt="Image 1" width="300"></td>
+    <td rowspan="6"><img src="https://github.com/user-attachments/assets/af3a52af-9c32-4bd6-ad6d-5d8b495a8b01" alt="Image 2" width="300"></td> 
   </tr>
   <tr>
     <td>CS</td>
@@ -231,7 +232,7 @@ A continuación se muestra el esquema de conexión de los elementos conectados a
                Para enviar una señal desde un ESP32 a un dispositivo RS232, es necesario hacer coincidir la configuración de comunicación (velocidad en baudios, bits de datos, bits de parada) y asegurar que el la conexión a pines sea correcta. Dado que el ESP32 utiliza lógica de 3.3V y el RS232 utiliza niveles de voltaje más altos (±12V), debemos usar un convertidor de nivel o un convertidor de RS232 a TTL (como un <strong>MAX3232</strong>) para conectar ambos de forma segura y evitar dañar el ESP32.
           </td>
           <td width="250px">  <sub><p>Pincha para agrandar.</p><sub>
-               <img align="right" src="https://github.com/user-attachments/assets/ee8df342-79c8-4e29-a25b-4f374f9fa3a2">
+               <img align="right" src="https://github.com/user-attachments/assets/f08674ce-c8dc-4a93-8d4f-a79314bc8c20"> 
           </td>
      </tr>
 </table>
@@ -246,7 +247,7 @@ A continuación se muestra el esquema de conexión de los elementos conectados a
 El módulo lector de tarjetas Micro SD se comunica utilizando el protocolo de comunicación SPI ( Serial Peripheral Interface ). Podemos conectarlo a nuestro microcontrolador utilizando los pines por defecto destinados a este protocolo.
           </td>
           <td width="250px">  <sub><p>Pincha para agrandar.</p><sub>
-               <img align="right" src="https://github.com/user-attachments/assets/57df47df-abae-4b8a-8825-c4d553268a1f">
+               <img align="right" src="https://github.com/user-attachments/assets/c488b350-65be-4294-a506-e0e07d8dc975">
           </td>
      </tr>
 </table>
@@ -274,7 +275,7 @@ En la versión final del programa, se han integrado cuatro LEDs con las siguient
 - LED Blanco: Permanece encendido mientras la tarjeta SD está siendo utilizada por el microcontrolador.
           </td>
           <td width="250px">  <sub><p>Pincha para agrandar.</p><sub>
-               <img align="right" src="https://github.com/user-attachments/assets/3fdcecec-5e09-48f7-acdf-073bc1d6f3a1">
+               <img align="right" src="https://github.com/user-attachments/assets/ff4e3973-bdaf-48bc-9474-8f55aae5e10d">
           </td>
      </tr>
 </table>
@@ -314,7 +315,8 @@ Los pines predeterminados para UART2 en el ESP32 son:
 >Estos son los pines comúnmente utilizados para la comunicación UART2 en muchas placas ESP32 por defecto. Si estás utilizando un conjunto diferente de pines o los has reasignado, asegúrate de actualizar los números de pin correspondientes en el código.
 
 **Imagen de referencia**   
-![pinsOfInterestRS232](https://github.com/user-attachments/assets/b5001e0c-9e99-4562-a08e-230bf7694dca)
+![imagen](https://github.com/user-attachments/assets/f5e290c6-09f0-4418-a6c0-c1e344073d99)
+
 
 <!-- ![imagen](https://github.com/user-attachments/assets/7390d1e3-e9a5-4d1f-b9ea-9e96863f41ca) -->
 
@@ -396,7 +398,8 @@ Estos módulos cambiarán los niveles de voltaje de manera segura.
 >[!TIP]
 >En mi caso, usaré un MAX232. Para verificar tu propio chip, inspecciona tu módulo, encuentra el chip instalado y toma nota de su nombre.
 >
->![imagen](https://github.com/user-attachments/assets/f043ed6b-b8a6-4fc0-8619-04fa217aed6c)
+>![imagen](https://github.com/user-attachments/assets/da927185-3360-427b-ab42-9c3e8934e7b9)
+
 
 ##### 🔸 ¿Qué hace el MAX232?
 
@@ -414,7 +417,8 @@ El MAX232 se utiliza para convertir niveles de voltaje entre los estándares de 
 Después de identificar los pines para transmisión y recepción de datos, podemos proceder a cablear el transceptor a la placa ESP32.
 Para conectar correctamente, consulta las anotaciones en el módulo. **`TX`** significa Transmisión y **`RX`** significa Recepción.
 
-![srs232](https://github.com/user-attachments/assets/3cce1348-7e50-454f-9153-d7c20fea84fa)
+![imagen](https://github.com/user-attachments/assets/95e4f071-f0d4-437b-9637-a6cba21907cb)
+
 
 >[!TIP]
 >El esquema de colores común es el representado en la imagen.
@@ -425,7 +429,8 @@ Para conectar correctamente, consulta las anotaciones en el módulo. **`TX`** si
 
 Conecta los cables a los pines designados según los pasos anteriores. En total, hay cuatro conexiones que deben realizarse: `+3.3v`, `GND`, `TX` y `RX`.
 
-![circuito](https://github.com/user-attachments/assets/ee62e48a-1c9b-4037-a5cf-2968279c8803)
+![esquema-correcto](https://github.com/user-attachments/assets/08451e24-6b00-4e0f-b24d-cc2a70df1687)
+
 
 ### 📍 2 - Configurar la variable en el programa.
 
@@ -546,7 +551,8 @@ Estos códigos de color ayudan a distinguir las señales SPI, facilitando la con
 | MISO           | GPIO 19     | 🟡 AMARILLO |
 | GND            | GND         | ⚫ NEGRO    |
 
-![Circuito MicroSD](https://github.com/user-attachments/assets/1e3681d9-4a9f-4154-be5e-87181af45af2)
+![Circuito MicroSD](https://github.com/user-attachments/assets/8922959b-d381-4846-a985-f4fc7bc228b5)
+
 
 ### 📍 2 - Definición de pines
 Define las conexiones en el programa usando sustituciones de texto:
@@ -871,7 +877,7 @@ El IDE de Arduino incluye varios ejemplos que muestran cómo manejar archivos en
    ```
 </details> 
 
-    
+     
 --- 
    
 <div align="center">

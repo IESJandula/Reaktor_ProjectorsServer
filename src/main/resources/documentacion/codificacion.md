@@ -158,9 +158,9 @@ void setup() {
 }
 ```
 </details>
-
->[!CAUTION]
->POR REPRESENTAR
+    
+![imagen](https://github.com/user-attachments/assets/6cebb9fd-1d1f-4f2c-95e8-c0f623987828)
+    
     
 ---
     
@@ -371,10 +371,14 @@ void loop() {
 </details>
 
 ### Loop en modo de Pruebas (RUNMODE == 1)
-![imagen](https://github.com/user-attachments/assets/f0f24be1-01db-4d11-a287-f9e3bca67d89)
+![imagen](https://github.com/user-attachments/assets/3a653bdb-8f1d-49c1-ae18-a68be8e44d68)
+
 
 ### Loop en modo de producción (RUNMODE == 0)
-![imagen](https://github.com/user-attachments/assets/432f637d-1270-497a-a5dc-79f9807cdea6)
+![imagen](https://github.com/user-attachments/assets/00390528-2413-456c-ac10-624ba0f035f6)
+
+### Loop - Representación completa.
+![Proyecto nuevo(2)](https://github.com/user-attachments/assets/e4d62ae6-c8fa-4dc1-a491-ba72f96882d5)
 
     
 ---
@@ -410,7 +414,8 @@ bool beginWithRetry(HTTPClient& http, const String& url, int maxRetries = 5) {
 }
 ```
 
-![beginWithRetries](https://github.com/user-attachments/assets/18aa91a4-c0e6-4dea-a692-db73357c94c5)
+![beginWithRetries](https://github.com/user-attachments/assets/1409af1f-b651-48fc-be1a-34dd5dd7f49f)
+
 
     
 ---
@@ -463,7 +468,8 @@ bool initializeLittleFS() {
 ```
 
 
-![initializeLittleFS](https://github.com/user-attachments/assets/c837ccba-d5f5-47f1-8db2-958db3ac0292)
+![initializeLittleFS](https://github.com/user-attachments/assets/ac2496df-2d3b-41ec-8616-472c347c5e6c)
+
     
 ---
     
@@ -604,7 +610,7 @@ String getConfigParamsFromServer() {
 
 <!-- ![getConfigParamsFromServer](https://github.com/user-attachments/assets/9eb52863-4c57-4778-bc63-99515a1af00b) -->
 
-![getConfigParamsFromServer](https://github.com/user-attachments/assets/45655030-65dc-4895-b91b-04d4cb5087fb)
+![getConfigParamsFromServer](https://github.com/user-attachments/assets/b05ab30b-3556-421c-a1cc-cd44b3a16bb0)
 
     
 ---
@@ -661,7 +667,7 @@ void getLampStatusInquiryCommand() {
 }
 ```
    
-![getLampStatusInquiryCommand](https://github.com/user-attachments/assets/a77f9cb1-51cf-4ff4-b71e-7608ec7e60e0)
+![getLampStatusInquiryCommand](https://github.com/user-attachments/assets/cc541e78-b25e-4271-b8da-7e95da6ae4da)
        
 ---
     
@@ -722,8 +728,8 @@ bool initializeSDCard() {
 
 ```
 
-![initializeSdCard](https://github.com/user-attachments/assets/a703dbd3-976a-41f0-8916-253b415809a1)
-    
+![initializeSdCard](https://github.com/user-attachments/assets/95c2ced6-870d-4aff-be08-e9e849d1ef21)
+
 ---
     
 ## 📌 void compareAndCopy(String filePath, String metadataFilePath, String fileName)
@@ -829,7 +835,8 @@ void compareAndCopy(String filePath, String metadataFilePath, String fileName) {
 }
 ```
    
-![compareAndCopy](https://github.com/user-attachments/assets/b602249c-39f8-4e1d-b19b-e2ddaee7fc60)
+![compareAndCopy](https://github.com/user-attachments/assets/eb9a43bb-7d06-44a4-9353-8cd4cb14835e)
+
     
 ---
     
@@ -881,7 +888,8 @@ void loadConfigFromFile(String configFilePath) {
 }
 ```
 
-![loadConfigFromFile](https://github.com/user-attachments/assets/66c38e3a-9556-490d-b9c8-e1ffc18c6cf6)
+![loadConfigFromFile](https://github.com/user-attachments/assets/9757046c-7696-4592-a970-a31acbcb6bdc)
+
     
 ---
     
@@ -922,7 +930,8 @@ void loadProjectorInfoFromFile(String projectorFilePath) {
 }
 ```
    
-![loadProjectorInfoFromFile](https://github.com/user-attachments/assets/32155565-ada4-43b9-9db7-32beb1113e0b)
+![loadProjectorInfoFromFile](https://github.com/user-attachments/assets/5e882c2f-a146-45c8-a053-bbfaa88994a5)
+
        
 ---
     
@@ -992,7 +1001,8 @@ void connectToWifi() {
 }
 ```
 
-![connectToWifi](https://github.com/user-attachments/assets/73f2e1a9-aa19-4712-85c4-d9515d5b01f2)
+![connectToWifi](https://github.com/user-attachments/assets/c534cc0f-736e-426d-8cd1-425ec77c7c1e)
+
     
 ---
     
@@ -1032,7 +1042,8 @@ void setFileContentToStringVariable(String& variable, const String& filePath, co
 }
 ```
 
-![setFileContentToStringVariable](https://github.com/user-attachments/assets/56481fd6-dd5f-4baf-8a17-b0e4c891c758)
+![setFileContentToStringVariable](https://github.com/user-attachments/assets/e0970c74-71ad-4316-ac54-9e7e9b753ba4)
+
     
 ---
     
@@ -1084,7 +1095,8 @@ void syncTimeToNtpServer() {
 }
 ```
 
-![syncTimeToNtp](https://github.com/user-attachments/assets/cb38f930-6b49-469d-8001-ad50baf807cb)
+![syncTimeToNtp](https://github.com/user-attachments/assets/3759787c-0596-4e2e-96aa-991e2cc7f9dd)
+
     
 ---
     
@@ -1150,7 +1162,8 @@ void copyFileFromSDToLocalFS(String filePath, String metadataFilePath, String fi
 }
 ```
     
-![copyFileFromSDToLocalFS](https://github.com/user-attachments/assets/c3598d5c-df40-4a30-b204-5d73ab9fe74b)
+![copyFileFromSDToLocalFS](https://github.com/user-attachments/assets/595b012a-cb35-4571-9890-90184e266e96)
+
     
 ---
     
@@ -1190,7 +1203,8 @@ void writeTimestampToFile(unsigned long timestamp, String filePath) {
 }
 ```
     
-![writeTimestampToFile](https://github.com/user-attachments/assets/d805b2d6-d0e3-4e1c-ae55-e52668db003c)
+![writeTimestampToFile](https://github.com/user-attachments/assets/efa25c8f-3b48-4eb5-bdc2-651a44ef9107)
+
        
 ## 📌 String getTimestampAsDate(unsigned long timestamp) 
 Esta función convierte un timestamp UNIX en una cadena de texto con formato de fecha y hora legible.  
@@ -1219,7 +1233,8 @@ String getTimestampAsDate(unsigned long timestamp) {
 }
 ```
     
-![getTimestampAsDate](https://github.com/user-attachments/assets/39e8e711-beb3-47a1-a7cc-e80b42cb7318)
+![getTimestampAsDate](https://github.com/user-attachments/assets/f161fe6c-d665-4e71-b8ae-1cd1d9aacd7b)
+
      
 ## 📌 unsigned long readTimestampFromFile(String filePath)
 Esta función lee un timestamp almacenado en un archivo dentro del sistema de archivos LittleFS y lo devuelve como un valor `unsigned long`. En caso de error o si el timestamp no se encuentra, retorna 0. También registra mensajes de error o advertencia según corresponda.  
@@ -1268,7 +1283,8 @@ unsigned long readTimestampFromFile(String filePath) {
 }
 ```
 
-![readTimestampFromFile](https://github.com/user-attachments/assets/b55762c4-40f3-4712-98f7-a4247efe1c8c)
+![readTimestampFromFile](https://github.com/user-attachments/assets/10c61e6f-78cc-4f35-97f8-01caaa960dd8)
+
     
    
 ## 📌 String writeToSerialPort(String instruction)
@@ -1306,7 +1322,8 @@ String writeToSerialPort(String instruction) {
 }
 ```
    
-![writeToSerialPort](https://github.com/user-attachments/assets/66f1f40e-3849-4110-b778-6a85fca5617f)
+![writeToSerialPort](https://github.com/user-attachments/assets/0af41a14-2f3a-422f-8858-f4c90238abdc)
+
       
 ## 📌 String readFromSerialPort()
 Esta función espera hasta que haya datos disponibles en el puerto serie `MySerial`, luego lee y devuelve la cadena recibida hasta encontrar un retorno de carro (`\r`).  
@@ -1332,7 +1349,8 @@ String readFromSerialPort() {
 }
 ```
 
-![readFromSerialPort](https://github.com/user-attachments/assets/bef68f3c-f7be-44a9-9f0c-1a89084f05a9)
+![readFromSerialPort](https://github.com/user-attachments/assets/d41879d1-ab0c-432b-ab82-de594706cad2)
+
 
 
 ## 📌 void getProjectorStatus()
@@ -1367,7 +1385,8 @@ void getProjectorStatus() {
 }
 ```       
        
-![getProjectorStatus](https://github.com/user-attachments/assets/c4cbddbb-0732-4357-8111-a53350627a5c)
+![getProjectorStatus](https://github.com/user-attachments/assets/2245a90d-e66f-479b-8a34-6373853a3f36)
+
       
 
 
@@ -1502,7 +1521,8 @@ void callServer(int& httpResponseCode, String& httpResponseData) {
 }
 ```
      
-![callServer](https://github.com/user-attachments/assets/314f2053-a690-4f3a-b9b4-eb3dc1673638)
+![callServer](https://github.com/user-attachments/assets/ba3e583b-97af-470e-8cbc-5e52a0bf78cb)
+
         
 ## 📌 String updateEvent(String eventId, String deviceResponseCode)
 Esta función envía una solicitud HTTPS de tipo PUT al servidor para actualizar el estado de un evento. Realiza validaciones previas, construye la URL con los parámetros necesarios y devuelve la respuesta del servidor como una cadena de texto.  
@@ -1637,7 +1657,8 @@ String updateEvent(String eventId, String deviceResponseCode) {
 }
 ```
     
-![updateEvent - 2](https://github.com/user-attachments/assets/fee914cc-405e-486c-8efb-ec326eba44b6)
+![updateEvent](https://github.com/user-attachments/assets/b149b640-c49a-4885-9300-df89f33885a4)
+
     
     
 ## 📌 String getJwt() 
@@ -1715,7 +1736,8 @@ String getJwt() {
 }
 ```
     
-![String getJwt()](https://github.com/user-attachments/assets/17c7c331-e502-4a31-a785-cfe647443149)
+![String getJwt](https://github.com/user-attachments/assets/3889d718-6ea5-486c-ae56-c5a7e14bdc53)
+
     
     
 ## 📌 String getValueFromString(const String& data, const String& key)
@@ -1762,7 +1784,8 @@ String getValueFromString(const String& data, const String& key) {
 }
 ```
     
-![getValueFromString](https://github.com/user-attachments/assets/8088cfb5-1d7c-496c-9bef-a963eef86b06)
+![getValueFromString](https://github.com/user-attachments/assets/2a437cdd-2a1e-4e18-99d8-199921ea8c40)
+
 
     
 ## 📌 String urlEncode(const char* msg)
@@ -1797,7 +1820,8 @@ String urlEncode(const char* msg) {
 }
 ```
    
-![urlEncode](https://github.com/user-attachments/assets/ce35512e-9e43-4b42-b608-8026d59bca39)
+![urlEncode](https://github.com/user-attachments/assets/66d59ab4-5c8c-4210-8afb-802b5f64f04e)
+
 
    
 
@@ -1823,7 +1847,8 @@ String replaceEndingNewline(String input) {
 }
 ```
         
-![replaceEndingNewLine](https://github.com/user-attachments/assets/665358a8-7fd3-4b9b-9ba7-6901f7694735)
+![replaceEndingNewLine](https://github.com/user-attachments/assets/4d8af9da-5198-426c-999f-594d86d9c7c7)
+
 
     
     

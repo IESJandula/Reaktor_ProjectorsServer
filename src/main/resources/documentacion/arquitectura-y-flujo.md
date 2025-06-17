@@ -30,9 +30,9 @@ La arquitectura utilizada en el desarrollo del proyecto sigue un modelo cliente-
 2. **Lado agente remoto (microcontrolador):** Periódicamente, el agente remoto asociado a cada proyector consulta la API del microservicio para verificar si hay tareas pendientes para él en la cola de ejecución. Si existen tareas asignadas, el servidor responde enviando la instrucción correspondiente según el modelo del proyector. El microcontrolador recibe la instrucción, la transmite al proyector a través de su interfaz de comunicación, y éste la ejecuta.
 
 Además, el sistema incluye un mecanismo de actualización del estado de las tareas, que no se detalla en esta explicación y será abordado más adelante.
-
-![image](https://github.com/user-attachments/assets/c8482c0b-a148-4e50-bc02-ba7a3e1c8846)
-
+   
+![427159308-c8482c0b-a148-4e50-bc02-ba7a3e1c8846](https://github.com/user-attachments/assets/03fdd701-d07f-4abc-bb46-d69f2002cc04)
+   
 ---
 
 ## Orden de operaciones.
@@ -47,9 +47,9 @@ En el siguiente diagrama se representa el orden de operaciones en el flujo de tr
 7. Según la respuesta del proyector, el agente remoto envía una actualización de estado al servidor.
 8. Finalmente, el servidor actualiza el estado del evento en la tabla "Servidor Evento".    
    
-<!-- ![image](https://github.com/user-attachments/assets/faf3530f-b656-4a4b-b1af-ec1ed75540a9) -->
 
-![imagen](https://github.com/user-attachments/assets/b9ad96ac-6823-4789-9111-cc401183c552)
+![449336603-b9ad96ac-6823-4789-9111-cc401183c552](https://github.com/user-attachments/assets/ae568f38-e5e1-4ec1-8d97-7da6bb63b599)
+
     
     
 --- 
